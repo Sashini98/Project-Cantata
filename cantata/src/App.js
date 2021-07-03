@@ -1,23 +1,25 @@
-import logo from './logo.svg';
+import { useLocation } from "react-router-dom";
+import { BrowserRouter as Router,Switch,Route } from "react-router-dom";
+import AdminPage from "./Screens/AdminPage";
+import LoginPage from "./Screens/Login";
+// import { GuardProvider, GuardedRoute } from 'react-router-guards';
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Router>
+        <Switch>
+          <Route path="/admin/:subpath" exact >
+            <AdminPage />
+          </Route>
+          <Route path="/login" exact >
+            <LoginPage />
+          </Route>
+
+
+        </Switch>
+      </Router>
     </div>
   );
 }
