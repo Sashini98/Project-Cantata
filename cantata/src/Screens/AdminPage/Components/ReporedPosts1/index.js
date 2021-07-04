@@ -1,6 +1,6 @@
 import React from "react";
 
-function ReportedPosts() {
+function ReportedPosts1() {
 
     return (
         <article className="panel is-link mt-2">
@@ -16,4 +16,4 @@ function ReportedPosts() {
     )
 }
 
-export default ReportedPosts;
+export default ReportedPosts1;
