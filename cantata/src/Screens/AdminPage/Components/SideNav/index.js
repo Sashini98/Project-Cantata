@@ -1,11 +1,7 @@
 import React from "react";
 import { Link,useParams } from "react-router-dom";
-import '../../../../Assets/sidenav.png';
 import './index.css';
 
-
-
-const snv = require('../../../../Assets/sidenav.png');
 function SideNav() {
 let { subpath }=useParams();
 
@@ -13,9 +9,13 @@ let { subpath }=useParams();
     return (
 
 
-        <aside className="menu drawer-menu mt-3">
+        <aside className="menu drawer-menu">
             
-            <img src={snv} width="100" height="100"/>
+            {/* <img src={sidenav} width="300" height="300"/> */}
+            <div className="navtop">
+                <div className="txt">hello</div>
+
+            </div>
             
             <ul className="menu-list">           
                 <li><a className={subpath ==="dashboard"?"is-active":""}><Link to="dashboard">Dashboard</Link></a></li>

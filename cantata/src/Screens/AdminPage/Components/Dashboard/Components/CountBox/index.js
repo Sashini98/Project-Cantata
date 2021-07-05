@@ -8,7 +8,7 @@ function CountBox() {
             <nav class="level mt-6">
                 <div className="level-item has-text-centered">
                     <div>
-                        <div className="box mr-6">
+                        <div className="box mx-6">
                             <div class="content">
                                 <p>
                                     <h1>Visitors</h1>
