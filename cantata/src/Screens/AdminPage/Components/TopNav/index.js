@@ -1,5 +1,6 @@
 import React from "react";
 import user from "../../../../Assets/user.png";
+import logo from "../../../../Assets/logo.png";
 
 
 import './index.css';
@@ -13,10 +14,16 @@ function TopNav() {
 
     return (
         <nav class="navbar" role="navigation" aria-label="main navigation">
+            
             <div class="navbar-end">
                 <div class="navbar-item">
+                    
+                        <p class="btn mr-3">
+                            <strong>R.M.S.Shihara
+                            </strong>
+                        </p>
+                                           
                     <div className="topuser">
-                        <p></p>
                         <img src={user} />
                     </div>
                 </div>

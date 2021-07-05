@@ -10,13 +10,13 @@ function AdminPage() {
     let { subpath } = useParams();
 
     return (
-        <div><TopNav />
+        <div>
             <div class="columns">
                 <div class="column is-2">
                     <SideNav />
                 </div>
                 <div class="column is-10">
-                    
+                <TopNav />
                     {subpath === "dashboard" && <Dashboard />}
                     {subpath === "reportedposts1" && <ReportedPosts1 />}
                 </div>

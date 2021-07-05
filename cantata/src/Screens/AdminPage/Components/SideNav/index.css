@@ -6,6 +6,9 @@
     background-color: #fff !important;
 }
 
+.menu-list > .active > a { 
+    background-color: pink !important ; 
+}
 .navtop{
     background-image: url(../../../../Assets/sidenav.png);
     height: 20%;

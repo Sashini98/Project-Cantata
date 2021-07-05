@@ -1,5 +1,6 @@
 import React from "react";
 import { Link,useParams } from "react-router-dom";
+import logo from "../../../../Assets/logo2.png";
 import './index.css';
 
 function SideNav() {
@@ -11,9 +12,9 @@ let { subpath }=useParams();
 
         <aside className="menu drawer-menu">
             
-            {/* <img src={sidenav} width="300" height="300"/> */}
-            <div className="navtop">
-                <div className="txt">hello</div>
+            <div className="navtop is-centered">
+            <img src={logo} ></img>
+            
 
             </div>
             
