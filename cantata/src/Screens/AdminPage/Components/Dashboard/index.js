@@ -8,19 +8,16 @@ function Dashboard() {
     return (
         <div>
             <nav class="level">
-                <div class="level-item has-text-centered">
+                <div class="level-item ">
                     <div>
                         <CountBox />
                     </div>
                 </div>
 
-
-
-
             </nav>
 
-            <nav class="level mt-6">
-                <div class="level-item has-text-centered">
+            <nav class="level">
+                <div class="level-item  is-centered">
                     <div>
                        <TrafficBar />
                     </div>

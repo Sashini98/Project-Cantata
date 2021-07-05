@@ -5,3 +5,7 @@
 .message-body{
     background-color: #fff !important;
 }
+
+.sidenav{
+    background-image: url(../../../../Assets/sidenav.png);
+}
