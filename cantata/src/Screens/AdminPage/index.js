@@ -2,7 +2,7 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import SideNav from "./Components/SideNav";
 import Dashboard from "./Components/Dashboard";
-import ReportedPosts from "./Components/ReporedPosts";
+import ReportedPosts1 from "./Components/ReporedPosts1";
 
 function AdminPage() {
 
@@ -16,7 +16,7 @@ function AdminPage() {
                 </div>
                 <div class="column is-10">
                     { subpath ==="dashboard" && <Dashboard />}
-                    { subpath ==="reportedposts" && <ReportedPosts />}
+                    { subpath ==="reportedposts1" && <ReportedPosts1 />}
                 </div>
                 
             </div>

@@ -1,4 +1,4 @@
-import { useLocation } from "react-router-dom";
+// import { useLocation } from "react-router-dom";
 import { BrowserRouter as Router,Switch,Route } from "react-router-dom";
 import AdminPage from "./Screens/AdminPage";
 import LoginPage from "./Screens/Login";
