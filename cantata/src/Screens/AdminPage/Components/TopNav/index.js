@@ -1,6 +1,6 @@
 import React from "react";
 import user from "../../../../Assets/user.png";
-import logo from "../../../../Assets/logo.png";
+
 
 
 import './index.css';

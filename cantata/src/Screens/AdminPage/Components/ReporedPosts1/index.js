@@ -1,18 +1,36 @@
 import React from "react";
+import CountBox from "./Components/CountBox";
+import ReportBox from "./Components/ReportBox";
 
 function ReportedPosts1() {
 
     return (
-        <article className="panel is-link mt-2">
-            <p className="panel-heading primary-color-bg">
-                Contest Participation
-            </p>
-            <div className="my-1 mt-2 p-2">
-                <h1 className="title is-1">hiii</h1>
+        <div>
+        <nav class="level">
+            <div class="level-item ">
+                <div>
+                    <CountBox />
+                </div>
+            </div>
+
+        </nav>
+
+        <nav class="level-left ml-6">
+            <div class="level-item ml-6">
+                <div>
+                  <ReportBox />
+                  <ReportBox />
+                  <ReportBox />
+                  <ReportBox />
+
+
+                </div>
             </div>
 
 
-        </article>
+
+        </nav>
+    </div>
     )
 }
 

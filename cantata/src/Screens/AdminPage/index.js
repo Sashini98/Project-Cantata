@@ -4,6 +4,7 @@ import SideNav from "./Components/SideNav";
 import Dashboard from "./Components/Dashboard";
 import ReportedPosts1 from "./Components/ReporedPosts1";
 import TopNav from "./Components/TopNav";
+import ReportedPosts2 from "./Components/ReportedPosts2";
 
 function AdminPage() {
 
@@ -19,6 +20,7 @@ function AdminPage() {
                 <TopNav />
                     {subpath === "dashboard" && <Dashboard />}
                     {subpath === "reportedposts1" && <ReportedPosts1 />}
+                    {subpath === "reportedposts2" && <ReportedPosts2 />}
                 </div>
 
             </div>
