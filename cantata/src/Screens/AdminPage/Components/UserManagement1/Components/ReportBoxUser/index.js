@@ -1,6 +1,6 @@
 import React from "react";
 import "./index.css";
-import user from "../../../../../../Assets/user.png";
+import user from "../../../../../../Assets/Admin/user.png";
 
 
 function ReportBoxUser() {

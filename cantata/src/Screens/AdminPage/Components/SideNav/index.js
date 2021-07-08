@@ -1,6 +1,7 @@
 import React from "react";
 import { Link,useParams } from "react-router-dom";
-import logo from "../../../../Assets/logo2.png";
+import logo from "../../../../Assets/Admin/logo2.png";
+
 import './index.css';
 
 function SideNav() {
