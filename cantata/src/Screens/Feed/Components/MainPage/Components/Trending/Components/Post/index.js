@@ -6,7 +6,7 @@ import './index.css';
 const bx = {
     
     //  backgroundColor: "white",
-      height: "50vh",
+      height: "37vh",
       width: "130vh",
    //   borderStyle: "solid",
     //  borderWidth: "0",
@@ -26,6 +26,10 @@ const postedBy = {
     width: "130vh",
     margin: "2vh"
 }
+const seeBtn = {
+    width: "20vh",
+    height: "5vh"
+}
 
   
 function Post() {
@@ -44,22 +48,40 @@ function Post() {
                             </div>
 
                     <div class="box" style={bx} >
-                    <div class="column">
-    
-                        <div class="columns is-mobile">
-                            <div class="column">
-                                Lyrics
+                        
+                    <div class="tile is-ancestor">
+                        <div class="tile is-vertical is-8">
+                            <div class="tile">
+                        <div class="tile is-parent is-vertical">
+                            <article class="tile is-child notification is-primary">
+                                <p class="title">Lyric Title</p>
+                                <p class="subtitle">Half lyrics</p>
+                            </article>
 
-                            </div>
-                            <div class="column">
-                                 Description
-                             </div>
                         </div>
 
+                    </div>
+                    <div class="tile is-parent">
+                                  
+                         <button class="seeBtn" >See full lyrics</button>
+                            
+                    </div>
+                        </div>
+                    <div class="tile is-parent">
+                            <article class="tile is-child notification is-success">
+                            <div class="content">
+                                <p class="title">Description</p>
+                                <p class="subtitle">Description of lyrics</p>
+                            </div>
+                            </article>
+                    </div>
+                        </div>
+                    
+                        
 
                     </div>
                     </div>
-                </div>
+                
 
     )
 

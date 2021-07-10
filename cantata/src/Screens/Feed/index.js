@@ -4,14 +4,8 @@ import { useParams } from "react-router-dom";
 import SideNav from "./Components/SideNav";
 import TopNav from "./Components/TopNav";
 import MainPage from "./Components/MainPage";
-
-
-
-
-const toggle = {
-    margin: "auto"
-}
-
+import RecentlyPlayed from "./Components/RecentlyPlayed";
+import PlayLists from "./Components/PlayLists";
 
 
 function Feed() {
@@ -28,8 +22,9 @@ function Feed() {
             <TopNav />
     
             
-                {subpath === "MainPage" && <MainPage />}  
-
+                {subpath === "MainPage" && <MainPage />}
+                {subpath === "RecentlyPlayed" && <RecentlyPlayed />}   
+                {subpath === "PlayLists" && <PlayLists />}
             </div>
         </div>
 

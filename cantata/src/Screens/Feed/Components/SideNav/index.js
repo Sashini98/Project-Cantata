@@ -31,6 +31,7 @@ function SideNav() {
             <ul className="menu-list">
                 <li><a className={subpath === "MainPage" ? "is-active" : ""}><Link to="MainPage"><img src={home} style={imgstyle} />Home</Link></a></li>
                 <li><a className={subpath === "RecentlyPlayed" ? "is-active" : ""}><Link to="RecentlyPlayed"><img src={home} style={imgstyle} />Recently Played</Link></a></li>
+                <li><a className={subpath === "PlayLists" ? "is-active" : ""}><Link to="PlayLists"><img src={home} style={imgstyle} />PlayLists </Link></a></li>
                 <li><a className={subpath === "" ? "is-active" : ""}><Link to=""><img src={notify} style={imgstyle} />Notifications</Link></a></li>
                 <li><a className={subpath === "accountmanagement" ? "is-active" : ""}><Link to="accountmanagement"><img src={edit} style={imgstyle} />Account</Link></a></li>
                 <li><a><Link to="\"><img src={lgout} style={imgstyle} />Logout</Link></a></li>
