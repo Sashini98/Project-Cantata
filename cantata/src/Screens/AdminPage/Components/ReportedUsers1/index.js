@@ -1,11 +1,9 @@
 import React from "react";
 import CountBoxUser from "./Components/CountBoxUser";
 import ReportBoxUser from "./Components/ReportBoxUser";
-import "./index.css";
 
-function UserManagement1() {
-
-    return (
+function ReportedUsers1(){
+    return(
         <div>
             <nav class="level">
                 <div class="level-item ">
@@ -61,4 +59,4 @@ function UserManagement1() {
     )
 }
 
-export default UserManagement1;
+export default ReportedUsers1;

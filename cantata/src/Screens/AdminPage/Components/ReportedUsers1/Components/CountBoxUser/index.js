@@ -1,10 +1,7 @@
 import React from "react";
-import "./index.css";
 
-
-function CountBoxUser() {
-
-    return (
+function CountBoxUser(){
+    return(
         <div>
             <nav class="level mt-6">
                 <div className="level-item has-text-centered">
@@ -47,10 +44,6 @@ function CountBoxUser() {
 
             </nav>
         </div>
-
-
-
-
     )
 }
 

@@ -1,6 +1,7 @@
 import React from "react";
 import "./index.css";
-import user from "../../../../../../Assets/user.png";
+import { Link } from "react-router-dom";
+import user from "../../../../../../Assets/Admin/user.png";
 
 
 function ReportBox() {
@@ -30,7 +31,8 @@ function ReportBox() {
                 <footer class="card-footer mr-3">
 
 
-                    <div className="refer"><a href="" className="card-footer-item mb-3">View</a></div>
+                    <div className="refer"><Link to="./reportedposts2"  className="card-footer-item mb-3">View</Link></div>
+
                 </footer>
             </div>
         </div>

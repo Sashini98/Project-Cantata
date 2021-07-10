@@ -1,11 +1,9 @@
 import React from "react";
-import "./index.css";
-import user from "../../../../../../Assets/user.png";
+import { Link } from "react-router-dom";
+import user from "../../../../../../Assets/Admin/user.png"
 
-
-function ReportBoxUser() {
-
-    return (
+function ReportBoxUser(){
+    return(
         <div>
             <div class="card is-centered mt-6">
                 <header class="card-header">
@@ -28,14 +26,10 @@ function ReportBoxUser() {
                 <footer class="card-footer mr-3">
 
 
-                    <div className="refer"><a href="" className="card-footer-item mb-3">View</a></div>
+                    <div className="refer"><Link to="./reportedusers2"  className="card-footer-item mb-3">View</Link></div>
                 </footer>
             </div>
         </div>
-
-
-
-
     )
 }
 

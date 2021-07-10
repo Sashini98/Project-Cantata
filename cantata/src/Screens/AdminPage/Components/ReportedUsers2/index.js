@@ -21,7 +21,7 @@ const foot = {
     borderWidth: "thin",
 }
 
-function ReportedPosts2() {
+function ReportedUsers2() {
 
     return (
         <div>
@@ -40,17 +40,14 @@ function ReportedPosts2() {
                     </button>
                 </header>
                 <div class="card-content">
-                    <div class="content" style={bx} >
-                        <p class="rep mt-6" style={{ textAlign: "center" }}>
-                            Lyric / Cover
-                        </p>
-                    </div><br></br><br></br>
                     <div class="content">
-                        Posted Date :
+                        Joined Date :
                         <br></br><br></br>
-                        Description :
+                        First Name :
                         <br></br><br></br>
-                        Tags :
+                        Last Name :
+                        <br></br><br></br>
+                        Email :
                     </div>
 
                     <ReportDetails />
@@ -70,4 +67,4 @@ function ReportedPosts2() {
     )
 }
 
-export default ReportedPosts2;
+export default ReportedUsers2;

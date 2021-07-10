@@ -10,12 +10,9 @@
     background-color: pink !important ; 
 }
 .navtop{
-    background-image: url(../../../../Assets/sidenav.png);
+    background-image: url(../../../../Assets/Admin/sidenav.png);
     height: 20%;
     width: 100%;
     margin-bottom: 10pt;
     
-}
-a:active{
-    background-color: violet !important;
 }
