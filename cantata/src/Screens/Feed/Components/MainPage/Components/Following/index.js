@@ -1,5 +1,6 @@
 import React from "react";
 import './index.css';
+import Post from "./Components/Post";
 
 const bx = {
     
@@ -21,7 +22,7 @@ const bx = {
   }
   
 
-function Trending() {
+function Following() {
 
 
     return (
@@ -31,26 +32,17 @@ function Trending() {
 
                         <tr>
                         <div>
-                            <h1> Post 1 </h1>
-                            <div class="box" style={bx} >
-                                Trending Post 1
-                            </div>
+                            <Post/>
                         </div>
                         </tr>
                         <tr>
                         <div>
-                            <h1> Post 2</h1>
-                            <div class="box" style={bx} >
-                                Trending Post 2
-                            </div>
+                            <Post/>
                         </div>
                         </tr>
                         <tr>
                         <div>
-                            <h1> Post 3</h1>
-                            <div class="box" style={bx} >
-                                Trending Post 3
-                            </div>
+                            <Post/>
                         </div>
                         </tr>
 
@@ -59,4 +51,4 @@ function Trending() {
     )
 }
 
-export default Trending;
+export default Following;

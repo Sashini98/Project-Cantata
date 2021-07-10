@@ -1,11 +1,12 @@
 import React from "react";
-import './index.css';
+import Post from "./Components/Post";
+
 
 const bx = {
     
     //  backgroundColor: "white",
       height: "50vh",
-      width: "150vh",
+      width: "130vh",
    //   borderStyle: "solid",
     //  borderWidth: "0",
       margin: "2vh"
@@ -13,15 +14,15 @@ const bx = {
   }
   const fullbx = {
       
-    //  height: "73vh",
-      width: "165vh",
-      Overflow: "auto",
+    //height: "73vh",
+     // width: "180vh",
+     OverflowY: "scroll",
       borderWidth: "thin",
       margin: "auto"
   }
   
 
-function Following() {
+function Trending() {
 
 
     return (
@@ -31,26 +32,17 @@ function Following() {
 
                         <tr>
                         <div>
-                            <h1> Post 1 </h1>
-                            <div class="box" style={bx} >
-                                Following Post 1
-                            </div>
+                            <Post/>
                         </div>
                         </tr>
                         <tr>
                         <div>
-                            <h1> Post 2</h1>
-                            <div class="box" style={bx} >
-                                Following Post 2
-                            </div>
+                            <Post/>
                         </div>
                         </tr>
                         <tr>
                         <div>
-                            <h1> Post 3</h1>
-                            <div class="box" style={bx} >
-                                Following Post 3
-                            </div>
+                            <Post/>
                         </div>
                         </tr>
 
@@ -59,4 +51,4 @@ function Following() {
     )
 }
 
-export default Following;
+export default Trending;
