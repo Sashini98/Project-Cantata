@@ -1,5 +1,6 @@
 import React from "react";
 import './index.css';
+import Post from "./Components/Post";
 
 const bx = {
     
@@ -31,26 +32,17 @@ function Following() {
 
                         <tr>
                         <div>
-                            <h1> Post 1 </h1>
-                            <div class="box" style={bx} >
-                                Following Post 1
-                            </div>
+                            <Post/>
                         </div>
                         </tr>
                         <tr>
                         <div>
-                            <h1> Post 2</h1>
-                            <div class="box" style={bx} >
-                                Following Post 2
-                            </div>
+                            <Post/>
                         </div>
                         </tr>
                         <tr>
                         <div>
-                            <h1> Post 3</h1>
-                            <div class="box" style={bx} >
-                                Following Post 3
-                            </div>
+                            <Post/>
                         </div>
                         </tr>
 

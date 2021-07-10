@@ -18,7 +18,7 @@ function App() {
           <Route path="/login" exact >
             <LoginPage />
           </Route>
-          <Route path="/Feed" exact >
+          <Route path="/Feed/:subpath" exact >
             <Feed />
           </Route>
 
