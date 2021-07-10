@@ -1,5 +1,4 @@
 import React from "react";
-import ReactDOM from "react-dom";
 
 function AccountManagement() {
     const txt = {
@@ -7,13 +6,13 @@ function AccountManagement() {
     }
 
     const bt = {
-        width: "10%"
+        width: "10vh",
+        marginRight: "auto",
+        // float: "left"
+        position: "absolute"
     }
 
-    const btn = {
-        float:"left"
-    }
-
+    
 
 
     return (
@@ -39,7 +38,6 @@ function AccountManagement() {
                             <br></br>
                             Last Name:<div class="control"><input class="input is-hovered" type="text" style={txt} value="Shihara"></input></div>
                             <br></br>
-
                         </div>
 
                     </article>
@@ -56,28 +54,15 @@ function AccountManagement() {
 
                         </div>
                     </article>
-                
                     
-                    <div class="field is-grouped" style={btn} >
-                <p class="control"style={bt}>
-                    <button class="button is-link">
-                        Save changes
-                    </button>
-                </p>
-            
-                <p class="control"style={bt}>
-                    <button class="button is-danger">
-                        Cancel
-                    </button>
-                </p>
-            </div>
-                    
+
                 </div>
-                
-
-
+              
             </div>
-            
+            <div>hii
+                        <button class="button" style={bt}>Save changes</button>
+                        <button class="button" style={bt}>Cancel</button>
+                    </div>
         </div>
 
 
