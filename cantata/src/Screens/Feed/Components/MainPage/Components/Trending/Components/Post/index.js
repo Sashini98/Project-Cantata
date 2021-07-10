@@ -1,5 +1,6 @@
-import React from "react";                        
- 
+import React from "react";  
+import user from "../../../../../../../../Assets/Admin/user.png";                      
+import './index.css';
 
 
 const bx = {
@@ -10,8 +11,21 @@ const bx = {
    //   borderStyle: "solid",
     //  borderWidth: "0",
       margin: "2vh"
+  }
+
+  const fullpost = {
+      margin: "3vh"
   
   }
+  
+const PicName = {
+    width: "130vh",
+    margin: "auto"
+}
+const postedBy = {
+    width: "130vh",
+    margin: "2vh"
+}
 
   
 function Post() {
@@ -19,12 +33,33 @@ function Post() {
 
     return (                       
                         
-                        <div>
-                            <h1> Post </h1>
-                            <div class="box" style={bx} >
-                                Trending Post
+                <div style={fullpost}>
+                            <div >
+                                
+
+                                <div class="columns" style={PicName}><img src={user} width="50" height="10"/>
+                                <div class="columns"style={postedBy}> Posted By</div>
+                                </div>
+                                
                             </div>
+
+                    <div class="box" style={bx} >
+                    <div class="column">
+    
+                        <div class="columns is-mobile">
+                            <div class="column">
+                                Lyrics
+
+                            </div>
+                            <div class="column">
+                                 Description
+                             </div>
                         </div>
+
+
+                    </div>
+                    </div>
+                </div>
 
     )
 

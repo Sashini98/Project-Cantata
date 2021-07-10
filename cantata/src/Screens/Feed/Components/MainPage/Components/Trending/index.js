@@ -9,7 +9,7 @@ const bx = {
       width: "130vh",
    //   borderStyle: "solid",
     //  borderWidth: "0",
-      margin: "2vh"
+      margin: "4vh"
   
   }
   const fullbx = {
