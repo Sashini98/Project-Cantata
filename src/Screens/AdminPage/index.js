@@ -8,6 +8,7 @@ import ReportedPosts2 from "./Components/ReportedPosts2";
 import ReportedUsers1 from "./Components/ReportedUsers1";
 import ReportedUsers2 from "./Components/ReportedUsers2";
 import AccountManagement from "./Components/AccountManagement";
+import Notification from "./Components/Notifications";
 
 
 function AdminPage() {
@@ -28,6 +29,7 @@ function AdminPage() {
                     {subpath === "reportedusers1" && <ReportedUsers1 />}
                     {subpath === "reportedusers2" && <ReportedUsers2 />}
                     {subpath === "accountmanagement" && <AccountManagement />}
+                    {subpath === "notification" && <Notification />}
                 </div>
 
             </div>
