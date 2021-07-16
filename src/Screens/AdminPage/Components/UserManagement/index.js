@@ -3,8 +3,15 @@ import CountBox from "./Components/CountBox";
 
 function UserManagement() {
     const txt = {
-        width: "70%"
+        width: "50%"
     }
+
+    const btn = {
+        width: "10%",
+        height: "5.3vh",
+        borderRadius: "3px"
+    }
+
 
     return (
         <div>
@@ -20,16 +27,25 @@ function UserManagement() {
             <nav class="level">
                 <div class="level-item  is-centered">
                     <div class="card is-centered mt-6 ml-6">
-                        
+
                         <div class="card-content">
                             <article class="message"> <br></br>
                                 <p class="title is-6 ml-4">User Details</p>
                                 <div class="message-body">
-                                    Email:<div class="control"><input class="input is-hovered" type="text" style={txt} value="shihara@gmail.com"></input></div>
+                                    User Email:<div class="control"></div><input class="input is-hovered" id="emai" type="text" style={txt} />
+                                    <button style={btn} >Add</button>
                                     <br></br>
-                                    First Name:<div class="control"><input class="input is-hovered" type="text" style={txt} value="Sashini"></input></div>
+
+                                    User ID:<input class="input is-static" type="email" value="U011" readonly />
                                     <br></br>
-                                    Last Name:<div class="control"><input class="input is-hovered" type="text" style={txt} value="Shihara"></input></div>
+
+                                    First Name:<input class="input is-static" type="email" value="Sashini" readonly />
+                                    <br></br>
+
+                                    Last Name:<input class="input is-static" type="email" value="Shihara" readonly />
+                                    <br></br>
+
+                                    Joined Date:<input class="input is-static" type="email" value="10/07/2021" readonly />
                                     <br></br>
                                 </div>
 
@@ -40,7 +56,12 @@ function UserManagement() {
                                 <div class="message-body">
                                     User Email:<div class="control"><input class="input is-hovered" type="password" style={txt} ></input></div>
                                     <br></br>
-                                   
+                                    <button>
+                                        Activate
+                                    </button>
+                                    <button>
+                                        Deactivate
+                                    </button>
 
                                 </div>
                             </article>
