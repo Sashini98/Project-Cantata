@@ -1,9 +1,9 @@
 import React from "react";
 
-function Active(){
+function ActiveUser(){
     return(
         <div>active user list</div>
     )
 }
 
-export default Active;
+export default ActiveUser;

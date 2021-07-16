@@ -1,9 +1,9 @@
 import React from "react";
 
-function Deactive(){
+function DeactiveUser(){
     return(
         <div>Deactive user list</div>
     )
 }
 
-export default Deactive;
+export default DeactiveUser;
