@@ -8,11 +8,12 @@ function AccountManagement() {
     const bt = {
         width: "10vh",
         marginRight: "auto",
-        // float: "left"
-        position: "absolute"
+        float: "left",
+        position: "absolute",
+        display: "block"
     }
 
-    
+
 
 
     return (
@@ -54,15 +55,25 @@ function AccountManagement() {
 
                         </div>
                     </article>
-                    
+
 
                 </div>
-              
+
             </div>
-            <div>hii
-                        <button class="button" style={bt}>Save changes</button>
-                        <button class="button" style={bt}>Cancel</button>
-                    </div>
+            <section> <div class="field is-grouped">
+                <p class="control">
+                    <button class="button is-link">
+                        Save changes
+                    </button>
+                </p>{"       "}
+                <p class="control"style={bt}>
+                    <button class="button">
+                        Cancel
+                    </button>
+                </p>
+                
+            </div></section>
+           
         </div>
 
 
