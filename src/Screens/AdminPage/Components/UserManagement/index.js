@@ -3,12 +3,22 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import CountBox from "./Components/CountBox";
 import NavTab from "./Components/Navtab";
-import ActiveUser from "./Components/Navtab/Components/DeactiveUser/ActiveUser";
-import DeactiveUser from "./Components/Navtab/Components/DeactiveUser";
-import UserDetails from "./Components/UserDetails";
+import search from "../../../../Assets/Admin/search.png";
 
 function UserManagement() {
 
+    const txt = {
+        width: "50%"
+    }
+
+    const btn = {
+        backgroundColor: "white",
+        width: "5%",
+        height: "5.3vh",
+        border: "none",
+        borderRadius: "3px",
+
+    }
     let { subpath } = useParams();
     return (
         <div>
@@ -35,13 +45,8 @@ function UserManagement() {
                 </div>
             </nav>
 
-            <nav class="level">
-                <div class="level-item">
-                    {subpath === "userdetails" && <UserDetails />}
-                    {subpath === "activeusers" && <ActiveUser />}
-                    {subpath === "deactiveusers" && <DeactiveUser />}
-                </div>
-            </nav>
+            
+
         </div>
     )
 }
