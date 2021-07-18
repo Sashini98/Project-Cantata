@@ -6,7 +6,7 @@ function NavTab(){
     return(
         <div class="tabs is-fullwidth is-boxed"><br></br>
         <ul>
-        <li><a className={subpath === "./userdetails" ? "is-active" : ""}><Link to="./userdetails">Manage Users</Link></a></li>
+        <li><a className={subpath === "./userdetails" ? "is-active" : ""}><Link to="userdetails">Manage Users</Link></a></li>
             <li>
                 <a>                                   
                     <span>Manage Users</span>
