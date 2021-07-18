@@ -1,0 +1,63 @@
+.seeBtn{
+    background-color: #70c57300; /* Green */
+    border: none;
+    color: black;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    transition-duration: 0.4s;
+    font-size: 16px;
+      
+}
+
+
+.seeBtn:hover {
+  background-color: #a17ad4; /* Green */
+  color: white;
+  
+}
+
+.fullPost{
+  padding: 15px 32px;
+  height: "57vh";
+  width: "330vh";
+}
+
+.postedBy{
+  padding: 15px 20px;
+}
+
+.lyricSection{
+  background-color: #70c57300!important; /* Green */
+    border: none;
+    color: black!important;
+    
+    text-align: left;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.lyricBox{
+  color: #70c57300!important;
+  background-color: #70c57300!important;
+}
+
+.postContent{
+  width: 980px;
+  
+}
+
+.writer{
+  width: 700px;
+  height: 70px;
+  padding: 10px 8px;
+}
+
+.writerName{
+  padding: 23px 20px;
+}
+
+.lyricSection{
+  background-color: "white"!important;
+  color: "white"!important;
+}
