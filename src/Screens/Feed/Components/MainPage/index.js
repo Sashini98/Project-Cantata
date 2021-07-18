@@ -1,7 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import Trending from "./Components/Trending";
 import Following from "./Components/Following";
-import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 
 const toggle = {
@@ -11,36 +10,36 @@ const toggle = {
 
 function MainPage() {
     let { subpath } = useParams();
+    const [block, setBlock] = useState("")
+    //setBlock: setter, block: variable, &empty string  
+
+    const switchBlock = (e) => {
+        setBlock(e.target.value)
+    }
 
     return (
         <div>
-             <div class="columns">
+            <div class="columns">
 
-                <div class="column is-10">  
+                <div class="column is-10">
 
-                <h1> Hello Amaya! Happy Coding! </h1>
-                <div class="column">
-    
-                <div class="columns is-mobile">
-                  <div class="column">
-                      <button class="button is-medium is-fullwidth" style={toggle}>Trending</button>
-            
+                    <h1> Hello Amaya! Happy Coding! </h1>
+                    <div class="column">
+
+                        <div class="columns is-mobile">
+                            <div class="column">
+                                <button class="button is-medium is-fullwidth" style={toggle} onClick={switchBlock} value="trending">Trending</button>
+
+                            </div>
+                            <div class="column">
+                                <button class="button is-medium is-fullwidth" style={toggle} onClick={switchBlock} value="following">Following</button>
+                            </div>
+                        </div>
+
+                        {block === "trending" ? <Trending /> : <Following />}
+
                     </div>
-                 <div class="column">
-                        <button class="button is-medium is-fullwidth" style={toggle}>Following</button>
-                    </div>
-                 </div>
-
-                <div ><Trending/> </div>
-                {subpath === "Following" && <Following />}  
-
                 </div>
-                
-                </div>
-
-            
-
-
             </div>
         </div>
 
