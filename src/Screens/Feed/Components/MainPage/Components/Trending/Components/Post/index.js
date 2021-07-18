@@ -34,7 +34,7 @@ function Post() {
                             <div className="tile is-parent is-vertical">
                                 <article className="tile is-child notification is-primary">
                                     <p className="title ">Lyric Title</p>
-                                    <p className="subtitle">Half lyrics</p>
+                                    <p className="subtitle">Half of the lyrics displayed here</p>
                                 </article>
 
                             </div>
