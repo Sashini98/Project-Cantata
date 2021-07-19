@@ -1,9 +1,7 @@
 import React from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import CountBox from "./Components/CountBox";
 import NavTab from "./Components/Navtab";
-import search from "../../../../Assets/Admin/search.png";
 
 function UserManagement() {
 
@@ -22,15 +20,7 @@ function UserManagement() {
     let { subpath } = useParams();
     return (
         <div>
-            <Router>
-                <Switch>
-
-                    <Route path="/navtab/:subpath" exact >
-                        <NavTab />
-                    </Route>
-                </Switch>
-            </Router>
-            <nav class="level">
+                    <nav class="level">
                 <div class="level-item ">
                     <div>
                         <CountBox />
@@ -41,13 +31,14 @@ function UserManagement() {
 
             <nav class="level">
                 <div class="level-item">
-                    <NavTab />
+                    <NavTab />                   
                 </div>
             </nav>
 
-            
+
 
         </div>
     )
 }
 export default UserManagement;
+

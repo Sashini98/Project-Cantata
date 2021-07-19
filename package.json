@@ -16,6 +16,8 @@
     "react-router-dom": "^5.2.0",
     "react-router-guards": "^1.0.2",
     "react-scripts": "4.0.3",
+    "react-simple-tabs-component": "^1.0.7",
+    "react-tabs": "^3.2.2",
     "recharts": "^2.0.10",
     "tabs": "^0.2.0",
     "web-vitals": "^1.1.2"

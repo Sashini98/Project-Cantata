@@ -2,7 +2,7 @@ import React from "react";
 
 function Test2(){
     return(
-        <div>active user list</div>
+        <div>kagskqgd user list</div>
     )
 }
 
