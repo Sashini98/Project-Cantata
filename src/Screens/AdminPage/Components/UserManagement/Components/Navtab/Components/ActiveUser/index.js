@@ -1,28 +1,21 @@
 import React from "react";
 
-function Test2() {
-    
-    const btn = {
-        backgroundColor: "rgb(72, 95, 199)",
-        color:"white",
-        width: "100%",
-        height: "5vh",
-        borderRadius: "3px",
-        border:"thin"
-
+function ActiveUser() {
+    const tbl = {
+        width: "100%"
     }
+
+    
     return (
         <div>
-            <table class="table">
+            <table class="table" style={tbl}>
                 <thead>
                     <tr>
                         <th>UserId</th>
                         <th>Email</th>
-                        <th>FirstName</th>
-                        <th>Last Nmae</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
                         <th>Joined Date</th>
-                        <th>Deactivated Date</th>
-                        <th></th>
                     </tr>
                 </thead>
                 
@@ -33,9 +26,7 @@ function Test2() {
                         <td>Sashini</td>
                         <td>Shihara</td>
                         <td>12/02/2021</td>
-                        <td>12/08/2021</td>
-                        <td><button style={btn}>Activate</button>
-                        </td>
+                        
                     </tr>
 
                     <tr>
@@ -44,9 +35,7 @@ function Test2() {
                         <td>Sashini</td>
                         <td>Shihara</td>
                         <td>12/02/2021</td>
-                        <td>12/08/2021</td>
-                        <td><button style={btn}>Activate</button>
-                        </td>
+                        
                     </tr>
 
                     <tr>
@@ -55,9 +44,7 @@ function Test2() {
                         <td>Sashini</td>
                         <td>Shihara</td>
                         <td>12/02/2021</td>
-                        <td>12/08/2021</td>
-                        <td><button style={btn}>Activate</button>
-                        </td>
+                        
                     </tr>
 
                     <tr>
@@ -66,9 +53,7 @@ function Test2() {
                         <td>Sashini</td>
                         <td>Shihara</td>
                         <td>12/02/2021</td>
-                        <td>12/08/2021</td>
-                        <td><button style={btn}>Activate</button>
-                        </td>
+                        
                     </tr>
 
                     <tr>
@@ -77,9 +62,7 @@ function Test2() {
                         <td>Sashini</td>
                         <td>Shihara</td>
                         <td>12/02/2021</td>
-                        <td>12/08/2021</td>
-                        <td><button style={btn}>Activate</button>
-                        </td>
+                        
                     </tr>
 
                     <tr>
@@ -88,9 +71,7 @@ function Test2() {
                         <td>Sashini</td>
                         <td>Shihara</td>
                         <td>12/02/2021</td>
-                        <td>12/08/2021</td>
-                        <td><button style={btn}>Activate</button>
-                        </td>
+                        
                     </tr>
 
                     <tr>
@@ -99,9 +80,7 @@ function Test2() {
                         <td>Sashini</td>
                         <td>Shihara</td>
                         <td>12/02/2021</td>
-                        <td>12/08/2021</td>
-                        <td><button style={btn}>Activate</button>
-                        </td>
+                        
                     </tr>
 
                 </tbody>
@@ -110,4 +89,4 @@ function Test2() {
     )
 }
 
-export default Test2;
+export default ActiveUser;

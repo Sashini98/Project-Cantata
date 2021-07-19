@@ -1,5 +1,5 @@
 import React from "react";
-import search from "../../../../../../Assets/Admin/search.png";
+import search from "../../../../../../../../Assets/Admin/search.png";
 
 
 function UserDetails() {
@@ -15,23 +15,25 @@ function UserDetails() {
         borderRadius: "3px",
 
     }
+    const msg = {
+        width: "100%"
+    }
 
 
     return (
-        <div>
-            
+        <div>          
 
             <nav class="level">
                 <div class="level-item  is-centered">
-                    <div class="card is-centered mt-6 ml-6">
+                    <div class="card" style={msg}>
 
                         <div class="card-content">
-                            <article class="message"> <br></br>
-                                <p class="title is-6 ml-4">User Details</p>
+                            <article class="message">
+                                <p class="title is-6">User Details</p><br></br>
                                 <div class="message-body">
                                     User Email:<div class="control"></div><input class="input is-hovered" id="emai" type="text" style={txt} />
                                     <button style={btn} ><img src={search} /></button>
-                                    <br></br><br></br><br></br>
+                                    <br></br><br></br>
                                     <div class="table-container">
                                         <table class="table">
                                            

@@ -2,15 +2,15 @@
 import React, { useState, Fragment } from 'react'
 import { Tabs } from 'react-simple-tabs-component'
 import 'react-simple-tabs-component/dist/index.css' 
-import Test1 from "./Components/Test1";
-import Test2 from "./Components/Test2";
+import ActiveUser from "./Components/ActiveUser";
+import DeactiveUser from "./Components/DeactiveUser";
+import UserDetails from './Components/UserDetails';
+
 
 const TabOne = () => {
     return (
         <Fragment>
-            
-                <Test1/>
-            
+            <UserDetails/>
         </Fragment>
         
     )
@@ -20,7 +20,7 @@ const TabTwo = () => {
     return (
         <Fragment>
           
-                <Test2/>
+                <DeactiveUser/>
             
         </Fragment>
         
@@ -30,10 +30,7 @@ const TabTwo = () => {
 const TabThree = () => {
     return (
         <Fragment>
-            <h3>Tab One</h3>
-            <p>
-               tab
-            </p>
+            <ActiveUser/>
         </Fragment>
         
     )
