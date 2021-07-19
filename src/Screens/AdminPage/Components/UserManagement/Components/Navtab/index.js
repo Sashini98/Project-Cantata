@@ -42,17 +42,17 @@ const TabThree = () => {
 
 const tabs = [
     {
-        label: 'Tab One', 
+        label: 'User Management', 
         index: 1,         
         Component: TabOne 
     },
     {
-        label: 'Tab Two',
+        label: 'Deactive Users',
         index: 2,
         Component: TabTwo
     },
     {
-        label: 'Tab Three',
+        label: 'Active Users',
         index: 3,
         Component: TabThree
     }
