@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Trending from "./Components/Trending";
 import Following from "./Components/Following";
 import { useParams } from "react-router-dom";
+import './index.css';
 
 const toggle = {
     margin: "auto"
@@ -18,21 +19,21 @@ function MainPage() {
     }
 
     return (
-        <div>
-            <div class="columns">
+        <div> 
+            <div className="columns">
 
-                <div class="column is-10">
+                <div className="column is-10">
 
                     <h1> Hello Amaya! Happy Coding! </h1>
-                    <div class="column">
+                    <div className="column">
 
-                        <div class="columns is-mobile">
-                            <div class="column">
-                                <button class="button is-medium is-fullwidth" style={toggle} onClick={switchBlock} value="trending">Trending</button>
+                        <div className="columns is-mobile">
+                            <div className="column">
+                                <button className="button is-medium is-fullwidth" style={toggle} onClick={switchBlock} value="trending">Trending</button>
 
                             </div>
-                            <div class="column">
-                                <button class="button is-medium is-fullwidth" style={toggle} onClick={switchBlock} value="following">Following</button>
+                            <div className="column">
+                                <button className="button is-medium is-fullwidth" style={toggle} onClick={switchBlock} value="following">Following</button>
                             </div>
                         </div>
 

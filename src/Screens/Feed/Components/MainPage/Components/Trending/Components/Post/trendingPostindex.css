@@ -27,20 +27,6 @@
   padding: 15px 20px;
 }
 
-.lyricSection{
-  background-color: #70c57300!important; /* Green */
-    border: none;
-    color: black!important;
-    
-    text-align: left;
-    text-decoration: none;
-    font-size: 16px;
-}
-
-.lyricBox{
-  color: #70c57300!important;
-  background-color: #70c57300!important;
-}
 
 .postContent{
   width: 980px;
@@ -57,7 +43,15 @@
   padding: 23px 20px;
 }
 
-.lyricSection{
-  background-color: "white"!important;
-  color: "white"!important;
+.lyricBox{
+  max-height: 400px;
+}
+
+.halfLyricSection{
+  padding-top: 10px;
+  padding-left: 20px;
+}
+
+.descriptionSection{
+  padding-left: 30px!important;
 }

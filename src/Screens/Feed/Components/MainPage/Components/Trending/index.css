@@ -1,0 +1,9 @@
+.trendingSection{
+    height: 530px;
+    overflow-x: hidden!important;
+    overflow-y: auto!important;
+}
+
+.posts{
+    overflow-y: auto!important;
+}
