@@ -20,8 +20,8 @@ function Post() {
             <div className="postedBy">
 
 
-                <div className="columns writer"><img src={user}/>
-                    <div className="columns writerName"> Posted By Amaya</div>
+                <div className="columns writer"><img src={user} />
+                    <div className="columns writerName"> Posted By Amaya (Trending)</div>
                 </div>
 
             </div>
@@ -31,10 +31,22 @@ function Post() {
                 <div className="tile is-ancestor">
                     <div className="tile  is-vertical is-8">
                         <div className="tile ">
-                            <div className="tile is-parent is-vertical">
-                                <article className="tile is-child notification is-primary">
+                            <div className="tile lyricBox is-parent is-vertical">
+                                <article className="tile is-child is-primary">
                                     <p className="title ">Lyric Title</p>
-                                    <p className="subtitle">Half of the lyrics displayed here</p>
+                                    <p className="subtitle halfLyricSection">Half of the lyrics displayed here
+                                        You can be the peanut butter to my jelly
+                                        You can be the butterflies I feel in my belly
+                                        You can be the captain
+                                        And I can be your first mate
+                                        You can be the chills that I feel on our first date
+                                        You can be the hero
+                                        And I can be your sidekick
+                                        You can be the tear That I cry if we ever split
+                                        You can be the rain from the cloud when it's stormin'
+                                        Or u can be the sun when it shines in the mornin'
+                                        Don't know if I could ever be without you
+                                    </p>
                                 </article>
 
                             </div>
@@ -46,8 +58,8 @@ function Post() {
 
                         </div>
                     </div>
-                    <div className="tile is-parent lyricSection ">
-                        <article className="tile is-child notification is-success">
+                    <div className="tile descriptionSection is-parent lyricSection ">
+                        <article className="tile is-child is-success">
                             <div className="content">
                                 <p className="title">Description</p>
                                 <p className="subtitle">Description of lyrics</p>

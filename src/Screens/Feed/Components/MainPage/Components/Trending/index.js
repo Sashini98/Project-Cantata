@@ -1,53 +1,36 @@
 import React from "react";
 import Post from "./Components/Post";
+import './index.css';
 
-
-const bx = {
-    
-    //  backgroundColor: "white",
-      height: "50vh",
-      width: "130vh",
-   //   borderStyle: "solid",
-    //  borderWidth: "0",
-      margin: "4vh"
-  
-  }
-  const fullbx = {
-      
-    //height: "73vh",
-     // width: "180vh",
-     OverflowY: "scroll",
-      borderWidth: "thin",
-      margin: "auto"
-  }
-  
 
 function Trending() {
 
 
     return (
-        <div class="table-container" style={fullbx} Overflow="auto">
-                        <table class="table">
- 
+        
+            <div className="table-container trendingSection">
+                <table className="table posts">
 
-                        <tr>
-                        <div>
-                            <Post/>
-                        </div>
-                        </tr>
-                        <tr>
-                        <div>
-                            <Post/>
-                        </div>
-                        </tr>
-                        <tr>
-                        <div>
-                            <Post/>
-                        </div>
-                        </tr>
 
-                        </table>
-                    </div>  
+                    <tr>
+                        <div>
+                            <Post />
+                        </div>
+                    </tr>
+                    <tr>
+                        <div>
+                            <Post />
+                        </div>
+                    </tr>
+                    <tr>
+                        <div>
+                            <Post />
+                        </div>
+                    </tr>
+
+                </table>
+            </div>
+       
     )
 }
 

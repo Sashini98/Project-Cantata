@@ -1,32 +1,72 @@
-import React from "react";
-import { Link, useParams } from "react-router-dom";
 
-function NavTab(){
-    let { subpath } = useParams();
-    return(
-        <div class="tabs is-fullwidth is-boxed"><br></br>
-        <ul>
-        <li><a className={subpath === "./userdetails" ? "is-active" : ""}><Link to="userdetails">Manage Users</Link></a></li>
-            <li>
-                <a>                                   
-                    <span>Manage Users</span>
-                </a>
-            </li>
-            <li>
-                <a>                                   
-                    <span>Active Users</span>
-                </a>
-            </li>
-            <li>
-                <a>                                    
-                    <span>Deactive Users</span>
-                </a>
-            </li>
-            
-        </ul>
-    </div>
+import React, { useState, Fragment } from 'react'
+import { Tabs } from 'react-simple-tabs-component'
+import 'react-simple-tabs-component/dist/index.css' 
+import ActiveUser from "./Components/ActiveUser";
+import DeactiveUser from "./Components/DeactiveUser";
+import UserDetails from './Components/UserDetails';
+
+
+const TabOne = () => {
+    return (
+        <Fragment>
+            <UserDetails/>
+        </Fragment>
+        
     )
 }
 
+const TabTwo = () => {
+    return (
+        <Fragment>
+          
+                <DeactiveUser/>
+            
+        </Fragment>
+        
+    )
+}
+
+const TabThree = () => {
+    return (
+        <Fragment>
+            <ActiveUser/>
+        </Fragment>
+        
+    )
+}
+
+
+const tabs = [
+    {
+        label: 'User Management', 
+        index: 1,         
+        Component: TabOne 
+    },
+    {
+        label: 'Deactive Users',
+        index: 2,
+        Component: TabTwo
+    },
+    {
+        label: 'Active Users',
+        index: 3,
+        Component: TabThree
+    }
+]
+
+function NavTab() {
+    const txt = {
+        width: "80%"
+    }
+
+
+    const [selectedTab, setSelectedTab] = useState(tabs[0].index)
+    return (
+        <div className='App' style={txt}>
+
+            <Tabs tabs={tabs} onClick={setSelectedTab} selectedTab={selectedTab} />
+        </div>
+    )
+}
 export default NavTab;
-                   

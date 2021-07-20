@@ -1,6 +1,4 @@
 import React from "react";
-
-import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 
 const toggle = {
@@ -13,8 +11,8 @@ function PlayLists() {
 
     return (
         <div>
+             Play lists listed here
 
-            Play lists listed here
             
 
 
