@@ -2,11 +2,12 @@ import React, { Component } from "react";
 import "./index.css";
 
 
-class Login extends Component {
+class Registration extends Component {
     state = {
         //includes any data that the specific component needs
-        email: '',
-        password: ''
+        new_email: '',
+        new_password: '',
+        re_enter_password: ''
     };
 
     handleChange = (e) => {
@@ -23,11 +24,12 @@ class Login extends Component {
         return (
             <div className="Home">
                 <form className="login-form" onSubmit={this.handleSubmit}>
-                    <h4>Login to Cantata</h4>
+                    <br></br>
+                    <h3>Sign Up</h3>
                     <input
                         type="text"
                         placeholder="Email"
-                        name="email"
+                        name="new_email"
                         className="Form-Input"
                         required
                         onChange={this.handleChange}
@@ -37,12 +39,23 @@ class Login extends Component {
                     <input
                         type="password"
                         placeholder="Enter Password"
+                        name="new_password"
+                        className="Form-Input"
+                        required
+                        onChange={this.handleChange}
+                    ></input>
+                    <br></br>
+
+                    <input
+                        type="password"
+                        placeholder="Re-Enter Password"
                         name="password"
                         className="Form-Input"
                         required
                         onChange={this.handleChange}
                     ></input>
                     <br></br>
+
                     <button
                         type="submit"
                         name="submitLogin"
@@ -50,15 +63,13 @@ class Login extends Component {
                         className="form-button"
                         onSubmit={this.handleSubmit}
                     >
-                        Sign In
+                        Sign Up
                     </button>
-                    
-                    <h6>Don't have an account?</h6>
-          
+
                 </form>
             </div>
         );
     }
 }
 
-export default Login;
+export default Registration;
