@@ -5,6 +5,7 @@ import LoginPage from "./Screens/Login";
 import Feed from "./Screens/Feed";
 // import { GuardProvider, GuardedRoute } from 'react-router-guards';
 import './App.css';
+import Registration from "./Screens/Registration";
 
 function App() {
   return (
@@ -17,6 +18,9 @@ function App() {
           </Route>
           <Route path="/login" exact >
             <LoginPage />
+          </Route>
+          <Route path="/registration" exact >
+            <Registration />
           </Route>
           <Route path="/Feed/:subpath" exact >
             <Feed />
