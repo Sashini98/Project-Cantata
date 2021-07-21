@@ -55,36 +55,3 @@
 .descriptionSection{
   padding-left: 30px!important;
 }
-
-.popup{
-  background-color: rgba(0, 0, 0, 0.247);
-  width: 100%;
-  height:100%;
-  position:center;
-  top:0;
-  display: flex;
-  justify-content: center;
-  align-content: center;
-}
-
-.popUpContent{
-  height: 250px;
-  width: 500px;
-  background-color: antiquewhite;
-  padding: 20px;
-  border-radius: 5px;
-  position:relative;
-}
-
-.close{
-  position: absolute;
-  top: -15px;
-  right: -15px;
-
-}
-
-.popup.show{
-  pointer-events: auto;
-  opacity: 1;
-
-}

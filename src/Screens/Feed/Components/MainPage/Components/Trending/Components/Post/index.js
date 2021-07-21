@@ -1,5 +1,6 @@
 import React from "react";
 import user from "../../../../../../../../Assets/Admin/user.png";
+import close from "../../../../../../../../Assets/Admin/close.png";
 import './trendingPostindex.css';
 
 
@@ -12,6 +13,18 @@ const seeBtn = {
 //rem 
 
 function Post() {
+    const btn = document.getElementById('btn');
+    const popup = document.getElementById('popup');
+    const close = document.getElementById('close');
+
+    btn.addEventListener('click', () => {
+        popup.classList.add('show');
+    });
+
+    close.addEventListener('click', () => {
+        popup.classList.remove('show');
+    })
+
 
 
     return (
@@ -53,10 +66,32 @@ function Post() {
 
                         </div>
                         <div className="tile is-parent">
+                            <button className="seeBtn" id="btn">See full lyrics</button>
 
-                            <button className="seeBtn" >See full lyrics</button>
+                            <div class="modal" id="popup">
+                                <div class="modal-background"></div>
+                                <div class="modal-card">
+                                    <header class="modal-card-head">
+                                        <p class="modal-card-title">Modal title</p>
+                                        <button class="delete" aria-label="close"></button>
+                                    </header>
+                                    <section class="modal-card-body">
+
+                                    </section>
+                                    <footer class="modal-card-foot">
+                                        <button class="button is-success">Save changes</button>
+                                        <button class="button">Cancel</button>
+                                    </footer>
+                                </div>
+                            </div>
+
+                            <button className="seeBtn" >Like</button>
+                            <button className="seeBtn" >Comment</button>
 
                         </div>
+
+
+
                     </div>
                     <div className="tile descriptionSection is-parent lyricSection ">
                         <article className="tile is-child is-success">
@@ -71,7 +106,22 @@ function Post() {
 
 
             </div>
+
+            {/*             
+<div  className="popup" id="popup">
+<div className="popUpContent">
+    //popup box content
+    Hello I'm the modal
+    <img src={close} className="close" alt="Close"/>
+</div>
+
+</div> */}
         </div>
+
+
+
+
+
 
 
     )

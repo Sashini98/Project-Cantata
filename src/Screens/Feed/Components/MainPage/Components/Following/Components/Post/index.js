@@ -53,8 +53,9 @@ function Post() {
 
                         </div>
                         <div className="tile is-parent">
-
-                            <button className="seeBtn" >See full lyrics</button>
+                        <button className="seeBtn" >See full lyrics</button>
+                        <button className="seeBtn" >Like</button>
+                            <button className="seeBtn" >Comment</button>
 
                         </div>
                     </div>
