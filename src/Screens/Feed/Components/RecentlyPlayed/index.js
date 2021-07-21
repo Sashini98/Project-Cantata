@@ -14,7 +14,7 @@ function RecentlyPlayed() {
     return (
         <div>
 
-            List of recently played covers
+            <h1>Watch History</h1>
             <div className="table-container trendingSection">
                 <table className="table posts">
 

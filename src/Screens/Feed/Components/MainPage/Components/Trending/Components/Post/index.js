@@ -8,6 +8,7 @@ import { FaCommentAlt } from "react-icons/fa";
 import { FaEllipsisV } from "react-icons/fa";
 import { FaGreaterThan } from "react-icons/fa";
 import { FaLessThan } from "react-icons/fa";
+import { FaStar } from "react-icons/fa";
 
 //pixel
 
@@ -221,7 +222,9 @@ function Post() {
 
 
                 <div className="columns writer"><img src={user} />
-                    <div className="columns writerName"> Posted By Amaya (Trending)</div>
+                
+                    <div className="columns writerName"> Posted By Amaya <FaStar/> </div>
+                    
                 </div>
 
             </div>
