@@ -5,8 +5,8 @@ import "./index.css";
 function ContentPost() {
 
     return (
-        <div class="box">
-            <div class="box" >
+        <div class="bigbox1">
+            <div class="bigbox2" >
 
                 <div class="box">
                     Description
