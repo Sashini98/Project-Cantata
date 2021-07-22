@@ -24,7 +24,7 @@ function App() {
           <Route path="/registration" exact >
             <Registration />
           </Route>
-          <Route path="/Feed" exact >
+          <Route path="/Feed/:subpath" exact >
             <Feed />
           </Route>
          <Route path="/" exact >

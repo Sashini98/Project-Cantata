@@ -24,7 +24,7 @@ function MainPage() {
 
                 <div className="column is-10">
 
-                    <h1> Hello Amaya! Happy Coding! </h1>
+                    <h1> Hello Amaya! Welcome Back! </h1>
                     <div className="column">
 
                         <div className="columns is-mobile">
