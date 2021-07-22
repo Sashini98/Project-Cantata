@@ -58,7 +58,7 @@ color: rgb(216, 0, 0);
 	border-radius: 20px;
 	padding: 10px;
 	margin-top: 15px;
-	margin-bottom: 25px;
+	margin-bottom: 15px;
 	width: 100px;
 	font-size: 14px;
 	box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.3);
@@ -70,15 +70,80 @@ color: rgb(216, 0, 0);
 	border-style: solid;
 	border-color: rgb(158, 158, 158);
 	cursor: pointer;
-	transition-duration: 0.5s;
+	transition-duration: 0.3s;
 }
 
 .login-form h6 {
 	margin-top: 0px;
+	padding-bottom: 15px;
 	color: silver;
 }
 
 .login-form h6:hover {
 	color: whitesmoke;
 	cursor: pointer;
+}
+
+.login-option-container {
+	flex-direction: row;
+}
+
+.login-option-btn {
+	color: rgb(255, 255, 255);
+	font-weight: bold;
+	margin-right: 10px;
+	border-style: solid;
+	border-width: thin;
+	border-color: rgba(133, 15, 15, 0);
+	border-radius: 20px;
+	padding: 10px;
+	margin-top: 15px;
+	margin-bottom: 25px;
+	width: 100px;
+	font-size: 14px;
+	box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.3);
+}
+
+.login-option-btn:hover {
+	cursor: pointer;
+	background-color: silver;
+	transition-duration: 0.3s;
+}
+
+.facebook {
+	background-color: rgba(28, 93, 214, 0.685);
+	margin-right: 20px;
+}
+
+.facebook:hover {
+	color: rgba(28, 93, 214, 0.685);
+}
+
+.google {
+	background-color: rgb(214, 71, 28, 0.685);
+	margin-left: 20px;
+}
+
+.google:hover {
+	color: rgb(214, 71, 28, 0.685);
+}
+
+.remember-me {
+	align-items: left;
+	margin-right: 55px;
+	padding-top: 4px;
+	margin-left: auto;
+	flex-direction: row;
+	font-size: 14px;
+	color: cornflowerblue;
+}
+
+.remember-me-check {
+	margin-left: 10px;
+	cursor: pointer;
+}
+
+.login-form p {
+	color: cornflowerblue;
+	font-size: 15px;
 }
