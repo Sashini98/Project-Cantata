@@ -1,5 +1,6 @@
 import React from "react";
 import './playlists.css';
+import { FaPlay } from "react-icons/fa";
 
 
 //pixel
@@ -16,7 +17,7 @@ function Post() {
 
 
                 <div className="columns writer">
-                    <div className="columns writerName"> Playlist Name</div>
+                    <div className="columns writerName">Study Time</div>
                 </div>
 
             </div>
@@ -31,16 +32,16 @@ function Post() {
 
                             <div class="row">
                                 <div class="column">
-                                    Cover 1
+                                    <FaPlay/> Supermarket Flowers
                                 </div>
                                 <div class="column">
-                                    Cover 2
+                                <FaPlay/> Brother
                                 </div>
                                 <div class="column">
-                                    Cover 3
+                                <FaPlay/>  Lego House
                                 </div>
                                 <div class="column">
-                                    Cover 4
+                                <FaPlay/> Wanna Grow Old With You
                                 </div>
                             </div>
 

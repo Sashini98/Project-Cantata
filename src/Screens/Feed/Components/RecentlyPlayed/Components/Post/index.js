@@ -27,7 +27,16 @@ function Post() {
                         <div className="tile is-parent">
 
                         <div className="columns writer"><img src={user} />
-                                                <div className="columns writerName"> Perfect Two </div>
+                            <div className="column">
+                            <div className="songName"> How would you feel </div>
+                            
+                            </div>
+                            <div className="column">
+                            
+                            <div className="writerName">Yesterday</div>
+                            </div>
+                                                
+                                                
                                             </div>
 
                         </div>

@@ -13,7 +13,7 @@ function PlayLists() {
 
     return (
         <div>
-            <div className="table-container trendingSection">
+            <div className="table-container playListsSection">
                 <table className="table posts">
 
 

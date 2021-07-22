@@ -1,0 +1,11 @@
+
+.posts{
+  
+    overflow-y: auto!important;
+}
+
+.recentlyPlayedSection{
+    height: 650px;
+    overflow-x: hidden!important;
+    overflow-y: auto!important;
+}

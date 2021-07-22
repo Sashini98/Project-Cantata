@@ -13,12 +13,32 @@ function RecentlyPlayed() {
 
     return (
         <div>
-
-            <h1>Watch History</h1>
-            <div className="table-container trendingSection">
+            
+            
+            <div className="table-container recentlyPlayedSection">
                 <table className="table posts">
 
 
+                    <tr>
+                        <div>
+                            <Post />
+                        </div>
+                    </tr>
+                    <tr>
+                        <div>
+                            <Post />
+                        </div>
+                    </tr>
+                    <tr>
+                        <div>
+                            <Post />
+                        </div>
+                    </tr>
+                    <tr>
+                        <div>
+                            <Post />
+                        </div>
+                    </tr>
                     <tr>
                         <div>
                             <Post />

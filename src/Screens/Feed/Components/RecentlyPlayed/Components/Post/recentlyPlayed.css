@@ -37,10 +37,12 @@
   width: 700px;
   height: 70px;
   padding: 10px 8px;
+  align-self: center;
 }
 
-.writerName{
-  padding: 23px 20px;
+.songName{
+  font-size: 1.3rem!important;
+  
 }
 
 .lyricBox{
@@ -54,4 +56,10 @@
 
 .descriptionSection{
   padding-left: 30px!important;
+}
+
+.writerName{
+  padding-bottom: 20px;
+  color: #c0c0c0;
+  
 }

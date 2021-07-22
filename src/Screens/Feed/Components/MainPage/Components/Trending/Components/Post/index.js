@@ -46,7 +46,7 @@ function Post() {
                                     <div className="tile lyricBox is-parent is-vertical">
                                         <article className="tile is-child is-primary">
                                             <div className="columns writer"><img src={user} />
-                                                <div className="columns writerName"> Posted By Amaya</div>
+                                                <div className="columns writerName"> ___Bhagya_Gunathilaka___</div>
                                             </div>
                                             <p className="writer">20th July 2021</p>
                                             <p className="title ">No scars to your beautiful</p>
@@ -83,10 +83,10 @@ function Post() {
 
                                         </div>
                                         <div class="column">
-                                            <FaRegThumbsUp />  Likes
+                                            <FaRegThumbsUp />100  Likes
                                         </div>
                                         <div class="column">
-                                            <FaCommentAlt /> Comments
+                                            <FaCommentAlt />  20 Comments
                                         </div>
                                         <div class="column">
                                             <FaEllipsisV /> Options
@@ -105,10 +105,10 @@ function Post() {
 
                                                     </div>
                                                     <div class="column">
-                                                        <FaRegThumbsUp />  Likes
+                                                        <FaRegThumbsUp /> Likes
                                                     </div>
                                                     <div class="column">
-                                                        <FaCommentAlt /> Comments
+                                                        <FaCommentAlt />Comment
                                                     </div>
                                                     <div class="column">
                                                         <FaEllipsisV /> Options
@@ -126,13 +126,13 @@ function Post() {
 
                                                     </div>
                                                     <div class="column">
-                                                        <FaRegThumbsUp />  Likes
+                                                        <FaRegThumbsUp />Like
                                                     </div>
                                                     <div class="column">
-                                                        <FaCommentAlt /> Comments
+                                                        <FaCommentAlt />Comment
                                                     </div>
                                                     <div class="column">
-                                                        <FaEllipsisV /> Options
+                                                        <FaEllipsisV />Options
                                                     </div>
                                                 </div>
                                             </div></button>
@@ -147,10 +147,10 @@ function Post() {
 
                                                     </div>
                                                     <div class="column">
-                                                        <FaRegThumbsUp />  Likes
+                                                        <FaRegThumbsUp />Like
                                                     </div>
                                                     <div class="column">
-                                                        <FaCommentAlt /> Comments
+                                                        <FaCommentAlt />Comment
                                                     </div>
                                                     <div class="column">
                                                         <FaEllipsisV /> Options
@@ -168,10 +168,10 @@ function Post() {
 
                                                     </div>
                                                     <div class="column">
-                                                        <FaRegThumbsUp />  Likes
+                                                        <FaRegThumbsUp />Like
                                                     </div>
                                                     <div class="column">
-                                                        <FaCommentAlt /> Comments
+                                                        <FaCommentAlt />Comment
                                                     </div>
                                                     <div class="column">
                                                         <FaEllipsisV /> Options
@@ -223,7 +223,7 @@ function Post() {
 
                 <div className="columns writer"><img src={user} />
                 
-                    <div className="columns writerName"> Posted By Amaya <FaStar/> </div>
+                    <div className="columns writerName"> ___Bhagya_Gunathilaka___<FaStar/> </div>
                     
                 </div>
 
@@ -260,8 +260,8 @@ function Post() {
 
 
 
-                            <button className="seeBtn" >Like</button>
-                            <button className="seeBtn" >Comment</button>
+                            <button className="seeBtn" ><FaRegThumbsUp/>   Like</button>
+                            <button className="seeBtn" ><FaCommentAlt/>   Comment</button>
 
                         </div>
 

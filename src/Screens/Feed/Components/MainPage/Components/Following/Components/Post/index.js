@@ -1,6 +1,10 @@
 import React from "react";
 import user from "../../../../../../../../Assets/Admin/user.png";
 import './followingPostindex.css';
+import { FaRegThumbsUp } from "react-icons/fa";
+import { FaCommentAlt } from "react-icons/fa";
+import { FaUserFriends } from "react-icons/fa";
+
 
 
 //pixel
@@ -21,7 +25,7 @@ function Post() {
 
 
                 <div className="columns writer"><img src={user} />
-                    <div className="columns writerName"> Posted By Amaya (Following)</div>
+                    <div className="columns writerName"> ___Shashini_Shihara___<FaUserFriends/></div>
                 </div>
 
             </div>
@@ -54,8 +58,8 @@ function Post() {
                         </div>
                         <div className="tile is-parent">
                         <button className="seeBtn" >See full lyrics</button>
-                        <button className="seeBtn" >Like</button>
-                            <button className="seeBtn" >Comment</button>
+                        <button className="seeBtn" ><FaRegThumbsUp/>   Like</button>
+                            <button className="seeBtn" ><FaCommentAlt/>   Comment</button>
 
                         </div>
                     </div>
