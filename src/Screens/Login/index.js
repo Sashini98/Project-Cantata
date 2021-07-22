@@ -1,19 +1,34 @@
 import React, { useState, useEffect } from "react";
 import "./index.css";
 import axios from "axios";
+import { useHistory } from "react-router-dom";
+import Swal from "sweetalert2";
 
 function Login() {
-	const [id, setId] = useState("");
+	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
+	const [errorMessage, setErrorMessage] = useState("");
+	const history = useHistory();
 
 	const Login = () => {
 		axios
 			.post(`http://localhost:5000/api/v1/user/checkuser`, {
-				email: "info@test.com",
-				password: "123456",
+				email: email,
+				password: password,
 			})
 			.then((data) => {
-				console.log(data);
+				console.log(data.data);
+				if (data.data.user.length > 0) {
+					console.log("success");
+					history.push("/Feed/MainPage");
+				} else {
+					console.log("fail");
+					Swal.fire({
+						icon: "error",
+						title: "Oops...",
+						text: "Email or Password is incorrect!",
+					});
+				}
 			});
 	};
 
@@ -27,7 +42,7 @@ function Login() {
 					name="email"
 					className="Form-Input"
 					required
-					onChange={(e) => setId(e.target.value)}
+					onChange={(e) => setEmail(e.target.value)}
 				></input>
 				<br></br>
 
@@ -73,3 +88,16 @@ function Login() {
 }
 
 export default Login;
+
+function App() {
+	const [errorMessage, setErrorMessage] = React.useState("");
+	const handleClick = () => {
+		setErrorMessage("Example error message!");
+	};
+	return (
+		<div className="App">
+			<button onClick={handleClick}>Show error message</button>
+			{errorMessage && <div className="error"> {errorMessage} </div>}
+		</div>
+	);
+}
