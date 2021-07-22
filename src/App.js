@@ -8,6 +8,7 @@ import Feed from "./Screens/Feed/index";
 import './App.css';
 import Registration from "./Screens/Registration/index";
 import Profile from "./Screens/UserProfile/index";
+import ContentPost from './Screens/ContentPost';
 
 function App() {
   return (
@@ -18,18 +19,30 @@ function App() {
           <Route path="/admin/:subpath" exact >
             <AdminPage />
           </Route>
+
           <Route path="/login" exact>
             <LoginPage />
           </Route>
+
           <Route path="/registration" exact >
             <Registration />
           </Route>
+
           <Route path="/Feed" exact >
             <Feed />
           </Route>
+
          <Route path="/" exact >
             <Profile />
           </Route> 
+
+        <Route path="/ContentPost" exact >
+            <ContentPost/>
+          </Route>
+
+        {/* <Route path="/ContentPost" exact >
+            <ContentPost/>
+          </Route> */}
 
         </Switch>
       </Router>
