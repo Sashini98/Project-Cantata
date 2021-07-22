@@ -6,6 +6,7 @@ import TopNav from "./Components/TopNav";
 import MainPage from "./Components/MainPage";
 import RecentlyPlayed from "./Components/RecentlyPlayed";
 import PlayLists from "./Components/PlayLists";
+import Profile from "../UserProfile/Components/EditProfile";
 
 
 function Feed() {
@@ -25,6 +26,7 @@ function Feed() {
                 {subpath === "MainPage" && <MainPage />}
                 {subpath === "RecentlyPlayed" && <RecentlyPlayed />}   
                 {subpath === "PlayLists" && <PlayLists />}
+                {subpath === "Profile" && <Profile />}
             </div>
         </div>
 

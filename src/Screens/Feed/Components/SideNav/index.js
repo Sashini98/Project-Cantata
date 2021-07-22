@@ -33,7 +33,7 @@ function SideNav() {
                 <li><a className={subpath === "RecentlyPlayed" ? "is-active" : ""}><Link to="RecentlyPlayed"><img src={home} style={imgstyle} />Recently Played</Link></a></li>
                 <li><a className={subpath === "PlayLists" ? "is-active" : ""}><Link to="PlayLists"><img src={home} style={imgstyle} />PlayLists </Link></a></li>
                 <li><a className={subpath === "" ? "is-active" : ""}><Link to=""><img src={notify} style={imgstyle} />Notifications</Link></a></li>
-                <li><a className={subpath === "accountmanagement" ? "is-active" : ""}><Link to="accountmanagement"><img src={edit} style={imgstyle} />Account</Link></a></li>
+                <li><a className={subpath === "UserProfile" ? "is-active" : ""}><Link to="UserProfile"><img src={edit} style={imgstyle} />Account</Link></a></li>
                 <li><a><Link to="\"><img src={lgout} style={imgstyle} />Logout</Link></a></li>
             </ul>
 
