@@ -1,7 +1,7 @@
 import React from "react";
 import user from "../../../../../../Assets/Admin/user.png";
 import './recentlyPlayed.css';
-
+import { FaEllipsisV } from "react-icons/fa";
 
 //pixel
 
@@ -26,15 +26,18 @@ function Post() {
                         
                         <div className="tile is-parent">
 
-                            <button className="seeBtn" >See full lyrics</button>
+                        <div className="columns writer"><img src={user} />
+                                                <div className="columns writerName"> Perfect Two </div>
+                                            </div>
 
                         </div>
                     </div>
                     <div className="tile descriptionSection is-parent lyricSection ">
                         <article className="tile is-child is-success">
                             <div className="content">
-                                <p className="title">Description</p>
-                                <p className="subtitle">Description of lyrics</p>
+                            <button className="seeBtn" >Play</button>
+                            <button className="seeBtn" >Add to playlist</button>
+                            <FaEllipsisV/>
                             </div>
                         </article>
                     </div>
