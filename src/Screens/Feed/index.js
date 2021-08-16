@@ -9,28 +9,29 @@ import PlayLists from "./Components/PlayLists";
 import Profile from "../UserProfile/Components/EditProfile";
 
 
+
 function Feed() {
 
     let { subpath } = useParams();
 
     return (
         <div>
-        <div class="columns">
-            <div class="column is-2">
-                <SideNav />
-            </div>
-            <div class="column is-10">
-            <TopNav />
-    
-            
-                {subpath === "MainPage" && <MainPage />}
-                {subpath === "RecentlyPlayed" && <RecentlyPlayed />}   
-                {subpath === "PlayLists" && <PlayLists />}
-                {subpath === "Profile" && <Profile />}
-            </div>
-        </div>
+            <div class="columns">
+                <div class="column is-2">
+                    <SideNav />
+                </div>
+                <div class="column is-10">
+                    <TopNav />
 
-    </div>
+
+                    {subpath === "MainPage" && <MainPage />}
+                    {subpath === "RecentlyPlayed" && <RecentlyPlayed />}
+                    {subpath === "PlayLists" && <PlayLists />}
+                    {subpath === "Profile" && <Profile />}
+                </div>
+            </div>
+
+        </div>
     )
 }
 

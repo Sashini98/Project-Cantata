@@ -19,8 +19,8 @@ function TopNav() {
                 <div class="navbar-item">
                     
                         <p class="btn mr-3">
-                            <strong>Amaya Kinivita
-                            </strong>
+                            <strong>Amaya Kinivita</strong>
+                            
                         </p>
                                            
                     <div className="topuser">

@@ -5,5 +5,12 @@
 }
 
 .posts{
+    
     overflow-y: auto!important;
+}
+
+.table{
+    width: 100% !important;
+    padding-right: 40px !important;
+    background-color: rgba(236, 236, 236, 0.808) !important;
 }

@@ -20,12 +20,11 @@ function MainPage() {
 
     return (
         <div> 
-            <div className="columns">
+            <div className="columns p-2">
 
-                <div className="column is-10">
+                <div className="column is-12">
 
-                    <h1> Hello Amaya! Welcome Back! </h1>
-                    <div className="column">
+                    
 
                         <div className="columns is-mobile">
                             <div className="column">
@@ -42,7 +41,7 @@ function MainPage() {
                     </div>
                 </div>
             </div>
-        </div>
+        
 
     )
 }

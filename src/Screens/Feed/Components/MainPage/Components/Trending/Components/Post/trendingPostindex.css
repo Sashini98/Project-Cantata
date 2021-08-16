@@ -28,11 +28,6 @@
 }
 
 
-.postContent{
-  width: 980px;
-  
-}
-
 .writer{
   width: 700px;
   height: 70px;
@@ -124,5 +119,10 @@ color: white;
 .next{
   padding-top: 90px;
   padding-left: 10px;
+}
+/* lyric box */
+.box{
+  width:100% !important;
+  background-color: rgb(255, 255, 255) !important;
 }
 

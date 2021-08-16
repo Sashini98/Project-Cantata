@@ -5,8 +5,8 @@ import "./index.css";
 function ContentPost() {
 
     return (
-        <div class="box">
-            <div class="box" >
+        <div class="box container">
+            
 
                 <div class="box">
                     Description
@@ -36,13 +36,23 @@ function ContentPost() {
                         </div>
                     </div>
                 </div>
+
+                <div class="box">
+                    
+                <div class="columns">
+                <div class="column is-2">
+                <button class="button is-dark">Save</button>
+                <button class="button is-light">Discard</button>
                 </div>
-                <div>
-                    <button class="button is-light">Discard</button>
-                    <button class="button is-dark">Save</button>
-                </div>
+                
+                
+                
         </div>
-        
+                    </div>
+
+
+
+        </div>
     )
 }
 
