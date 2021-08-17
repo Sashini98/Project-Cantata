@@ -1,8 +1,14 @@
-import React from "react";
-import search from "../../../../../../../../Assets/Admin/search.png";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import searchimg from "../../../../../../../../Assets/Admin/search.png";
+
 
 
 function UserDetails() {
+
+    const [search, setSearch] = useState('');
+    const [record, setRecord] = useState([]);
+
     const txt = {
         width: "50%"
     }
@@ -19,9 +25,15 @@ function UserDetails() {
         width: "100%"
     }
 
+    const searchRecords = () => {
+        axios.get(`http://localhost:5000/api/v1/user/searchUser/${search}`)
+            .then(response => {
+                setRecord(response.data);
+            });
+    }
 
     return (
-        <div>          
+        <div>
 
             <nav class="level">
                 <div class="level-item  is-centered">
@@ -31,26 +43,50 @@ function UserDetails() {
                             <article class="message">
                                 <p class="title is-6">User Details</p><br></br>
                                 <div class="message-body">
-                                    User Email:<div class="control"></div><input class="input is-hovered" id="emai" type="text" style={txt} />
-                                    <button style={btn} ><img src={search} /></button>
+                                    User Email:<div class="control"></div><input class="input is-hovered" id="emai" type="text" style={txt} onChange={(e) => setSearch(e.target.value)} />
+                                    <button style={btn} onClick={searchRecords}><img src={searchimg} /></button>
                                     <br></br><br></br>
+
+
                                     <div class="table-container">
                                         <table class="table">
-                                           
+                                            <tr>
+                                                <td>User Id</td>
+                                                {record.map((user) =>
+
+                                                    <td>{user.UserId}</td>
+
+                                                )}
+                                            </tr>
+
+                                            <tr>
+                                                <td>Name</td>
+                                                {record.map((user) =>
+
+                                                    <td>{user.Name}</td>
+
+                                                )}
+                                            </tr>
+
+                                            <tr>
+                                                <td>Joined At</td>
+                                                {record.map((user) =>
+
+                                                    <td>{user.CreatedAt}</td>
+
+                                                )}
+                                            </tr>
+                                            <tr>
+                                                <td>Active Status</td>
+                                                {record.map((user) =>
+
+                                                    <td>{user.ActiveStatus}</td>
+
+                                                )}
+                                            </tr>
                                         </table>
                                     </div>
 
-                                    User ID:<input class="input is-static" type="email" value="U011" readonly />
-                                    <br></br>
-
-                                    First Name:<input class="input is-static" type="email" value="Sashini" readonly />
-                                    <br></br>
-
-                                    Last Name:<input class="input is-static" type="email" value="Shihara" readonly />
-                                    <br></br>
-
-                                    Joined Date:<input class="input is-static" type="email" value="10/07/2021" readonly />
-                                    <br></br>
                                 </div>
 
                             </article>

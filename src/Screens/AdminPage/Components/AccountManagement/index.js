@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 
 function AccountManagement() {
     const txt = {
@@ -13,8 +14,21 @@ function AccountManagement() {
         display: "block"
     }
 
+    const [search, setSearch] = useState('');
+    const [record, setRecord] = useState([]);
 
+    
+    const getAdmin = () => {
+        axios.get(`http://localhost:5000/api/v1/admin/getadmin`)
+            .then(response => {
+                setRecord(response.data);
+            });
+    }
+    useEffect(() => {
+        getAdmin();
+    }, []);
 
+   
 
     return (
         <div>
@@ -33,12 +47,35 @@ function AccountManagement() {
                     <article class="message"> <br></br>
                         <p class="title is-6 ml-4">Account Details</p>
                         <div class="message-body">
-                            Email:<div class="control"><input class="input is-hovered" type="text" style={txt} value="shihara@gmail.com"></input></div>
-                            <br></br>
-                            First Name:<div class="control"><input class="input is-hovered" type="text" style={txt} value="Sashini"></input></div>
-                            <br></br>
-                            Last Name:<div class="control"><input class="input is-hovered" type="text" style={txt} value="Shihara"></input></div>
-                            <br></br>
+                        <table class="table">
+                                            <tr>
+                                                <td>Admin Id</td>
+                                                {record.map((admin) =>
+
+                                                    <td contenteditable='true'>{admin.Email}</td>
+
+                                                )}
+                                            </tr>
+
+                                            <tr>
+                                                <td>First Name</td>
+                                                {record.map((admin) =>
+
+                                                    <td contenteditable='true'>{admin.Fname}</td>
+
+                                                )}
+                                            </tr>
+
+                                            <tr>
+                                                <td>Last Name</td>
+                                                {record.map((admin) =>
+
+                                                    <td contenteditable='true'>{admin.LName}</td>
+
+                                                )}
+                                            </tr>
+                                           
+                                        </table>
                         </div>
 
                     </article>
