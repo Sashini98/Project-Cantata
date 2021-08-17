@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 function DeactiveUser() {
     
@@ -16,6 +16,26 @@ function DeactiveUser() {
         width: "100%"
     }
 
+    const [record, setRecord] = useState([]);
+
+
+
+    // On Page load display all records 
+    const loadEmployeeDetail = async () => {
+        var response = fetch('http://localhost:5000/api/v1/user/deactive')
+            .then(function (response) {
+                return response.json();
+            })
+            .then(function (myJson) {
+                setRecord(myJson);
+            });
+    }
+    useEffect(() => {
+        loadEmployeeDetail();
+    }, []);
+
+
+
     return (
         <div>
             <table class="table" style={tbl}>
@@ -23,15 +43,26 @@ function DeactiveUser() {
                     <tr>
                         <th>UserId</th>
                         <th>Email</th>
-                        <th>FirstName</th>
-                        <th>Last Nmae</th>
+                        <th>Name</th>
                         <th>Joined Date</th>
-                        <th>Deactivated Date</th>
                         <th></th>
                     </tr>
                 </thead>
-                
                 <tbody>
+
+                    {record.map((users) =>
+                        <tr>
+                            <td>{users.UserId}</td>
+                            <td>{users.Email}</td>
+                            <td>{users.Name}</td>
+                            <td>{users.CreatedAt}</td>
+                            <td><button style={btn}>Activate</button></td>
+
+                        </tr>
+                    )}
+                </tbody>
+                
+                {/* <tbody>
                     <tr>
                         <td>U001</td>
                         <td>sashini@gmail.com</td>
@@ -109,7 +140,7 @@ function DeactiveUser() {
                         </td>
                     </tr>
 
-                </tbody>
+                </tbody> */}
             </table>
         </div>
     )
