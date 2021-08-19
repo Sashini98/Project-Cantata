@@ -44,9 +44,6 @@ function ReportedUsers1(){
                 <div class="level-item ml-6">
                     <div>
                         <ReportBoxUser />
-                        <ReportBoxUser />
-                        <ReportBoxUser />
-                        <ReportBoxUser />
 
 
                     </div>
