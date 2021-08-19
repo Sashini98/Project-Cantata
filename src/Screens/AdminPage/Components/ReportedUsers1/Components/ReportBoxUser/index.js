@@ -35,7 +35,7 @@ function ReportBoxUser(){
                             <img src={user} />
                         </div>  
                     <td>
-                       {repcount.UserId}
+                       {repcount.Email}
                     </td>
                     </p>
                     <button class="card-header-icon" aria-label="more options">

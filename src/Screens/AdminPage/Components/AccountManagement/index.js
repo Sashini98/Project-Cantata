@@ -3,7 +3,7 @@ import axios from "axios";
 
 function AccountManagement() {
     const txt = {
-        width: "70%"
+        width: "100%"
     }
 
     const bt = {
@@ -17,7 +17,7 @@ function AccountManagement() {
     const [search, setSearch] = useState('');
     const [record, setRecord] = useState([]);
 
-    
+
     const getAdmin = () => {
         axios.get(`http://localhost:5000/api/v1/admin/getadmin`)
             .then(response => {
@@ -28,7 +28,7 @@ function AccountManagement() {
         getAdmin();
     }, []);
 
-   
+
 
     return (
         <div>
@@ -44,41 +44,62 @@ function AccountManagement() {
                     </button>
                 </header>
                 <div class="card-content">
-                    <article class="message"> <br></br>
+                    {/* <article class="message"> <br></br>
                         <p class="title is-6 ml-4">Account Details</p>
                         <div class="message-body">
-                        <table class="table">
-                                            <tr>
-                                                <td>Admin Id</td>
-                                                {record.map((admin) =>
+                            <table class="table">
+                                <tr>
+                                    <td>Admin Id</td>
+                                    {record.map((admin) =>
 
-                                                    <td contenteditable='true'>{admin.Email}</td>
+                                        <td contenteditable='true'>{admin.Email}</td>
 
-                                                )}
-                                            </tr>
+                                    )}
+                                </tr>
 
-                                            <tr>
-                                                <td>First Name</td>
-                                                {record.map((admin) =>
+                                <tr>
+                                    <td>First Name</td>
+                                    {record.map((admin) =>
 
-                                                    <td contenteditable='true'>{admin.Fname}</td>
+                                        <td contenteditable='true'>{admin.Fname}</td>
 
-                                                )}
-                                            </tr>
+                                    )}
+                                </tr>
 
-                                            <tr>
-                                                <td>Last Name</td>
-                                                {record.map((admin) =>
+                                <tr>
+                                    <td>Last Name</td>
+                                    {record.map((admin) =>
 
-                                                    <td contenteditable='true'>{admin.LName}</td>
+                                        <td contenteditable='true'>{admin.LName}</td>
 
-                                                )}
-                                            </tr>
-                                           
-                                        </table>
+                                    )}
+                                </tr>
+
+                            </table>
                         </div>
 
                     </article>
+                     */}
+                        <article class="message"> <br></br>
+                            <p class="title is-6 ml-4">Account Details</p>
+                            <div class="message-body">
+                            <table>{record.map((admin) =><tr>
+                                <td>Email:<div class="control"><input class="input is-hovered" type="text" style={txt} value={admin.Email}></input></div>
+                                </td></tr> )} </table>
+                                <br></br>
+                                <table>{record.map((admin) =><tr>
+                                <td>First Name:<div class="control"><input class="input is-hovered" type="text" style={txt} value={admin.Fname}></input></div>
+                                </td></tr> )} </table>
+                                <br></br>
+                                <table>{record.map((admin) =><tr>
+                                <td>Last Name:<div class="control"><input class="input is-hovered" type="text" style={txt} value={admin.Email}></input></div>
+                                </td>
+                                </tr> )} </table>
+                                <br></br>
+                            </div>
+
+                        </article>
+                        
                     <br></br>
                     <article class="message"> <br></br>
                         <p class="title is-6 ml-4">Change Password</p>
@@ -94,6 +115,7 @@ function AccountManagement() {
                     </article>
 
 
+
                 </div>
 
             </div>
@@ -103,14 +125,14 @@ function AccountManagement() {
                         Save changes
                     </button>
                 </p>{"       "}
-                <p class="control"style={bt}>
+                <p class="control" style={bt}>
                     <button class="button">
                         Cancel
                     </button>
                 </p>
-                
+
             </div></section>
-           
+
         </div>
 
 
