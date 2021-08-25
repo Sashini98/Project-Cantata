@@ -1,4 +1,8 @@
-import React, { useEffect, useState } from "react";
+
+import React, { useState, useEffect} from "react";
+import axios from "axios";
+import { Link} from 'react-router-dom';
+
 
 
 function Notification() {
@@ -56,6 +60,28 @@ function Notification() {
         borderStyle: "solid",
         borderWidth: "thin",
     }
+
+
+    const [notification, setNotification] = useState({
+        adminId: "",
+        message: ""
+    });
+
+    const { adminId, message } = notification;
+    const onInputChange = e => {
+        setNotification({ ...notification, [e.target.name]: e.target.value });
+    };
+
+
+    const submitNotification= async (e) => {
+        e.preventDefault();
+        // e.target.reset();
+        await axios.post("http://localhost:5000/api/v1/admin/addnotification", notification);
+        alert('Data Inserted');
+
+    };
+
+
     return (
         <div>
             <div class="card is-centered mt-6 ml-6">
@@ -70,7 +96,7 @@ function Notification() {
                     </button>
                 </header>
                 <div class="card-content">
-                    Message:<textarea class="textarea"></textarea> <br></br>
+                    Message:<textarea class="textarea" name="message" onChange={e => onInputChange(e)}></textarea> <br></br>
                     Send to:<br></br><div class="select is-info" >
                         <select id="sel" onChange={receiver}>
                             <option value="all">All Users</option>
@@ -84,11 +110,11 @@ function Notification() {
                     <br></br>
                     <div class="control"></div><textarea class="textarea has-fixed-size" type="text" value={email} style={txta} onChange={handleEmail} />
 
-
+                    <input class="input is-hovered" id="adminId" name="adminId" type="text" style={txt} onChange={e => onInputChange(e)} />
 
                     <br></br>
                     <footer class="card-footer">
-                    <div className="refer"><a href="" className="card-footer-item" style={foot} >Send</a></div>
+                    <div className="refer"><a href="" className="card-footer-item" style={foot} onClick={submitNotification} >Send</a></div>
                 </footer>
                 </div>
 

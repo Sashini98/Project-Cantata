@@ -1,29 +1,30 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
-import { render } from "@testing-library/react";
+
 
 function ActiveUser(props) {
     const tbl = {
         width: "100%"
     };
-
     const [record, setRecord] = useState([]);
 
 
+
     // On Page load display all records 
-    const loadUserDetail = async () => {
+    const loadEmployeeDetail = async () => {
         var response = fetch('http://localhost:5000/api/v1/user/active')
             .then(function (response) {
                 return response.json();
-                window.alert(response);
             })
             .then(function (myJson) {
                 setRecord(myJson);
             });
     }
     useEffect(() => {
-        loadUserDetail();
+        loadEmployeeDetail();
     }, []);
+
+
+
 
 
 
@@ -38,20 +39,21 @@ function ActiveUser(props) {
                         <th>Joined Date</th>
                     </tr>
                 </thead>
-
                 <tbody>
-                    {record.map((user) =>
+
+                    {record.map((users) =>
                         <tr>
-                            <td>{user.UserId}</td>
-                            <td>{user.Email}</td>
-                            <td>{user.Name}</td>
-                            <td>{user.CreatedAt}</td>
+                            <td>{users.UserId}</td>
+                            <td>{users.Email}</td>
+                            <td>{users.Name}</td>
+                            <td>{users.CreatedAt}</td>
 
                         </tr>
                     )}
+                </tbody>
 
 
-                    {/* <tr>
+                {/* <tr>
                         <td>U001</td>
                         <td>sashini@gmail.com</td>
                         <td>Sashini</td>
@@ -114,7 +116,7 @@ function ActiveUser(props) {
 
                     </tr> */}
 
-                </tbody>
+
             </table>
         </div>
     )

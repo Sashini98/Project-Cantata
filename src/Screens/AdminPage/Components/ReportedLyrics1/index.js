@@ -1,14 +1,16 @@
 import React from "react";
-import CountBoxUser from "./Components/CountBoxUser";
-import ReportBoxUser from "./Components/ReportBoxUser";
+import CountBox from "./Components/CountBox";
+import ReportBox from "./Components/ReportBox";
+import "./index.css";
 
-function ReportedUsers1(){
-    return(
+function ReportedLyrics1() {
+
+    return (
         <div>
             <nav class="level">
                 <div class="level-item ">
                     <div>
-                        <CountBoxUser />
+                        <CountBox />
                     </div>
                 </div>
 
@@ -43,7 +45,7 @@ function ReportedUsers1(){
             <nav class="level-left ml-6">
                 <div class="level-item ml-6">
                     <div>
-                        <ReportBoxUser />
+                        <ReportBox />
 
 
                     </div>
@@ -56,4 +58,4 @@ function ReportedUsers1(){
     )
 }
 
-export default ReportedUsers1;
+export default ReportedLyrics1;

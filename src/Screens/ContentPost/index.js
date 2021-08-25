@@ -5,30 +5,30 @@ import "./index.css";
 function ContentPost() {
 
     return (
-        <div class="bigbox1">
-            <div class="bigbox2" >
+        <div className="bigbox1">
+            <div className="bigbox2" >
 
-                <div class="box">
+                <div className="box">
                     Description
-                    <textarea class="textarea" placeholder="What is the song about"></textarea>
+                    <textarea className="textarea" placeholder="What is the song about"></textarea>
 
                     Lyrics
-                    <textarea class="textarea" placeholder=""></textarea>
+                    <textarea className="textarea" placeholder=""></textarea>
 
                     Interpretation (Optional)
-                    <textarea class="textarea" placeholder="What does these lyrics mean?"></textarea>
+                    <textarea className="textarea" placeholder="What does these lyrics mean?"></textarea>
 
                     Tags
-                    <textarea class="textarea" placeholder="Add up to 5 tags to help search this song"></textarea>
+                    <textarea className="textarea" placeholder="Add up to 5 tags to help search this song"></textarea>
                 </div>
                 
-                <div class="box">
+                <div className="box">
                     Background
-                    <div class="box">
+                    <div className="box">
                         Upload Content 
                     </div>
-                    <div class="control">
-                        <div class="select is-rounded">
+                    <div className="control">
+                        <div className="select is-rounded">
                             <select>
                             <option>Select Language</option>
                             <option>With options</option>
@@ -37,12 +37,12 @@ function ContentPost() {
                     </div>
                 </div>
 
-                <div class="box">
+                <div className="box">
                     
-                <div class="columns">
-                <div class="column is-2">
-                <button class="button is-dark">Save</button>
-                <button class="button is-light">Discard</button>
+                <div className="columns">
+                <div className="column is-2">
+                <button className="button is-dark">Save</button>
+                <button className="button is-light">Discard</button>
                 </div>
                 
                 
@@ -55,6 +55,5 @@ function ContentPost() {
         </div>
     </div> 
     )
-}
-
+    }
 export default ContentPost;
