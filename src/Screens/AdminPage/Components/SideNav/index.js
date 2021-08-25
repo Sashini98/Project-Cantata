@@ -32,7 +32,8 @@ function SideNav() {
 
             <ul className="menu-list">
                 <li><a className={subpath === "dashboard" ? "is-active" : ""}><Link to="dashboard"><img src={dashbord} style={imgstyle} />Dashboard</Link></a></li>
-                <li><a className={subpath === "reportedposts1" ? "is-active" : "" || subpath === "reportedposts2" ? "is-active" : ""}><Link to="reportedposts1"><img src={repcont} style={imgstyle} />Reported Content</Link></a></li>
+                <li><a className={subpath === "reportedposts1" ? "is-active" : "" || subpath === "reportedposts2" ? "is-active" : ""}><Link to="reportedposts1"><img src={repcont} style={imgstyle} />Reported Covers</Link></a></li>
+                <li><a className={subpath === "reportedlyrics1" ? "is-active" : "" || subpath === "reportedlyrics2/:id" ? "is-active" : ""}><Link to="reportedlyrics1"><img src={repcont} style={imgstyle} />Reported Lyrics</Link></a></li>
                 <li><a className={subpath === "reportedusers1" ? "is-active" : "" || subpath === "reportedusers2" ? "is-active" : ""}><Link to="reportedusers1"><img src={repuser} style={imgstyle} />Reported Users</Link></a></li>
                 <li><a className={subpath === "usermanagement" ? "is-active" : ""}><Link to="usermanagement"><img src={usermgt} style={imgstyle} />User Management</Link></a></li>
                 <li><a className={subpath === "notification" ? "is-active" : ""}><Link to="notification"><img src={notify} style={imgstyle} />Notifications</Link></a></li>

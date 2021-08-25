@@ -10,7 +10,8 @@ import ReportedUsers2 from "./Components/ReportedUsers2";
 import AccountManagement from "./Components/AccountManagement";
 import Notification from "./Components/Notifications";
 import UserManagement from "./Components/UserManagement";
-
+import ReportedLyrics1 from "./Components/ReportedLyrics1";
+import ReportedLyrics2 from "./Components/ReportedLyrics2";
 
 
 function AdminPage() {
@@ -28,6 +29,8 @@ function AdminPage() {
                     {subpath === "dashboard" && <Dashboard />}
                     {subpath === "reportedposts1" && <ReportedPosts1 />}
                     {subpath === "reportedposts2" && <ReportedPosts2 />}
+                    {subpath === "reportedlyrics1" && <ReportedLyrics1 />}
+                    {subpath === "reportedlyrics2/:id" && <ReportedLyrics2 />}
                     {subpath === "reportedusers1" && <ReportedUsers1 />}
                     {subpath === "reportedusers2" && <ReportedUsers2 />}
                     {subpath === "accountmanagement" && <AccountManagement />}
