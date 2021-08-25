@@ -55,5 +55,6 @@ function ContentPost() {
         </div>
     </div> 
     )
+}
 
 export default ContentPost;

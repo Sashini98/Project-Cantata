@@ -73,9 +73,6 @@ function Post() {
                                         </article>
 
                                     </div>
-
-
-
                                 </div>
                                 <div className="likeComment">
                                     <div class="columns">
@@ -95,10 +92,10 @@ function Post() {
                                 </div>
 
 
-                                <div className="tile is-parent thumbnails">
-                                    <FaLessThan/>
+                                <div className="tile coversthumbnails is-parent thumbnails">
+                                    <div className="previous"><FaLessThan /></div>
                                     <div>
-                                        <button className="coverBtn">Cover 1
+                                        <button className="coverBtn1">Cover 1
                                             <div className="likeComment">
                                                 <div class="columns">
                                                     <div class="column">
@@ -119,7 +116,7 @@ function Post() {
 
                                     </div>
                                     <div>
-                                        <button className="coverBtn">Cover 2
+                                        <button className="coverBtn2">Cover 2
                                             <div className="likeComment">
                                                 <div class="columns">
                                                     <div class="column">
@@ -140,7 +137,7 @@ function Post() {
 
                                     </div>
                                     <div>
-                                        <button className="coverBtn">Cover 3
+                                        <button className="coverBtn3">Cover 3
                                             <div className="likeComment">
                                                 <div class="columns">
                                                     <div class="column">
@@ -157,51 +154,11 @@ function Post() {
                                                     </div>
                                                 </div>
                                             </div></button>
-
-
                                     </div>
                                     <div>
-                                        <button className="coverBtn">Cover 4
-                                            <div className="likeComment">
-                                                <div class="columns">
-                                                    <div class="column">
-
-                                                    </div>
-                                                    <div class="column">
-                                                        <FaRegThumbsUp />Like
-                                                    </div>
-                                                    <div class="column">
-                                                        <FaCommentAlt />Comment
-                                                    </div>
-                                                    <div class="column">
-                                                        <FaEllipsisV /> Options
-                                                    </div>
-                                                </div>
-                                            </div></button>
-
-
+                                        <div className="next"><FaGreaterThan /></div>
                                     </div>
-                                    <div>
-                                        
-                                            <div className="next">
-                                                
-                                                   
-                                                <FaGreaterThan/>  
-                                                    
-                                                    
-                                                
-                                            </div>
-
-
-                                    </div>
-                                   
-
-                                 
-
                                 </div>
-
-
-
                             </div>
                             <div className="descriptionSection is-parent">
                                 <article className="tile is-child is-success">
@@ -219,16 +176,10 @@ function Post() {
 
                 </article></Modal>
             <div className="postedBy">
-
-
                 <div className="columns writer"><img src={user} />
-                
-                    <div className="columns writerName"> ___Bhagya_Gunathilaka___<FaStar/> </div>
-                    
+                    <div className="columns writerName"> ___Bhagya_Gunathilaka___ </div>
                 </div>
-
             </div>
-
             <div className="box postContent" >
 
                 <div className="tile is-ancestor">
@@ -251,22 +202,13 @@ function Post() {
                                         Don't know if I could ever be without you
                                     </p>
                                 </article>
-
                             </div>
-
                         </div>
                         <div className="tile is-parent">
                             <button className="seeBtn" onClick={openModal}>See full lyrics</button>
-
-
-
-                            <button className="seeBtn" ><FaRegThumbsUp/>   Like</button>
-                            <button className="seeBtn" ><FaCommentAlt/>   Comment</button>
-
+                            <button className="seeBtn" ><FaRegThumbsUp />   Like</button>
+                            <button className="seeBtn" ><FaCommentAlt />   Comment</button>
                         </div>
-
-
-
                     </div>
                     <div className="tile descriptionSection is-parent lyricSection ">
                         <article className="tile is-child is-success">
@@ -277,22 +219,9 @@ function Post() {
                         </article>
                     </div>
                 </div>
-
-
-
             </div>
-
-
         </div>
-
-
-
-
-
-
-
     )
-
 }
 
 export default Post;

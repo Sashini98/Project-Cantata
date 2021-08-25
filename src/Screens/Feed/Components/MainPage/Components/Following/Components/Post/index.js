@@ -25,7 +25,7 @@ function Post() {
 
 
                 <div className="columns writer"><img src={user} />
-                    <div className="columns writerName"> ___Shashini_Shihara___<FaUserFriends/></div>
+                    <div className="columns writerName"> ___Shashini_Shihara___</div>
                 </div>
 
             </div>

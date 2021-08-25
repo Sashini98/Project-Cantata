@@ -7,7 +7,7 @@ import MainPage from "./Components/MainPage";
 import RecentlyPlayed from "./Components/RecentlyPlayed";
 import PlayLists from "./Components/PlayLists";
 import Profile from "../UserProfile/Components/EditProfile";
-
+import './index.css';
 
 
 function Feed() {
@@ -15,12 +15,12 @@ function Feed() {
     let { subpath } = useParams();
 
     return (
-        <div>
+        <div className="feedbody">
             <div class="columns">
                 <div class="column is-2">
                     <SideNav />
                 </div>
-                <div class="column is-10">
+                <div class="column is-10 feed-area">
                     <TopNav />
 
 
@@ -29,8 +29,9 @@ function Feed() {
                     {subpath === "PlayLists" && <PlayLists />}
                     {subpath === "Profile" && <Profile />}
                 </div>
+               
             </div>
-
+            
         </div>
     )
 }

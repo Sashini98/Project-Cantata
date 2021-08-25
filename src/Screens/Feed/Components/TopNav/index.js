@@ -13,16 +13,16 @@ function TopNav() {
 
 
     return (
-        <nav class="navbar" role="navigation" aria-label="main navigation">
-            
-            <div class="navbar-end">
-                <div class="navbar-item">
-                    
-                        <p class="btn mr-3">
-                            <strong>Amaya Kinivita</strong>
-                            
-                        </p>
-                                           
+        <nav className="navbar" role="navigation" aria-label="main navigation">
+
+            <div className="navbar-end">
+                <div className="navbar-item">
+
+                    <p className="navbar-name">
+                        <strong>Amaya Kinivita</strong>
+
+                    </p>
+
                     <div className="topuser">
                         <img src={user} />
                     </div>

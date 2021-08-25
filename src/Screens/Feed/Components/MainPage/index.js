@@ -19,29 +19,32 @@ function MainPage() {
     }
 
     return (
-        <div> 
+        <div className="fullbody">
             <div className="columns p-2">
 
                 <div className="column is-12">
 
-                    
 
-                        <div className="columns is-mobile">
-                            <div className="column">
-                                <button className="button is-medium is-fullwidth" style={toggle} onClick={switchBlock} value="trending">Trending</button>
 
-                            </div>
-                            <div className="column">
-                                <button className="button is-medium is-fullwidth" style={toggle} onClick={switchBlock} value="following">Following</button>
-                            </div>
+                    <div className="columns is-mobile">
+                        <div className="column">
+                            <button className="button trendingbtn is-medium is-fullwidth" style={toggle} onClick={switchBlock} value="trending">Trending</button>
+
                         </div>
-
-                        {block === "trending" ? <Trending /> : <Following />}
-
+                        <div className="column">
+                            <button className="button followingbtn is-medium is-fullwidth" style={toggle} onClick={switchBlock} value="following">Following</button>
+                        </div>
                     </div>
+
+                    {block === "following" ? <Following /> : <Trending />}
+
                 </div>
+
             </div>
-        
+            <div> hello </div>
+        </div>
+
+
 
     )
 }

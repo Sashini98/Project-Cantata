@@ -1,63 +1,67 @@
-.seeBtn{
-    background-color: #70c57300; /* Green */
-    border: none;
-    color: black;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    transition-duration: 0.4s;
-    font-size: 16px;
-      
+.seeBtn {
+  background-color: #70c57300; /* Green */
+  border: none;
+  color: black;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  transition-duration: 0.4s;
+  font-size: 16px;
 }
-
 
 .seeBtn:hover {
   background-color: #a17ad4; /* Green */
   color: white;
-  
 }
 
-.fullPost{
+.coversthumbnails {
+  align-self: center;
+}
+
+.fullPost {
   padding: 15px 32px;
   height: "57vh";
   width: "330vh";
+  background-color:#282246;
 }
 
-.postedBy{
+.postedBy {
   padding: 15px 20px;
 }
 
-
-.writer{
+.writer {
   width: 700px;
   height: 70px;
   padding: 10px 8px;
 }
 
-.writerName{
+.writerName {
   padding: 23px 20px;
+  color: rgb(255, 255, 255) !important;
+  
 }
 
-.lyricBox{
+.lyricBox {
   max-height: 400px;
 }
 
-.halfLyricSection{
+.halfLyricSection {
   padding-top: 10px;
   padding-left: 20px;
   white-space: pre-wrap;
 }
 
-.descriptionSection{
-  width: 400px!important;
-  padding-left: 100px!important;
-  padding-right: 10px!important;
+.descriptionSection {
+  width: 400px !important;
+  padding-left: 100px !important;
+  padding-right: 10px !important;
+  padding-top: 20px!important;
   float: left;
 }
 
-.closeBtn{
+.closeBtn {
   background-color: #70c57300;
-  float:right;
+  float: right;
   border: none;
   color: black;
   padding: 15px 32px;
@@ -65,21 +69,20 @@
   text-decoration: none;
   transition-duration: 0.4s;
   font-size: 16px;
-    
 }
-
 
 .closeBtn:hover {
-background-color: #a17ad4; /* Green */
-color: white;
-
+  background-color: #a17ad4; /* Green */
+  color: white;
 }
 
-.coverBtn{
+/* add images  background-image: url(../../../../Assets/Admin/sidenav.png); */
+
+.coverBtn {
   background-color: #bec2beea;
-  height: 200px!important;
-  width: 300px!important;
-  float:right;
+  height: 200px !important;
+  width: 280px !important;
+  float: right;
   border: none;
   color: black;
   padding: 15px 32px;
@@ -87,42 +90,84 @@ color: white;
   text-decoration: none;
   transition-duration: 0.4s;
   font-size: 16px;
-    
 }
-
 
 .coverBtn:hover {
-background-color: #a17ad4; /* Green */
-color: white;
-
+  background-color: #a17ad4; /* Green */
+  color: white;
 }
 
-.subtitle{
-  font-size: 0.9rem!important;
-  white-space: pre-wrap!important;
+.coverBtn1 {
+  background-image: url(../../../../../../../../../src/Assets/Feed/1.jfif);
+  height: 200px !important;
+  width: 280px !important;
+  float: right;
+  border: none;
+  color: black;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  transition-duration: 0.4s;
+  font-size: 16px;
+}
+.coverBtn2 {
+  background-image: url(../../../../../../../../../src/Assets/Feed/2.jfif);
+  height: 200px !important;
+  width: 280px !important;
+  float: right;
+  border: none;
+  color: black;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  transition-duration: 0.4s;
+  font-size: 16px;
+}
+.coverBtn3 {
+  background-image: url(../../../../../../../../../src/Assets/Feed/7.jfif);
+  height: 200px !important;
+  width: 280px !important;
+  float: right;
+  border: none;
+  color: black;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  transition-duration: 0.4s;
+  font-size: 16px;
+}
+
+.subtitle {
+  font-size: 0.9rem !important;
+  white-space: pre-wrap !important;
   display: inline;
 }
 
-.writer{
-  size: 1.2rem!important;
+.writer {
+  size: 1.2rem !important;
 }
 
-.likeComment{
+.likeComment {
   padding-bottom: 20px;
   padding-top: 20px;
 }
 
-.thumbnails{
-  padding-left: 80px!important;
+.thumbnails {
+  padding-left: 80px !important;
 }
 
-.next{
+.next {
   padding-top: 90px;
   padding-left: 10px;
 }
+
+.previous {
+  padding-top: 90px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
 /* lyric box */
-.box{
-  width:100% !important;
+.box {
+  width: 100% !important;
   background-color: rgb(255, 255, 255) !important;
 }
-

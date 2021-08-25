@@ -1,3 +1,9 @@
 .navbar{
-    height:20px!important;
+    height:20px;
+    background-color:#110f1d00!important;
+}
+
+.navbar-name{
+    color: white !important;
+     /* Doesn't apply cause bulma.min.css */
 }
