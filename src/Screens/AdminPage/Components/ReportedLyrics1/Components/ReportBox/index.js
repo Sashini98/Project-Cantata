@@ -56,7 +56,8 @@ function ReportBox(props) {
                         <footer class="card-footer mr-3">
                             {/* <div className="refer"><Link to={{ pathname: "./reportedlyrics2", id: "2" }} className="card-footer-item mb-3">View</Link></div> */}
                             
-                           <td><div className="refer"><Link to={`./reportedlyrics2/${repcount.LyricId}`} className="card-footer-item mb-3">View</Link></div></td> 
+                           {/* <td><div className="refer"><Link to={`reportedlyrics2/${repcount.LyricId}`} className="card-footer-item mb-3">View</Link></div></td>  */}
+                           <td><div className="refer"><Link to={{ pathname: "reportedlyrics2", query: { ly_id: repcount.LyricId } }}>View</Link></div></td> 
 
                         </footer>
                     </div>

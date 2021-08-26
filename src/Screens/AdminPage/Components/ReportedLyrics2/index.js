@@ -1,5 +1,5 @@
-import React from "react";
-import { Link, useParams } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, useLocation, useParams } from "react-router-dom";
 import ReportDetails from "./Components/ReportDetails";
 import user from "../../../../Assets/Admin/user.png";
 import backarrow from "../../../../Assets/Admin/backarrow.png";
@@ -22,8 +22,15 @@ const foot = {
 }
 
 
-function ReportedLyrics2() {
+function ReportedLyrics2(props) {
+
+    const location = useLocation()
+
+    const userid=location.hasOwnProperty("query")?location.query.ly_id:null
     
+
+    const getLyrics=() =>{}
+
 
     return (
         <div>
@@ -48,16 +55,12 @@ function ReportedLyrics2() {
                         </p>
                     </div><br></br><br></br>
                     <div class="content">
-                        Posted Date :
+                        Posted Date :{userid || "user invaild"}
                         <br></br><br></br>
                         Description :
                         <br></br><br></br>
                         Tags :
                     </div>
-
-                    <ReportDetails />
-                    <ReportDetails />
-                    <ReportDetails />
 
                     <ReportDetails />
 
