@@ -46,9 +46,6 @@ function ReportedPosts1() {
                 <div class="level-item ml-6">
                     <div>
                         <ReportBox />
-                        <ReportBox />
-                        <ReportBox />
-                        <ReportBox />
 
 
                     </div>

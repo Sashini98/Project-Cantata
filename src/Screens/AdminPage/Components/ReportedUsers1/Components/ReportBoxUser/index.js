@@ -57,7 +57,9 @@ function ReportBoxUser(){
                 <footer class="card-footer mr-3">
 
 
-                    <div className="refer"><Link to="./reportedusers2"  className="card-footer-item mb-3">View</Link></div>
+                    {/* <div className="refer"><Link to="./reportedusers2"  className="card-footer-item mb-3">View</Link></div> */}
+                    <td><div className="refer"><Link to={{ pathname: "reportedusers2", query: { user_id: repcount.UserId } }}  className="card-footer-item mb-3">View</Link></div></td> 
+
                 </footer>
             </div>
             </tr>

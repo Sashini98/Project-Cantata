@@ -16,7 +16,7 @@ function ReportDetails() {
     const [record, setRecord] = useState([]);
     
     const userid=location.hasOwnProperty("query")?location.query.ly_id:null
-    console.log(userid)
+    // console.log(userid)
     
 
     const reports = () => {

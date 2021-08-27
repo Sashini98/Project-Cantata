@@ -1,4 +1,6 @@
-import React from "react";
+import {  useLocation } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 
 
 const bx = {
@@ -10,22 +12,45 @@ const bx = {
 
 
 function ReportDetails() {
+    useEffect(() => {
+        reports();
+    }, []);
+
+
+    const location = useLocation()
+    const [record, setRecord] = useState([]);
+
+
+    const userid = location.hasOwnProperty("query") ? location.query.user_id : null
+    console.log("user id is" + userid)
+
+
+    const reports = () => {
+        axios.get(`http://localhost:5000/api/v1/admin/getrepuser/${userid}`)
+            .then(response => {
+                setRecord(response.data);
+            });
+    }
 
 
     return (
 
         <div>
+              <table>
+                {record.map((reports) =>
             <div class="card is-centered mt-6">
               
                 <div class="card-content" style={bx}>
                     <div class="content">
-                        Reported By :
+                    <td> Reported By :{reports.ReportedBy}</td>
                         <br></br><br></br>
-                        Reason :
+                        <td>Reason :{reports.Reason}</td>
                     </div>
                 </div>
                 
             </div>
+            )}
+            </table>
         </div>
 
     )

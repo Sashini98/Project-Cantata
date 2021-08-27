@@ -1,5 +1,6 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
+import axios from "axios";
 import ReportDetails from "./Components/ReportDetails";
 import user from "../../../../Assets/Admin/user.png";
 import backarrow from "../../../../Assets/Admin/backarrow.png";
@@ -22,6 +23,26 @@ const foot = {
 }
 
 function ReportedPosts2() {
+    useEffect(() => {
+        reports();
+    }, []);
+
+
+    const location = useLocation()
+    const [record, setRecord] = useState([]);
+
+
+    const coverid = location.hasOwnProperty("query") ? location.query.cover_id : null
+    // console.log("user id is" + userid)
+
+
+    const reports = () => {
+        axios.get(`http://localhost:5000/api/v1/admin/getrepcover/${coverid}`)
+            .then(response => {
+                setRecord(response.data);
+            });
+    }
+
 
     return (
         <div>
@@ -52,10 +73,6 @@ function ReportedPosts2() {
                         <br></br><br></br>
                         Tags :
                     </div>
-
-                    <ReportDetails />
-                    <ReportDetails />
-                    <ReportDetails />
 
                     <ReportDetails />
 
