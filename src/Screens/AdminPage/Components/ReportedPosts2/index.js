@@ -1,5 +1,6 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
+import axios from "axios";
 import ReportDetails from "./Components/ReportDetails";
 import user from "../../../../Assets/Admin/user.png";
 import backarrow from "../../../../Assets/Admin/backarrow.png";
@@ -22,6 +23,41 @@ const foot = {
 }
 
 function ReportedPosts2() {
+    useEffect(() => {
+        reports();
+    }, []);
+
+
+    const location = useLocation()
+    const [record, setRecord] = useState([]);
+
+
+    const coverid = location.hasOwnProperty("query") ? location.query.cover_id : null
+    // console.log("user id is" + userid)
+
+
+    const reports = () => {
+        axios.get(`http://localhost:5000/api/v1/admin/getrepcover/${coverid}`)
+            .then(response => {
+                setRecord(response.data);
+            });
+    }
+
+    const Ignore = () => {
+        axios.get(`http://localhost:5000/api/v1/admin/changecoverstatus/${coverid}`)
+            .then(response => {
+                window.location.href = "/admin/reportedposts1";
+            });
+    }
+
+    const DeletePost = () => {
+        axios.get(`http://localhost:5000/api/v1/admin/changecoverstatus/${coverid}`)
+            .then(response => {
+                window.location.href = "/admin/reportedposts1";
+            });
+    }
+
+
 
     return (
         <div>
@@ -54,16 +90,12 @@ function ReportedPosts2() {
                     </div>
 
                     <ReportDetails />
-                    <ReportDetails />
-                    <ReportDetails />
-
-                    <ReportDetails />
 
                 </div>
                 <footer class="card-footer" style={{ marginRight: "25vh" }}>
-                    <div className="refer"><a href="" className="card-footer-item" style={foot} >Ignore</a></div>
-                    <div className="refer"><a href="" className="card-footer-item" style={foot} >Delete</a></div>
-                </footer>
+                <div className="refer"><a href="" className="card-footer-item" style={foot} onClick={Ignore} >Ignore</a></div>
+                    <div className="refer"><a href="" className="card-footer-item" style={foot} onClick={DeletePost}>Delete</a></div>
+              </footer>
             </div>
         </div>
 

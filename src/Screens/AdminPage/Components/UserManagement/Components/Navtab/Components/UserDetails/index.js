@@ -8,6 +8,8 @@ function UserDetails() {
 
     const [search, setSearch] = useState('');
     const [record, setRecord] = useState([]);
+    const [email, setEmail] = useState('');
+
 
     const txt = {
         width: "50%"
@@ -30,6 +32,19 @@ function UserDetails() {
             .then(response => {
                 setRecord(response.data);
             });
+    }
+    const activate = () => {
+        axios.get(`http://localhost:5000/api/v1/user/activateUser/${email}`)
+            .then(
+                window.location.reload()
+            );
+    }
+
+    const deactivate = () => {
+        axios.get(`http://localhost:5000/api/v1/user/deactivateUser/${email}`)
+            .then(
+                window.location.reload()
+            );
     }
 
     return (
@@ -63,7 +78,7 @@ function UserDetails() {
                                                 <td>Name</td>
                                                 {record.map((user) =>
 
-                                                    <td>{user.Name}</td>
+                                                    <td>{user.Fname}  {user.Lname}</td>
 
                                                 )}
                                             </tr>
@@ -94,12 +109,12 @@ function UserDetails() {
                             <article class="message"> <br></br>
                                 <p class="title is-6 ml-4">Manage Users</p>
                                 <div class="message-body">
-                                    User Email:<div class="control"><input class="input is-hovered" type="password" style={txt} ></input></div>
+                                    User Email:<div class="control"><input class="input is-hovered" type="text" style={txt} onChange={(e) => setEmail(e.target.value)} ></input></div>
                                     <br></br>
-                                    <button>
+                                    <button onClick={() => { activate() }}>
                                         Activate
                                     </button>
-                                    <button>
+                                    <button onClick={() => { deactivate() }}>
                                         Deactivate
                                     </button>
 

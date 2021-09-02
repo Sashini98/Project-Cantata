@@ -1,14 +1,36 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+
 
 function CountBox() {
+    
     const bx={
         backgroundColor:"rgb(204, 197, 197)",
              height: "90%",
         width: "80%"
     }
 
+    const [record, setRecord] = useState([]);
+
+   
+    const loadCounts = async () => {
+
+        var response = fetch('http://localhost:5000/api/v1/user/usercount')
+            .then(function (response) {
+                return response.json();
+            })
+            .then(function (myJson) {
+                setRecord(myJson);
+            });
+    }
+    useEffect(() => {
+        loadCounts();
+    }, []);
+
     return (
+       
         <div>
+            <table>
+                {record.map((counts) =>
             <nav class="level mt-6">
                 <div className="level-item has-text-centered" >
                     <div>
@@ -16,7 +38,7 @@ function CountBox() {
                             <div class="content">
                                 <p>
                                     <h1>Users</h1>
-                                    7820
+                                    {counts.Users}
                                 </p>
                             </div>
                         </div>
@@ -28,7 +50,7 @@ function CountBox() {
                             <div class="content">
                                 <p>
                                     <h1>Active</h1>
-                                    7820
+                                    {counts.Active}
                                 </p>
                             </div>
                         </div>
@@ -40,7 +62,8 @@ function CountBox() {
                             <div class="content">
                                 <p>
                                     <h1>Deactive</h1>
-                                    7820
+                                    {counts.Deactive}
+                                    
                                 </p>
                             </div>
                         </div>
@@ -49,7 +72,10 @@ function CountBox() {
 
 
             </nav>
+             )}
+             </table>
         </div>
+        
 
 
 

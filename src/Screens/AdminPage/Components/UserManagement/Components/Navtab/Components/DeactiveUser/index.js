@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import axios from "axios";
+
 
 function DeactiveUser() {
     
@@ -15,7 +17,7 @@ function DeactiveUser() {
     const tbl = {
         width: "100%"
     }
-
+    const [search, setSearch] = useState('');
     const [record, setRecord] = useState([]);
 
 
@@ -33,6 +35,14 @@ function DeactiveUser() {
     useEffect(() => {
         loadEmployeeDetail();
     }, []);
+
+    const activate = (id) => {       
+            console.log("deac  "+id);          
+        axios.get(`http://localhost:5000/api/v1/user/activateUser/${id}`)
+            .then(
+                window.location.reload()
+            );
+    }
 
 
 
@@ -54,9 +64,11 @@ function DeactiveUser() {
                         <tr>
                             <td>{users.UserId}</td>
                             <td>{users.Email}</td>
-                            <td>{users.Name}</td>
+                            <td>{users.Fname}  {users.Lname}</td>
                             <td>{users.CreatedAt}</td>
-                            <td><button style={btn}>Activate</button></td>
+                            <td><button style={btn} onClick={() => {  activate(users.Email)}}>Activate</button></td>
+                            {/* <td><button style={btn} onClick={() => deac(users.Email)}>Activate</button></td> */}
+
 
                         </tr>
                     )}

@@ -1,7 +1,9 @@
 
-import React, { useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import Swal from "sweetalert2";
+
 
 
 
@@ -31,7 +33,7 @@ function Notification() {
         if (document.getElementById("sel").value === "all") {
             document.getElementById("emai").disabled = 'true';
         }
-       
+
     };
 
 
@@ -63,23 +65,41 @@ function Notification() {
 
 
     const [notification, setNotification] = useState({
-        adminId: "",
+        title: "",
         message: ""
     });
 
-    const { adminId, message } = notification;
+    const { title, message } = notification;
     const onInputChange = e => {
         setNotification({ ...notification, [e.target.name]: e.target.value });
     };
 
 
-    const submitNotification= async (e) => {
+    const submitNotification = async (e) => {
         e.preventDefault();
         // e.target.reset();
-        await axios.post("http://localhost:5000/api/v1/admin/addnotification", notification);
-        alert('Data Inserted');
-
+        await axios.post("http://localhost:5000/api/v1/admin/addnotification", notification)
+        .then((data) => {
+            console.log(data.data.data);
+            if (data.data.data !=null) {
+                Swal.fire({
+                    icon: "success",
+                    title: "Sent",
+                    text: "Notification Sent Succesfully!",
+                });
+            } else {
+                Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: "Notification Sending Failed!",
+                });
+            }
+        });
+        
+        
     };
+
+
 
 
     return (
@@ -96,6 +116,7 @@ function Notification() {
                     </button>
                 </header>
                 <div class="card-content">
+                    Title:<div class="control"></div><input class="input is-hovered" id="title" name="title" type="text" style={txt} onChange={e => onInputChange(e)} />
                     Message:<textarea class="textarea" name="message" onChange={e => onInputChange(e)}></textarea> <br></br>
                     Send to:<br></br><div class="select is-info" >
                         <select id="sel" onChange={receiver}>
@@ -114,8 +135,8 @@ function Notification() {
 
                     <br></br>
                     <footer class="card-footer">
-                    <div className="refer"><a href="" className="card-footer-item" style={foot} onClick={submitNotification} >Send</a></div>
-                </footer>
+                        <div className="refer"><a href="" className="card-footer-item" style={foot} onClick={submitNotification} >Send</a></div>
+                    </footer>
                 </div>
 
             </div>

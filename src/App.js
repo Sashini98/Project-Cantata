@@ -9,6 +9,7 @@ import './App.css';
 import Registration from "./Screens/Registration/index";
 import Profile from "./Screens/UserProfile/index";
 import ContentPost from './Screens/ContentPost';
+import ReportedLyrics2 from './Screens/AdminPage/Components/ReportedLyrics2';
 
 function App() {
   return (
@@ -19,6 +20,10 @@ function App() {
           <Route path="/admin/:subpath" exact >
             <AdminPage />
           </Route>
+
+          {/* <Route path="/admin/reportedlyrics2/:lyricid" exact >
+            <ReportedLyrics2 />
+          </Route> */}
 
           <Route path="/login" exact>
             <LoginPage />
