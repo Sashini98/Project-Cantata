@@ -26,12 +26,12 @@ function MainPage() {
 
 
 
-                    <div className="columns is-mobile">
-                        <div className="column">
+                    <div className="columns is-mobile tf-button-section">
+                        <div className="column tf-buttons">
                             <button className="button trendingbtn is-medium is-fullwidth" style={toggle} onClick={switchBlock} value="trending">Trending</button>
 
                         </div>
-                        <div className="column">
+                        <div className="column tf-buttons">
                             <button className="button followingbtn is-medium is-fullwidth" style={toggle} onClick={switchBlock} value="following">Following</button>
                         </div>
                     </div>
@@ -41,7 +41,7 @@ function MainPage() {
                 </div>
 
             </div>
-            <div> hello </div>
+            
         </div>
 
 

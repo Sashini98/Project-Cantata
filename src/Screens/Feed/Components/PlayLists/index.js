@@ -1,6 +1,6 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import Post from "./Components/Post";
+import PlaylistPost from "./Components/PlaylistPost";
 import './index.css';
 
 const toggle = {
@@ -14,22 +14,22 @@ function PlayLists() {
     return (
         <div>
             <div className="table-container playListsSection">
-                <table className="table posts">
+                <table className="table Playlistposts">
 
 
                     <tr>
                         <div>
-                            <Post />
+                            <PlaylistPost />
                         </div>
                     </tr>
                     <tr>
                         <div>
-                            <Post />
+                            <PlaylistPost />
                         </div>
                     </tr>
                     <tr>
                         <div>
-                            <Post />
+                            <PlaylistPost />
                         </div>
                     </tr>
 

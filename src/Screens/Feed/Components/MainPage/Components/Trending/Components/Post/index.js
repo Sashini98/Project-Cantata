@@ -46,7 +46,7 @@ function Post() {
                                     <div className="tile lyricBox is-parent is-vertical">
                                         <article className="tile is-child is-primary">
                                             <div className="columns writer"><img src={user} />
-                                                <div className="columns writerName"> ___Bhagya_Gunathilaka___</div>
+                                                <div className="columns writerName-popup"> ___Bhagya_Gunathilaka___</div>
                                             </div>
                                             <p className="writer">20th July 2021</p>
                                             <p className="title ">No scars to your beautiful</p>
@@ -95,7 +95,7 @@ function Post() {
                                 <div className="tile coversthumbnails is-parent thumbnails">
                                     <div className="previous"><FaLessThan /></div>
                                     <div>
-                                        <button className="coverBtn1">Cover 1
+                                        <button className="coverBtn1"  onClick={openModal}>Cover 1
                                             <div className="likeComment">
                                                 <div class="columns">
                                                     <div class="column">
@@ -170,6 +170,233 @@ function Post() {
                                             It's just a song about these things that certain women go through on a daily basis in order to feel loved or in order to love themselves. I think that's such a thing that goes on in today's world. These weird things are instilled in us. You know? That tell us that we’re not good enough or that there's only one kind of beauty. This song basically is contradicting that idea. It's saying, 'Well, if the world doesn't like how you look then they should change.</p>
                                     </div>
                                 </article>
+                                {/* comment section */}
+                                <div className="commentsSection">
+                                   
+                                    <div class="comment-thread">
+    {/* <!-- Comment 1 start --> */}
+    <details open class="comment" id="comment-1">
+        <a href="#comment-1" class="comment-border-link">
+            <span class="sr-only">Jump to comment-1</span>
+        </a>
+        <summary>
+            <div class="comment-heading">
+                <div class="comment-voting">
+                    <button type="button">
+                        <span aria-hidden="true">&#9650;</span>
+                        <span class="sr-only">Vote up</span>
+                    </button>
+                    <button type="button">
+                        <span aria-hidden="true">&#9660;</span>
+                        <span class="sr-only">Vote down</span>
+                    </button>
+                </div>
+                <div class="comment-info">
+                    <a href="#" class="comment-author">someguy14</a>
+                    <p class="m-0">
+                        22 points &bull; 4 days ago
+                    </p>
+                </div>
+            </div>
+        </summary>
+
+        <div class="comment-body">
+            <p>
+                This is really great! I fully agree with what you wrote, and this is sure to help me out in the future. Thank you for posting this.
+            </p>
+            <button type="button">Reply</button>
+            <button type="button">Flag</button>
+        </div>
+
+        <div class="replies">
+            {/* <!-- Comment 2 start --> */}
+            <details open class="comment" id="comment-2">
+                <a href="#comment-2" class="comment-border-link">
+                    <span class="sr-only">Jump to comment-2</span>
+                </a>
+                <summary>
+                    <div class="comment-heading">
+                        <div class="comment-voting">
+                            <button type="button">
+                                <span aria-hidden="true">&#9650;</span>
+                                <span class="sr-only">Vote up</span>
+                            </button>
+                            <button type="button">
+                                <span aria-hidden="true">&#9660;</span>
+                                <span class="sr-only">Vote down</span>
+                            </button>
+                        </div>
+                        <div class="comment-info">
+                            <a href="#" class="comment-author">randomperson81</a>
+                            <p class="m-0">
+                                4 points &bull; 3 days ago
+                            </p>
+                        </div>
+                    </div>
+                </summary>
+
+                <div class="comment-body">
+                    <p>
+                        Took the words right out of my mouth!
+                    </p>
+                    <button type="button">Reply</button>
+                    <button type="button">Flag</button>
+                </div>
+            </details>
+            {/* <!-- Comment 2 end -->
+
+            <!-- Comment 3 start --> */}
+            <details open class="comment" id="comment-3">
+                <a href="#comment-3" class="comment-border-link">
+                    <span class="sr-only">Jump to comment-3</span>
+                </a>
+                <summary>
+                    <div class="comment-heading">
+                        <div class="comment-voting">
+                            <button type="button">
+                                <span aria-hidden="true">&#9650;</span>
+                                <span class="sr-only">Vote up</span>
+                            </button>
+                            <button type="button">
+                                <span aria-hidden="true">&#9660;</span>
+                                <span class="sr-only">Vote down</span>
+                            </button>
+                        </div>
+                        <div class="comment-info">
+                            <a href="#" class="comment-author">2edgy4u</a>
+                            <p class="m-0">
+                                -19 points &bull; 3 days ago
+                            </p>
+                        </div>
+                    </div>
+                </summary>
+
+                <div class="comment-body">
+                    <p>
+                        Wow, are you serious? You have some pretty low standards to be able to enjoy this. Good for you I guess, but you should honestly stop making these embarrassing comments.
+                    </p>
+                    <button type="button">Reply</button>
+                    <button type="button">Flag</button>
+                </div>
+
+                <div class="replies">
+                    {/* <!-- Comment 4 start --> */}
+                    <details open class="comment" id="comment-4">
+                        <a href="#comment-4" class="comment-border-link">
+                            <span class="sr-only">Jump to comment-4</span>
+                        </a>
+                        <summary>
+                            <div class="comment-heading">
+                                <div class="comment-voting">
+                                    <button type="button">
+                                        <span aria-hidden="true">&#9650;</span>
+                                        <span class="sr-only">Vote up</span>
+                                    </button>
+                                    <button type="button">
+                                        <span aria-hidden="true">&#9660;</span>
+                                        <span class="sr-only">Vote down</span>
+                                    </button>
+                                </div>
+                                <div class="comment-info">
+                                    <a href="#" class="comment-author">modpowertrip</a>
+                                    <p class="m-0">
+                                        9 points &bull; 2 days ago
+                                    </p>
+                                </div>
+                            </div>
+                        </summary>
+
+                        <div class="comment-body">
+                            <p>
+                                You are breaking <a href="#rule-687">Rule #687</a> with that comment. Please avoid posting like this in the future, or I will ban you.
+                            </p>
+                            <button type="button">Reply</button>
+                            <button type="button">Flag</button>
+                        </div>
+                    </details>
+                    {/* <!-- Comment 4 end -->
+
+                    <!-- Comment 5 start --> */}
+                    <details open class="comment" id="comment-5">
+                        <a href="#comment-5" class="comment-border-link">
+                            <span class="sr-only">Jump to comment-5</span>
+                        </a>
+                        <summary>
+                            <div class="comment-heading">
+                                <div class="comment-voting">
+                                    <button type="button">
+                                        <span aria-hidden="true">&#9650;</span>
+                                        <span class="sr-only">Vote up</span>
+                                    </button>
+                                    <button type="button">
+                                        <span aria-hidden="true">&#9660;</span>
+                                        <span class="sr-only">Vote down</span>
+                                    </button>
+                                </div>
+                                <div class="comment-info">
+                                    <a href="#" class="comment-author">imemespam</a>
+                                    <p class="m-0">
+                                        3 points &bull; 2 days ago
+                                    </p>
+                                </div>
+                            </div>
+                        </summary>
+
+                        <div class="comment-body">
+                            <p>
+                                Well, that's just like your opinion man.
+                            </p>
+                            <button type="button">Reply</button>
+                            <button type="button">Flag</button>
+                        </div>
+                    </details>
+                    {/* <!-- Comment 5 end -->
+
+                    <!-- Comment 6 start --> */}
+                    <details open class="comment" id="comment-6">
+                        <a href="#comment-6" class="comment-border-link">
+                            <span class="sr-only">Jump to comment-6</span>
+                        </a>
+                        <summary>
+                            <div class="comment-heading">
+                                <div class="comment-voting">
+                                    <button type="button">
+                                        <span aria-hidden="true">&#9650;</span>
+                                        <span class="sr-only">Vote up</span>
+                                    </button>
+                                    <button type="button">
+                                        <span aria-hidden="true">&#9660;</span>
+                                        <span class="sr-only">Vote down</span>
+                                    </button>
+                                </div>
+                                <div class="comment-info">
+                                    <a href="#" class="comment-author">lukerbro57</a>
+                                    <p class="m-0">
+                                        0 points &bull; 2 days ago
+                                    </p>
+                                </div>
+                            </div>
+                        </summary>
+
+                        <div class="comment-body">
+                            <p>
+                                Lol I agree with you.
+                            </p>
+                            <button type="button">Reply</button>
+                            <button type="button">Flag</button>
+                        </div>
+                    </details>
+                    {/* <!-- Comment 6 end --> */}
+
+                    <a href="#load-more">Load more replies</a>
+                </div>
+            </details>
+            {/* <!-- Comment 3 end --> */}
+        </div>
+    </details>
+    {/* <!-- Comment 1 end --> */}
+</div>
+                                </div>
                             </div>
                         </div>
                     </div>
