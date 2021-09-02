@@ -4,6 +4,8 @@ import ReportDetails from "./Components/ReportDetails";
 import user from "../../../../Assets/Admin/user.png";
 import backarrow from "../../../../Assets/Admin/backarrow.png";
 import "./index.css";
+import axios from "axios";
+
 
 
 const bx = {
@@ -26,10 +28,24 @@ function ReportedLyrics2(props) {
 
     const location = useLocation()
 
-    const userid=location.hasOwnProperty("query")?location.query.ly_id:null
+    const lyricid=location.hasOwnProperty("query")?location.query.ly_id:null
     
 
     const getLyrics=() =>{}
+
+    const Ignore = () => {
+        axios.get(`http://localhost:5000/api/v1/admin/changelyricstatus/${lyricid}`)
+            .then(response => {
+                window.location.href = "/admin/reportedlyrics1";
+            });
+    }
+
+    const DeletePost = () => {
+        axios.get(`http://localhost:5000/api/v1/admin/changelyricstatus/${lyricid}`)
+            .then(response => {
+                window.location.href = "/admin/reportedlyrics1";
+            });
+    }
 
 
     return (
@@ -55,7 +71,7 @@ function ReportedLyrics2(props) {
                         </p>
                     </div><br></br><br></br>
                     <div class="content">
-                        Posted Date :{userid || "user invaild"}
+                        Posted Date :{lyricid || "user invaild"}
                         <br></br><br></br>
                         Description :
                         <br></br><br></br>
@@ -66,9 +82,9 @@ function ReportedLyrics2(props) {
 
                 </div>
                 <footer class="card-footer" style={{ marginRight: "25vh" }}>
-                    <div className="refer"><a href="" className="card-footer-item" style={foot} >Ignore</a></div>
-                    <div className="refer"><a href="" className="card-footer-item" style={foot} >Delete</a></div>
-                </footer>
+                <div className="refer"><a href="" className="card-footer-item" style={foot} onClick={Ignore} >Ignore</a></div>
+                    <div className="refer"><a href="" className="card-footer-item" style={foot} onClick={DeletePost}>Delete</a></div>
+             </footer>
             </div>
         </div>
 

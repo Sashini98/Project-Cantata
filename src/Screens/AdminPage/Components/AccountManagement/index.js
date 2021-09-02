@@ -50,28 +50,91 @@ function AccountManagement() {
         setAdmin({ ...admin, [e.target.name]: e.target.value });
     };
 
+    
+
     const editDetails = async (e) => {
         // e.preventDefault();
         // e.target.reset();
         await axios.post("http://localhost:5000/api/v1/admin/editdetails", admin)
-        .then((data) => {
-            console.log(data.data.data);
-            if (data.data.data !=null) {
-                Swal.fire({
-                    icon: "success",
-                    title: "Sent",
-                    text: "Details Edited Succesfully!",
-                });
-            } else {
-                Swal.fire({
-                    icon: "error",
-                    title: "Oops...",
-                    text: "Editing Failed!",
-                });
-            }
-        });
+            .then((data) => {
+                console.log(data.data.data);
+                if (data.data.data != null) {
+                    Swal.fire({
+                        icon: "success",
+                        title: "Sent",
+                        text: "Details Edited Succesfully!",
+                    });
+                } else {
+                    Swal.fire({
+                        icon: "error",
+                        title: "Oops...",
+                        text: "Editing Failed!",
+                    });
+                }
+            });
 
 
+    };
+
+
+    const [password, setPassword] = useState({
+        oldpass: "",
+        newpass: "",
+        conf:""
+    });
+
+    const { oldpass, newpass, conf } = password;
+    const onPasswordChange = e => {
+        setPassword({ ...password, [e.target.name]: e.target.value });
+        
+    };
+
+    const vaildate = async (e) => {
+        if(newpass !== oldpass )
+        {
+            alert("Passwords do not match!");
+        }
+    }
+
+
+    const editPassword = async (e) => {
+        if(newpass !== conf )
+        {
+            alert("Passwords do not match!");
+        }
+        else{
+        await axios.post("http://localhost:5000/api/v1/admin/checkadmin", password)
+            .then((data) => {
+                console.log(data.data.data);
+                if (data.data.data != null) {
+
+                 axios.post("http://localhost:5000/api/v1/admin/changepassword", password)
+                    .then((data) => {
+                        console.log(data.data.data);
+                        if (data.data.data != null) {                            
+                            Swal.fire({
+                                icon: "success",
+                                title: "Sent",
+                                text: "Password Changed Succesfully!",
+                            });
+                        } else {
+                            Swal.fire({
+                                icon: "error",
+                                title: "Oops...",
+                                text: "Password not changed! Please try again.",
+                            });
+                        }
+                    });
+                } else {
+                    Swal.fire({
+                        icon: "error",
+                        title: "Oops...",
+                        text: "Wrong Password! Please try again.",
+                    });
+                }
+            });
+
+        }
     };
 
 
@@ -141,6 +204,20 @@ function AccountManagement() {
                                 </td>)} </table>
                             <br></br>
                         </div>
+                        <section> <div class="field is-grouped">
+                            <p class="control">
+                                <button class="button is-link" onClick={editDetails}>
+                                    Save changes
+                                </button>
+                            </p>
+                            {/* <p class="control" style={bt}>
+                    <button class="button">
+                        Cancel
+                    </button>
+                </p> */}
+
+                        </div></section>
+
 
                     </article>
 
@@ -148,14 +225,28 @@ function AccountManagement() {
                     <article class="message"> <br></br>
                         <p class="title is-6 ml-4">Change Password</p>
                         <div class="message-body">
-                            Old Password:<div class="control"><input class="input is-hovered" type="password" style={txt} ></input></div>
+                            Old Password:<div class="control"><input class="input is-hovered" id="oldpass" name="oldpass" type="password" style={txt} onChange={e => onPasswordChange(e)}></input></div>
                             <br></br>
-                            New Password:<div class="control"><input class="input is-hovered" type="password" style={txt} ></input></div>
+                            New Password:<div class="control"><input class="input is-hovered" id="newpass" name="newpass" type="password" style={txt} onChange={e => onPasswordChange(e)} ></input></div>
                             <br></br>
-                            Confirm Password:<div class="control"><input class="input is-hovered" type="password" style={txt}></input></div>
+                            Confirm Password:<div class="control"><input class="input is-hovered" id="conf" name="conf" type="password" style={txt} onChange={e => onPasswordChange(e)}></input></div>
                             <br></br>
 
                         </div>
+                        <section> <div class="field is-grouped">
+                            <p class="control">
+                                <button class="button is-link" onClick={editPassword}>
+                                    Save changes
+                                </button>
+                            </p>
+                            {/* <p class="control" style={bt}>
+                    <button class="button">
+                        Cancel
+                    </button>
+                </p> */}
+
+                        </div></section>
+
                     </article>
 
 
@@ -163,19 +254,6 @@ function AccountManagement() {
                 </div>
 
             </div>
-            <section> <div class="field is-grouped">
-                <p class="control">
-                    <button class="button is-link" onClick={editDetails}>
-                        Save changes
-                    </button>
-                </p>
-                {/* <p class="control" style={bt}>
-                    <button class="button">
-                        Cancel
-                    </button>
-                </p> */}
-
-            </div></section>
 
         </div>
 

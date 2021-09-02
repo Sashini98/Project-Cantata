@@ -43,6 +43,20 @@ function ReportedUsers2() {
             });
     }
 
+    const Ignore = () => {
+        axios.get(`http://localhost:5000/api/v1/admin/changestatus/${userid}`)
+            .then(response => {
+                window.location.href = "/admin/reportedusers1";
+            });
+    }
+
+    const DeleteUser = () => {
+        axios.get(`http://localhost:5000/api/v1/admin/changestatus/${userid}`)
+            .then(response => {
+                window.location.href = "/admin/reportedusers1";
+            });
+    }
+
 
     return (
         <div>
@@ -75,8 +89,8 @@ function ReportedUsers2() {
 
                 </div>
                 <footer class="card-footer" style={{ marginRight: "25vh" }}>
-                    <div className="refer"><a href="" className="card-footer-item" style={foot} >Ignore</a></div>
-                    <div className="refer"><a href="" className="card-footer-item" style={foot} >Delete</a></div>
+                    <div className="refer"><a href="" className="card-footer-item" style={foot} onClick={Ignore} >Ignore</a></div>
+                    <div className="refer"><a href="" className="card-footer-item" style={foot} onClick={DeleteUser}>Delete</a></div>
                 </footer>
             </div>
         </div>
