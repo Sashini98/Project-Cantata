@@ -45,7 +45,7 @@ function ActiveUser(props) {
                         <tr>
                             <td>{users.UserId}</td>
                             <td>{users.Email}</td>
-                            <td>{users.Name}</td>
+                            <td>{users.Fname} {users.Lname}</td>
                             <td>{users.CreatedAt}</td>
 
                         </tr>

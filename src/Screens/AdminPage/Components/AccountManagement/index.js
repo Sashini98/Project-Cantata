@@ -9,12 +9,18 @@ function AccountManagement() {
     }
 
     const bt = {
-        // width: "10vh",
-        // marginRight: "10pt",
-        // float: "left",
-        // position: "absolute",
-        // display: "block",
-        // marginLeft:"20pt"
+        padding: "8px 28px",
+        borderRadius: "20px",
+        lineHeight: "24px",
+        fontSize: "14px",
+        fontWeight: "600",
+        letterSpacing: ".02em",
+        border: "none",
+        outline: "none",
+        overflow: "hidden",
+        background: "#275EFE",
+        position: "relative",
+        marginLeft: "100vh"
     }
 
     const [search, setSearch] = useState('');
@@ -50,7 +56,7 @@ function AccountManagement() {
         setAdmin({ ...admin, [e.target.name]: e.target.value });
     };
 
-    
+
 
     const editDetails = async (e) => {
         // e.preventDefault();
@@ -80,59 +86,57 @@ function AccountManagement() {
     const [password, setPassword] = useState({
         oldpass: "",
         newpass: "",
-        conf:""
+        conf: ""
     });
 
     const { oldpass, newpass, conf } = password;
     const onPasswordChange = e => {
         setPassword({ ...password, [e.target.name]: e.target.value });
-        
+
     };
 
     const vaildate = async (e) => {
-        if(newpass !== oldpass )
-        {
+        if (newpass !== oldpass) {
             alert("Passwords do not match!");
         }
     }
 
 
     const editPassword = async (e) => {
-        if(newpass !== conf )
-        {
+        if (newpass !== conf) {
             alert("Passwords do not match!");
         }
-        else{
-        await axios.post("http://localhost:5000/api/v1/admin/checkadmin", password)
-            .then((data) => {
-                console.log(data.data.data);
-                if (data.data.data != null) {
+        else {
+            await axios.post("http://localhost:5000/api/v1/admin/checkadmin", password)
+                .then((data) => {
+                    console.log(data.data.data);
+                    if (data.data.data != null) {
 
-                 axios.post("http://localhost:5000/api/v1/admin/changepassword", password)
-                    .then((data) => {
-                        console.log(data.data.data);
-                        if (data.data.data != null) {                            
-                            Swal.fire({
-                                icon: "success",
-                                title: "Sent",
-                                text: "Password Changed Succesfully!",
+                        axios.post("http://localhost:5000/api/v1/admin/changepassword", password)
+                            .then((data) => {
+                                console.log(data.data.data);
+                                if (data.data.data != null) {
+                                    Swal.fire({
+                                        icon: "success",
+                                        title: "Sent",
+                                        text: "Password Changed Succesfully!",
+                                    });
+                                } else {
+                                    Swal.fire({
+                                        icon: "error",
+                                        title: "Oops...",
+                                        text: "Password not changed! Please try again.",
+                                    });
+                                }
                             });
-                        } else {
-                            Swal.fire({
-                                icon: "error",
-                                title: "Oops...",
-                                text: "Password not changed! Please try again.",
-                            });
-                        }
-                    });
-                } else {
-                    Swal.fire({
-                        icon: "error",
-                        title: "Oops...",
-                        text: "Wrong Password! Please try again.",
-                    });
-                }
-            });
+                    } else {
+                        Swal.fire({
+                            icon: "error",
+                            title: "Oops...",
+                            text: "Wrong Password! Please try again.",
+                        });
+                    }
+                });
 
         }
     };
@@ -203,10 +207,9 @@ function AccountManagement() {
                                 <td>Last Name:<div class="control"><input class="input is-hovered" type="text" id="lname" name="lname" style={txt} defaultValue={admin.LName} onChange={e => onInputChange(e)}></input></div>
                                 </td>)} </table>
                             <br></br>
-                        </div>
-                        <section> <div class="field is-grouped">
+                            <section> <div class="field is-grouped">
                             <p class="control">
-                                <button class="button is-link" onClick={editDetails}>
+                                <button style={bt} onClick={editDetails}>
                                     Save changes
                                 </button>
                             </p>
@@ -217,6 +220,8 @@ function AccountManagement() {
                 </p> */}
 
                         </div></section>
+                        </div>
+                        
 
 
                     </article>
@@ -231,11 +236,9 @@ function AccountManagement() {
                             <br></br>
                             Confirm Password:<div class="control"><input class="input is-hovered" id="conf" name="conf" type="password" style={txt} onChange={e => onPasswordChange(e)}></input></div>
                             <br></br>
-
-                        </div>
-                        <section> <div class="field is-grouped">
+                            <section> <div class="field is-grouped">
                             <p class="control">
-                                <button class="button is-link" onClick={editPassword}>
+                                <button style={bt} onClick={editPassword}>
                                     Save changes
                                 </button>
                             </p>
@@ -246,6 +249,9 @@ function AccountManagement() {
                 </p> */}
 
                         </div></section>
+
+                        </div>
+                       
 
                     </article>
 

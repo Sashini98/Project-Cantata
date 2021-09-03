@@ -62,6 +62,20 @@ function Notification() {
         borderStyle: "solid",
         borderWidth: "thin",
     }
+    const bt = {
+        padding: "8px 28px",
+        borderRadius: "20px",
+        lineHeight: "24px",
+        fontSize: "14px",
+        fontWeight: "600",
+        letterSpacing: ".02em",
+        border: "none",
+        outline: "none",
+        overflow: "hidden",
+        background: "#275EFE",
+        position: "relative",
+        marginLeft: "100vh"
+    }
 
 
     const [notification, setNotification] = useState({
@@ -116,7 +130,7 @@ function Notification() {
                     </button>
                 </header>
                 <div class="card-content">
-                    Title:<div class="control"></div><input class="input is-hovered" id="title" name="title" type="text" style={txt} onChange={e => onInputChange(e)} />
+                    Title:<div class="control"></div><input class="input is-hovered" id="title" name="title" type="text" style={txt} onChange={e => onInputChange(e)} /><br></br><br></br>
                     Message:<textarea class="textarea" name="message" onChange={e => onInputChange(e)}></textarea> <br></br>
                     Send to:<br></br><div class="select is-info" >
                         <select id="sel" onChange={receiver}>
@@ -131,7 +145,7 @@ function Notification() {
                     <br></br>
                     <div class="control"></div><textarea class="textarea has-fixed-size" type="text" value={email} style={txta} onChange={handleEmail} />
 
-                    <input class="input is-hovered" id="adminId" name="adminId" type="text" style={txt} onChange={e => onInputChange(e)} />
+                    {/* <input class="input is-hovered" id="adminId" name="adminId" type="text" style={txt} onChange={e => onInputChange(e)} /> */}
 
                     <br></br>
                     <footer class="card-footer">
