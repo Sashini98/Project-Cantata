@@ -13,14 +13,13 @@ function TopNav() {
 
 
     return (
-        <nav className="navbar" role="navigation" aria-label="main navigation">
+        <nav className="feed-navbar" role="navigation" aria-label="main navigation">
 
             <div className="navbar-end">
                 <div className="navbar-item">
 
                     <p className="navbar-name">
                         <strong>Amaya Kinivita</strong>
-
                     </p>
 
                     <div className="topuser">

@@ -1,14 +1,13 @@
 .drawer-menu {
   background-color: #ffffff !important;
   height: 90vh;
+  
 }
 .message-body {
   background-color: #fff !important;
 }
 
-.menu-list > .active > a {
-  background-color: pink !important ;
-}
+
 .nav-top {
   background-color: #1b1730 !important;
   /* height: 5rem;
@@ -19,6 +18,7 @@
 .side {
   background-color: #1b1730 !important;
   height: 100% !important;
+  padding-left: 20px;
 }
 
 .side-letters:hover{

@@ -1,6 +1,6 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import Post from "./Components/Post";
+import RecentlyPlayedPost from "./Components/RecentlyPlayedPost";
 import './index.css';
 
 const toggle = {
@@ -13,45 +13,54 @@ function RecentlyPlayed() {
 
     return (
         <div>
-            
-            
+            <div className="tile recent-artists">
+                
+                <div className=" artist2"> </div>
+                <div className=" artist3"> </div>
+                <div className=" artist4"> </div>
+                <div className=" artist5"> </div>
+                <div className=" artist6"> </div>
+                <div className=" artist7"> </div>
+                <div className=" artist8"> </div>
+                <div className=" artist9"> </div>
+            </div>
             <div className="table-container recentlyPlayedSection">
-                <table className="table posts">
+                <table className="table recent-posts">
 
 
                     <tr>
                         <div>
-                            <Post />
+                            <RecentlyPlayedPost />
                         </div>
                     </tr>
                     <tr>
                         <div>
-                            <Post />
+                            <RecentlyPlayedPost />
                         </div>
                     </tr>
                     <tr>
                         <div>
-                            <Post />
+                            <RecentlyPlayedPost />
                         </div>
                     </tr>
                     <tr>
                         <div>
-                            <Post />
+                            <RecentlyPlayedPost />
                         </div>
                     </tr>
                     <tr>
                         <div>
-                            <Post />
+                            <RecentlyPlayedPost />
                         </div>
                     </tr>
                     <tr>
                         <div>
-                            <Post />
+                            <RecentlyPlayedPost />
                         </div>
                     </tr>
                     <tr>
                         <div>
-                            <Post />
+                            <RecentlyPlayedPost />
                         </div>
                     </tr>
 
