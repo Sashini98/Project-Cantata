@@ -73,13 +73,13 @@ color: rgb(216, 0, 0);
 	transition-duration: 0.3s;
 }
 
-.login-form h6 {
+.no-account {
 	margin-top: 0px;
 	padding-bottom: 15px;
 	color: silver;
 }
 
-.login-form h6:hover {
+.no-account:hover {
 	color: whitesmoke;
 	cursor: pointer;
 }

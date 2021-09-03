@@ -8,6 +8,7 @@ function Login() {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const [errorMessage, setErrorMessage] = useState("");
+	// const [user, setUser] = useState([]); not using this due to error; instead assigning response array directly to user var
 	const history = useHistory();
 
 	const Login = () => {
@@ -16,13 +17,22 @@ function Login() {
 				email: email,
 				password: password,
 			})
-			.then((data) => {
-				console.log(data.data);
-				if (data.data.user.length > 0) {
+			.then((response) => {
+				console.log(response.data.data);
+				let user = response.data.data; //
+				// setUser(response.data.data); //have to click login twice to work >> need to check this error >> changed line 22
+				// console.log(user);
+				if (response.data.message == "success") {
+					//changed this, previously this was (data.data.user.length>0)
 					console.log("success");
+					sessionStorage.setItem("loggedIn", "true");
+					sessionStorage.setItem("UserID", user.UserId);
+					sessionStorage.setItem("Email", user.Email);
+					sessionStorage.setItem("First_Name", user.Fname);
+					sessionStorage.setItem("Last_Name", user.LName);
 					history.push("/Feed/MainPage");
 				} else {
-					console.log("fail");
+					console.log("Wrong email and password combination");
 					Swal.fire({
 						icon: "error",
 						title: "Oops...",
@@ -30,6 +40,18 @@ function Login() {
 					});
 				}
 			});
+	};
+	// let User_ID = sessionStorage.getItem('UserID');
+	const Register = () => {
+		history.push("/registration");
+	};
+
+	const loginWithFacebook = () => {
+		history.push("/Feed/MainPage");
+	};
+
+	const loginWithGoogle = () => {
+		history.push("/Feed/MainPage");
 	};
 
 	return (
@@ -71,33 +93,29 @@ function Login() {
 					id="submit"
 					className="form-button"
 					onClick={Login}
-					// onSubmit={this.handleSubmit}
+					// onSubmit={Login}
 				>
 					Sign In
 				</button>
 				<p>or sign in with</p>
 				<div className="login-option-container">
-					<button className="login-option-btn facebook">Facebook</button>
-					<button className="login-option-btn google">Google</button>
+					<button
+						className="login-option-btn facebook"
+						onClick={loginWithFacebook}
+					>
+						Facebook
+					</button>
+					<button className="login-option-btn google" onClick={loginWithGoogle}>
+						Google
+					</button>
 				</div>
 
-				<h6>Don't have an account?</h6>
+				<p className="no-account" onClick={Register}>
+					Don't have an account? Register here!
+				</p>
 			</form>
 		</div>
 	);
 }
 
 export default Login;
-
-function App() {
-	const [errorMessage, setErrorMessage] = React.useState("");
-	const handleClick = () => {
-		setErrorMessage("Example error message!");
-	};
-	return (
-		<div className="App">
-			<button onClick={handleClick}>Show error message</button>
-			{errorMessage && <div className="error"> {errorMessage} </div>}
-		</div>
-	);
-}
