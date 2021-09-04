@@ -11,6 +11,8 @@ function Notification() {
 
     const [inputValue, setInputValue] = useState("");
     const [email, setEmail] = useState("");
+    const [receiv, setReceiv] = useState("");
+
 
     const handleUserInput = (e) => {
         setInputValue(e.target.value);
@@ -21,18 +23,46 @@ function Notification() {
     };
 
     const changemail = () => {
-        const em = email + "   " + inputValue;
-        setEmail(em);
-        resetInputField();
+        if (email === '') {
+            const em = inputValue;
+            setEmail(em);
+            resetInputField();
+        }
+        else {
+            const em = email + "," + inputValue;
+            setEmail(em);
+            resetInputField();
+        }
     };
 
     const resetInputField = () => {
         setInputValue("");
     };
-    const receiver = () => {
-        if (document.getElementById("sel").value === "all") {
-            document.getElementById("emai").disabled = 'true';
+
+
+    const resetReceiv = () => {
+        setReceiv("");
+    };
+    const receiver = (e) => {
+        // resetReceiv();
+        setReceiv(e.target.value);
+        // alert(receiv);
+
+        // if (document.getElementById("sel").value === "all") {
+        //     document.getElementById("emai").disabled = 'true';
+        // }
+        if (receiv === "all") {
+            // alert(receiv+"1");
+            document.getElementById("emai").disabled = 1;
         }
+
+        else {
+            // alert(receiv+"2");
+
+            document.getElementById("emai").disabled = 0;
+        }
+
+        // resetReceiv();
 
     };
 
@@ -76,41 +106,71 @@ function Notification() {
         position: "relative",
         marginLeft: "100vh"
     }
+    const [title, setTitle] = useState("");
+    const [message, setMessage] = useState("");
 
 
-    const [notification, setNotification] = useState({
-        title: "",
-        message: ""
-    });
 
-    const { title, message } = notification;
-    const onInputChange = e => {
-        setNotification({ ...notification, [e.target.name]: e.target.value });
-    };
+    // const [notification, setNotification] = useState({
+    //     title: "",
+    //     message: "",
+    //     sendto: ""
+    // });
+
+    // const { title, message, sendto } = notification;
+    // const onInputChange = e => {
+    //     setNotification({ ...notification, [e.target.name]: e.target.value });
+    // };
 
 
     const submitNotification = async (e) => {
+        // console.log(email);
         e.preventDefault();
         // e.target.reset();
-        await axios.post("http://localhost:5000/api/v1/admin/addnotification", notification)
-        .then((data) => {
-            console.log(data.data.data);
-            if (data.data.data !=null) {
-                Swal.fire({
-                    icon: "success",
-                    title: "Sent",
-                    text: "Notification Sent Succesfully!",
-                });
-            } else {
-                Swal.fire({
-                    icon: "error",
-                    title: "Oops...",
-                    text: "Notification Sending Failed!",
-                });
-            }
-        });
-        
-        
+        await axios.post("http://localhost:5000/api/v1/admin/addnotification", {
+            title: title,
+            message: message
+
+        })
+            .then((data) => {
+                // console.log(data.data.data);
+                if (data.data.data != null) {
+                    const notid = data.data.data;
+                    axios.post("http://localhost:5000/api/v1/admin/addusernotification", {
+                        notification_id: notid,
+                        email: email
+
+                    })
+                        .then((data) => {
+                            console.log(data.data.data);
+                            if (data.data.data != null) {
+                                Swal.fire({
+                                    icon: "success",
+                                    title: "Sent",
+                                    text: "Notification Sent Succesfully!",
+                                });
+
+                            } else {
+                                Swal.fire({
+                                    icon: "error",
+                                    title: "Oops...",
+                                    text: "Notification Sending Failed!",
+                                });
+                            }
+                        });
+
+
+
+                } else {
+                    Swal.fire({
+                        icon: "error",
+                        title: "Oops...",
+                        text: "Notification Sending Failed!",
+                    });
+                }
+            });
+
+
     };
 
 
@@ -130,20 +190,20 @@ function Notification() {
                     </button>
                 </header>
                 <div class="card-content">
-                    Title:<div class="control"></div><input class="input is-hovered" id="title" name="title" type="text" style={txt} onChange={e => onInputChange(e)} /><br></br><br></br>
-                    Message:<textarea class="textarea" name="message" onChange={e => onInputChange(e)}></textarea> <br></br>
+                    Title:<div class="control"></div><input class="input is-hovered" id="title" name="title" type="text" style={txt} onChange={(e) => setTitle(e.target.value)} /><br></br><br></br>
+                    Message:<textarea class="textarea" name="message" onChange={(e) => setMessage(e.target.value)}></textarea> <br></br>
                     Send to:<br></br><div class="select is-info" >
                         <select id="sel" onChange={receiver}>
-                            <option value="all">All Users</option>
-                            <option value="specify">Selected Users</option>
+                            <option value="specify">All Users</option>
+                            <option value="all">Selected Users</option>
                         </select>
                     </div>
                     <br></br><br></br><br></br>
-                    User Email:<div class="control"></div><input class="input is-hovered" id="emai" type="text" value={inputValue} style={txt} onChange={handleUserInput} />
+                    User Email:<div class="control"></div><input class="input is-hovered" id="emai" name="emai" type="text" value={inputValue} disabled={true} style={txt} onChange={handleUserInput} />
 
                     <button style={btn} onClick={changemail}>Add</button>
                     <br></br>
-                    <div class="control"></div><textarea class="textarea has-fixed-size" type="text" value={email} style={txta} onChange={handleEmail} />
+                    <div class="control"></div><textarea class="textarea has-fixed-size" type="text" id="sendto" name="sendto" value={email} style={txta} onChange={e => { this.handleEmail(); this.onInputChange(e); }} />
 
                     {/* <input class="input is-hovered" id="adminId" name="adminId" type="text" style={txt} onChange={e => onInputChange(e)} /> */}
 
