@@ -44,7 +44,7 @@ function ReportBox(props) {
                         <div class="card-content">
                             <div class="content">
                                 <td>
-                                    Lyric Id : {repcount.LyricId}
+                                    Lyric Title : {repcount.Title}
                                 </td>
                                 <br></br><br></br>
                                 <td>

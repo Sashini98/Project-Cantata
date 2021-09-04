@@ -44,7 +44,7 @@ function ReportDetails() {
               
                 <div class="card-content" style={bx}>
                     <div class="content">
-                    <td> Reported By :{reports.ReportedBy}</td>
+                    <td> Reported By :{reports.Email}</td>
                         <br></br><br></br>
                         <td>Reason :{reports.Reason}</td>
                     </div>

@@ -23,6 +23,7 @@ function CountBox() {
     useEffect(() => {
         loadCounts();
     }, []);
+    
 
 
     return (
