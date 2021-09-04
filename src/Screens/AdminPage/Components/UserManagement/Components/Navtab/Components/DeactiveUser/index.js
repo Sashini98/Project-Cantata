@@ -64,7 +64,7 @@ function DeactiveUser() {
                         <tr>
                             <td>{users.UserId}</td>
                             <td>{users.Email}</td>
-                            <td>{users.Fname}  {users.Lname}</td>
+                            <td>{users.Fname} {users.Lname}</td>
                             <td>{users.CreatedAt}</td>
                             <td><button style={btn} onClick={() => {  activate(users.Email)}}>Activate</button></td>
                             {/* <td><button style={btn} onClick={() => deac(users.Email)}>Activate</button></td> */}

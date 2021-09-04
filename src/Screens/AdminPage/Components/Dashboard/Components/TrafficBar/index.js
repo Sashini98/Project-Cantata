@@ -2,13 +2,13 @@ import { LineChart, Line, XAxis, YAxis, Tooltip, Legend} from "recharts";
 import './index.css';
 
 const data = [
-  { name: 'January',  Traffic: 2400, amt: 2400 },
-  { name: 'February', Traffic: 1398, amt: 2210 },
-  { name: 'March',  Traffic: 9800, amt: 2290 },
-  { name: 'April',  Traffic: 3908, amt: 2000 },
-  { name: 'May', Traffic: 4800, amt: 2181 },
-  { name: 'June',  Traffic: 3800, amt: 2500 },
-  { name: 'July',  Traffic: 4300, amt: 2100 },
+  { name: 'January',  Posts: 2400, Users: 2400 },
+  { name: 'February', Posts: 1398, Users: 2210 },
+  { name: 'March',  Posts: 9800, Users: 2290 },
+  { name: 'April',  Posts: 3908, Users: 2000 },
+  { name: 'May', Posts: 4800, Users: 2181 },
+  { name: 'June',  Posts: 3800, Users: 2500 },
+  { name: 'July',  Posts: 4300, Users: 2100 },
 ];
 function TrafficBar() {
   return (
@@ -21,9 +21,12 @@ function TrafficBar() {
         <YAxis />
         <Tooltip />
         <Legend />
-        <Line type="monotone" dataKey="Traffic" stroke="#8884d8" />
+        <Line type="monotone" dataKey="Posts" stroke="#888523" />
+             
+              <Line type="monotone" dataKey="Users" stroke="#8884d8" />
               </LineChart>
     </div>
+    
     </div>
   );
 }
