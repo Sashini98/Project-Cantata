@@ -32,12 +32,40 @@ function Login() {
 					sessionStorage.setItem("Last_Name", user.LName);
 					history.push("/Feed/MainPage");
 				} else {
-					console.log("Wrong email and password combination");
-					Swal.fire({
-						icon: "error",
-						title: "Oops...",
-						text: "Email or Password is incorrect!",
-					});
+					axios
+						.post(`http://localhost:5000/api/v1/admin/checkadmin`, {
+							email: email,
+							password: password,
+						})
+						.then((response1) => {
+							console.log(response1.data.data);
+							let admin = response1.data.data; //
+							// setUser(response.data.data); //have to click login twice to work >> need to check this error >> changed line 22
+							// console.log(user);
+							if (response1.data.message == "success") {
+								//changed this, previously this was (data.data.user.length>0)
+								console.log("success");
+								// sessionStorage.setItem("loggedIn", "true");
+								sessionStorage.setItem("AdminId", admin.AdminId);
+								// sessionStorage.setItem("Email", user.Email);
+								// sessionStorage.setItem("First_Name", user.Fname);
+								// sessionStorage.setItem("Last_Name", user.LName);
+								history.push("/admin/dashboard");
+							} else {
+								console.log("Wrong email and password combination");
+								Swal.fire({
+									icon: "error",
+									title: "Oops...",
+									text: "Email or Password is incorrect!",
+								});
+							}
+						});
+					// console.log("Wrong email and password combination");
+					// Swal.fire({
+					// 	icon: "error",
+					// 	title: "Oops...",
+					// 	text: "Email or Password is incorrect!",
+					// });
 				}
 			});
 	};
