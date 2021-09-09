@@ -21,7 +21,8 @@ function Login() {
 				console.log(response.data.data);
 				let user = response.data.data; //
 				// setUser(response.data.data); //have to click login twice to work >> need to check this error >> changed line 22
-				// console.log(user);
+				console.log(user.Lname);
+				console.log(user.Fname);
 				if (response.data.message == "success") {
 					//changed this, previously this was (data.data.user.length>0)
 					console.log("success");
@@ -29,7 +30,8 @@ function Login() {
 					sessionStorage.setItem("UserID", user.UserId);
 					sessionStorage.setItem("Email", user.Email);
 					sessionStorage.setItem("First_Name", user.Fname);
-					sessionStorage.setItem("Last_Name", user.LName);
+					sessionStorage.setItem("Last_Name", user.Lname);
+					console.log(sessionStorage);
 					history.push("/Feed/MainPage");
 				} else {
 					console.log("Wrong email and password combination");
