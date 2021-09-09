@@ -36,22 +36,22 @@ function ReportDetails() {
     return (
 
         <div>
-              <table>
-                {record.map((reports) =>
-            <div class="card is-centered mt-6">
-              
-                <div class="card-content" style={bx}>
-                    <div class="content">
-                    <td> Reported By :{reports.ReportedBy}</td>
-                        <br></br><br></br>
-                        <td>Reason :{reports.Reason}</td>
-                    </div>
-                </div>
-                
-            </div>
-            )}
-            </table>
-        </div>
+        <table>
+           {record.map((report) =>
+       <div class="card is-centered mt-6">
+         
+           <div class="card-content" style={bx}>
+               <div class="content">
+               <td> Reported By :{report.Email}</td>
+                   <br></br><br></br>
+                   <td>Reason :{report.Reason}</td>
+               </div>
+           </div>
+           
+       </div>
+         )}
+         </table>
+   </div>
 
     )
 }

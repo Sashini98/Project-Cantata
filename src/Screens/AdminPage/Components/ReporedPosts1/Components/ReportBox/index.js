@@ -43,7 +43,7 @@ function ReportBox() {
                         <div class="card-content">
                             <div class="content">
                                 <td>
-                                    Lyric Id : {repcount.CoverId}
+                                    Cover Title: {repcount.Title}
                                 </td>
                                 <br></br><br></br>
                                 <td>
