@@ -1,7 +1,7 @@
 import React from "react";
 import user from "../../../../../../Assets/Admin/user.png";
 import './recentlyPlayed.css';
-import { FaEllipsisV } from "react-icons/fa";
+import { FaEllipsisV, FaPlay,FaPlus } from "react-icons/fa";
 
 
 //pixel
@@ -46,12 +46,12 @@ function RecentlyPlayedPost() {
 
                         </div>
                     </div>
-                    <div className="tile descriptionSection is-parent lyricSection ">
+                    <div className="tile is-parent">
                         <article className="tile is-child is-success">
                             <div className="content">
-                                <button className="seeBtn" >Play</button>
-                                <button className="seeBtn" >Add to playlist</button>
-                                <FaEllipsisV />
+                                <button className="playBtn" > <FaPlay/> Play</button>
+                                <button className="addtoPlaylistBtn" ><FaPlus/> Add to playlist</button>
+                                <button className="optionsBtn" ><FaEllipsisV /></button>
                             </div>
                         </article>
                     </div>
