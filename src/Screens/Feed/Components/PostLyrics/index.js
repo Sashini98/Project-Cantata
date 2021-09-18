@@ -6,6 +6,7 @@ import { useHistory } from "react-router-dom";
 import Swal from "sweetalert2";
 
 function PostLyrics() {
+	const author = sessionStorage.getItem("UserID");
 	const [song_title, setTitle] = useState("");
 	const [song_lyrics, setLyrics] = useState("");
 	const [song_description, setDescription] = useState("");
@@ -26,6 +27,7 @@ function PostLyrics() {
 				song_title: song_title,
 				song_lyrics: song_lyrics,
 				song_description: song_description,
+				author: author,
 			})
 			.then(() => {
 				// history.push("/login");
