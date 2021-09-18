@@ -108,9 +108,25 @@ function Post() {
 												<iframe
 													src="https://drive.google.com/file/d/1tvG6-r58dZBLeCzKIHpzypE7o3IbEeEH/preview"
 													allow="autoplay"
-													width="320"
+													width="400"
 													height="240"
 												></iframe>
+                                                <div className="singer-name">
+                                                    <h1>Amaya Kinivita</h1>
+                                                    <p>26.10.2021</p>
+                                                </div>
+											</div>
+                                            <div className="thumbnail">
+												<iframe
+													src="https://drive.google.com/file/d/1tvG6-r58dZBLeCzKIHpzypE7o3IbEeEH/preview"
+													allow="autoplay"
+													width="400"
+													height="240"
+												></iframe>
+                                                <div className="singer-name">
+                                                    <h1>Amaya Kinivita</h1>
+                                                    <p>26.10.2021</p>
+                                                </div>
 											</div>
 										</div>
 									</div>

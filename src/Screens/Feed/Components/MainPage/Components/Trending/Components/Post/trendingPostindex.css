@@ -99,11 +99,6 @@
   color: white;
 }
 
-.thumbnail{
-  height: 480px !important;
-  width: 640px !important;
-}
-/* width="640" height="480" */
 .coverBtn1 {
   background-image: url(../../../../../../../../../src/Assets/Feed/1.jfif);
   height: 200px !important;
@@ -162,6 +157,21 @@
 
 .thumbnails-section {
   /* padding-left: 80px !important; */
+  height:500px;
+  overflow-y: scroll;
+}
+
+.thumbnail{
+  margin: 5px;
+  background-color: rgba(221, 219, 214, 0.788);
+  height:300px;
+  width:400px;
+  border-radius: 10px;
+  
+}
+
+.singer-name{
+  padding-left: 20px;
 }
 
 .next {

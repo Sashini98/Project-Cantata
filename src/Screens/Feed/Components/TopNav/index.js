@@ -12,7 +12,8 @@ function TopNav() {
 					<p className="navbar-name">
 						<strong>
 							<h1>
-								{FirstName} {LastName}
+								{/* {FirstName} {LastName} */}
+								Amaya Kinivita
 							</h1>
 						</strong>
 					</p>

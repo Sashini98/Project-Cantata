@@ -4,7 +4,8 @@
 	/* background-color: white; */
 	background-size: cover;
 	height:min-content;
-	
+	overflow-y: hidden;
+	overflow-x: hidden;
 }
 
 .feed-area {
