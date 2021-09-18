@@ -10,7 +10,7 @@ import Registration from "./Screens/Registration/index";
 import Profile from "./Screens/UserProfile/index";
 import ContentPost from "./Screens/ContentPost";
 import ReportedLyrics2 from "./Screens/AdminPage/Components/ReportedLyrics2";
-
+import PostLyrics from "./Screens/Feed/Components/PostLyrics";
 
 function App() {
 	return (
@@ -33,6 +33,10 @@ function App() {
 						<Registration />
 					</Route>
 
+					<Route path="/postlyrics" exact>
+						<PostLyrics />
+					</Route>
+
 					<Route path="/Feed/:subpath" exact>
 						<Feed />
 					</Route>
@@ -48,8 +52,6 @@ function App() {
 					{/* <Route path="/ContentPost" exact >
             <ContentPost/>
           </Route> */}
-
-
 				</Switch>
 			</Router>
 		</div>
