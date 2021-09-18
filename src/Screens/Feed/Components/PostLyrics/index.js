@@ -31,26 +31,25 @@ function PostLyrics() {
 				// history.push("/login");
 				Swal.fire({
 					icon: "success",
-					title: "Successfully Registered",
-					text: "Now login with your email and password",
+					title: "Successfully Posted",
+					text: "You can find your post in My Posts",
 				}).then(() => {
 					history.push("/Feed/MainPage");
 				});
 			});
 	};
 
-	useEffect(() => {
-		axios.get(`http://localhost:5000/api/v1/user/getlyrics`).then((data) => {
-			// console.log(data.data.lyrics);
-			setPostData(data.data.lyrics);
-			// this.setState({ movies:data.data})
-			// let lyrics = lyricsList;
-			// console.log(lyrics[0].title);
-		});
-	}, []);
+	// useEffect(() => {
+	// 	axios.get(`http://localhost:5000/api/v1/user/getlyrics`).then((data) => {
+	// 		// console.log(data.data.lyrics);
+	// 		setPostData(data.data.lyrics);
+	// 		// this.setState({ movies:data.data})
+	// 		// let lyrics = lyricsList;
+	// 		// console.log(lyrics[0].title);
+	// 	});
+	// }, []);
 
-	console.log("wohooooo", postData);
-	// console.log(postData);
+	// console.log("wohooooo", postData);
 
 	// For a lyric post to created, there should be an input form to get details of what must be in the specific post. Let us call this form the “Post Lyrics” form.
 	// Data to be inserted by the user to the “post lyrics” form.
@@ -123,68 +122,6 @@ function PostLyrics() {
 						</tr>
 					))} */}
 
-			{/* <tr>
-				<td>U001</td>
-				<td>sashini@gmail.com</td>
-				<td>Sashini</td>
-				<td>Shihara</td>
-				<td>12/02/2021</td>
-
-			</tr>
-
-			<tr>
-				<td>U002</td>
-				<td>shihara@gmail.com</td>
-				<td>Sashini</td>
-				<td>Shihara</td>
-				<td>12/02/2021</td>
-
-			</tr>
-
-			<tr>
-				<td>U003</td>
-				<td>shihara@gmail.com</td>
-				<td>Sashini</td>
-				<td>Shihara</td>
-				<td>12/02/2021</td>
-
-			</tr>
-
-			<tr>
-				<td>U004</td>
-				<td>shihara@gmail.com</td>
-				<td>Sashini</td>
-				<td>Shihara</td>
-				<td>12/02/2021</td>
-
-			</tr>
-
-			<tr>
-				<td>U005</td>
-				<td>shihara@gmail.com</td>
-				<td>Sashini</td>
-				<td>Shihara</td>
-				<td>12/02/2021</td>
-
-			</tr>
-
-			<tr>
-				<td>U006</td>
-				<td>shihara@gmail.com</td>
-				<td>Sashini</td>
-				<td>Shihara</td>
-				<td>12/02/2021</td>
-
-			</tr>
-
-			<tr>
-				<td>U007</td>
-				<td>shihara@gmail.com</td>
-				<td>Sashini</td>
-				<td>Shihara</td>
-				<td>12/02/2021</td>
-
-			</tr> */}
 			{/* </tbody>
 			</table> */}
 		</div>
