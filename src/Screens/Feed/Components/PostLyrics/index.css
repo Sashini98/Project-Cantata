@@ -1,4 +1,4 @@
-::-webkit-scrollbar {
+/* ::-webkit-scrollbar {
 	background: linear-gradient(115deg, rgb(8, 227, 243), 40%, rgb(76, 6, 133));
 	width: 12px;
 }
@@ -6,7 +6,7 @@
 ::-webkit-scrollbar-thumb {
 	background: #718cc7c4;
 	border-radius: 20px;
-}
+} */
 
 .post-lyrics-container {
 	min-height: 100vh;

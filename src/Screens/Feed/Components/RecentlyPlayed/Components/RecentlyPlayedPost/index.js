@@ -38,7 +38,7 @@ function RecentlyPlayedPost() {
                                 </div>
                                 <div className="column">
 
-                                    <div className="writerName">How would you feel</div>
+                                    <div className="writerName-recent">Ed Sheeran</div>
                                 </div>
 
 

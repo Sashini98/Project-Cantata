@@ -23,7 +23,8 @@
   padding: 15px 32px;
   height: "57vh";
   width: "330vh";
-  background-color: #282246;
+  background-color: #28224600;
+  
 }
 
 .postedBy {
@@ -36,9 +37,9 @@
   padding: 10px 8px;
 }
 
-.writerName {
+.writerName-feed {
   padding: 23px 20px;
-  color: rgb(255, 255, 255) !important;
+  color: rgb(0, 0, 0) !important;
 }
 
 .lyricBox {

@@ -105,72 +105,13 @@ function Post() {
                                         </div>
 
                                         <div className="tile is-parent thumbnails-section">
-                                            {/* <div className="previous"><FaLessThan /></div> */}
                                             <div className="thumbnail">
-                                                {/* <button className="coverBtn1">Cover 1
-                                                    <div className="likeComment">
-                                                        <div class="columns">
-                                                            <div class="column">
-
-                                                            </div>
-                                                            <div class="column">
-                                                                <FaRegThumbsUp /> Likes
-                                                            </div>
-                                                            <div class="column">
-                                                                <FaCommentAlt />Comment
-                                                            </div>
-                                                            <div class="column">
-                                                                <FaEllipsisV /> Options
-                                                            </div>
-                                                        </div>
-                                                    </div></button> */}
+                                               
 
                                             <iframe src="https://drive.google.com/file/d/1tvG6-r58dZBLeCzKIHpzypE7o3IbEeEH/preview" allow="autoplay"width="320" height="240"></iframe>
 
                                             </div>
-                                            {/* <div>
-                                                <button className="coverBtn2">Cover 2
-                                                    <div className="likeComment">
-                                                        <div class="columns">
-                                                            <div class="column">
-
-                                                            </div>
-                                                            <div class="column">
-                                                                <FaRegThumbsUp />Like
-                                                            </div>
-                                                            <div class="column">
-                                                                <FaCommentAlt />Comment
-                                                            </div>
-                                                            <div class="column">
-                                                                <FaEllipsisV />Options
-                                                            </div>
-                                                        </div>
-                                                    </div></button>
-
-
-                                            </div>
-                                            <div>
-                                                <button className="coverBtn3">Cover 3
-                                                    <div className="likeComment">
-                                                        <div class="columns">
-                                                            <div class="column">
-
-                                                            </div>
-                                                            <div class="column">
-                                                                <FaRegThumbsUp />Like
-                                                            </div>
-                                                            <div class="column">
-                                                                <FaCommentAlt />Comment
-                                                            </div>
-                                                            <div class="column">
-                                                                <FaEllipsisV /> Options
-                                                            </div>
-                                                        </div>
-                                                    </div></button>
-                                            </div> */}
-                                            <div>
-                                                {/* <div className="next"><FaGreaterThan /></div> */}
-                                            </div>
+                                            
                                         </div>
                                     </div>
                                     <div className="descriptionSection is-parent">
@@ -418,7 +359,7 @@ function Post() {
                 <div>
                     <div className="postedBy">
                         <div className="columns writer"><img src={user} />
-                            <div className="columns writerName"> {lyrics.UserId}</div>
+                            <div className="columns writerName-feed"> {lyrics.UserId}</div>
                         </div>
                     </div>
 
