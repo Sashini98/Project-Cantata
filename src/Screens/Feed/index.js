@@ -7,6 +7,7 @@ import MainPage from "./Components/MainPage";
 import RecentlyPlayed from "./Components/RecentlyPlayed";
 import PlayLists from "./Components/PlayLists";
 import Profile from "../UserProfile/Components/EditProfile";
+import PostLyrics from "./Components/PostLyrics";
 import './index.css';
 
 
@@ -28,10 +29,11 @@ function Feed() {
                     {subpath === "RecentlyPlayed" && <RecentlyPlayed />}
                     {subpath === "PlayLists" && <PlayLists />}
                     {subpath === "Profile" && <Profile />}
+                    {subpath === "PostLyrics" && <PostLyrics />}
                 </div>
-               
+
             </div>
-            
+
         </div>
     )
 }
