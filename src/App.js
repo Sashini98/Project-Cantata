@@ -10,7 +10,8 @@ import Registration from "./Screens/Registration/index";
 import Profile from "./Screens/UserProfile/index";
 import ContentPost from "./Screens/ContentPost";
 import ReportedLyrics2 from "./Screens/AdminPage/Components/ReportedLyrics2";
-import PostLyrics from "./Screens/PostLyrics/index";
+
+
 function App() {
 	return (
 		<div>
@@ -48,9 +49,7 @@ function App() {
             <ContentPost/>
           </Route> */}
 
-					<Route path="/postlyrics" exact>
-						<PostLyrics />
-					</Route>
+
 				</Switch>
 			</Router>
 		</div>

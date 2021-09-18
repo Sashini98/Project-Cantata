@@ -44,7 +44,7 @@ function SideNav() {
                 <li><p className={subpath === "MainPage" ? "is-active" : ""}><Link to="MainPage"><FaHome/>  <span className="side-letters" style={sideNavLetters}>Home</span></Link></p></li>
                 <li><p className={subpath === "RecentlyPlayed" ? "is-active" : ""}><Link to="RecentlyPlayed"><FaPlay/> <span className="side-letters" style={sideNavLetters}>Recently Played</span></Link></p></li>
                 <li><p className={subpath === "PlayLists" ? "is-active" : ""}><Link to="PlayLists"> <FaAlignLeft/> <span className="side-letters" style={sideNavLetters}>Playlists</span></Link></p></li>
-                <li><p className={subpath === "" ? "is-active" : ""}><Link to=""><FaUpload/> <span className="side-letters" style={sideNavLetters}>Post Lyrics</span></Link></p></li>
+                <li><p className={subpath === "PostLyrics" ? "is-active" : ""}><Link to="PostLyrics"><FaUpload/> <span className="side-letters" style={sideNavLetters}>Post Lyrics</span></Link></p></li>
                 <li><p className={subpath === "UserProfile" ? "is-active" : ""}><Link to="UserProfile"><FaUserAlt/> <span className="side-letters" style={sideNavLetters}>Account</span></Link></p></li>
                 <li><p><Link to="\"><FaSignOutAlt/> <span className="side-letters" style={sideNavLetters}>Logout</span></Link></p></li>
             </ul>
