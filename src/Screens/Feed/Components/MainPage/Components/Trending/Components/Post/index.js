@@ -71,21 +71,18 @@ function Post() {
 													<p className="title ">{lyrics.Title} </p>
 
 													<span className="subtitle halfLyricSection">
-														<pre>
-															She just wants to be, beautiful She goes,
-															unnoticed she knows, no limits She craves,
-															attention she praises, an image She prays to be,
-															sculpted by the sculptor Oh, she don't see, the
-															light that's shining Deeper than the eyes can find
-															it Maybe we have made her blind So she tries to
-															cover up her pain And cut her woes away 'Cause
-															covergirls don't cry After their face is made But
-															there's a hope that's waiting for you in the dark
-															You should know you're beautiful just the way you
-															are And you don't have to change a thing The world
-															could change its heart No scars to your beautiful
-															We're stars and we're beautiful
-														</pre>
+														She just wants to be, beautiful She goes, unnoticed
+														she knows, no limits She craves, attention she
+														praises, an image She prays to be, sculpted by the
+														sculptor Oh, she don't see, the light that's shining
+														Deeper than the eyes can find it Maybe we have made
+														her blind So she tries to cover up her pain And cut
+														her woes away 'Cause covergirls don't cry After
+														their face is made But there's a hope that's waiting
+														for you in the dark You should know you're beautiful
+														just the way you are And you don't have to change a
+														thing The world could change its heart No scars to
+														your beautiful We're stars and we're beautiful
 													</span>
 												</article>
 											</div>
@@ -107,26 +104,7 @@ function Post() {
 										</div>
 
 										<div className="tile is-parent thumbnails-section">
-											{/* <div className="previous"><FaLessThan /></div> */}
 											<div className="thumbnail">
-												{/* <button className="coverBtn1">Cover 1
-                                                    <div className="likeComment">
-                                                        <div class="columns">
-                                                            <div class="column">
-
-                                                            </div>
-                                                            <div class="column">
-                                                                <FaRegThumbsUp /> Likes
-                                                            </div>
-                                                            <div class="column">
-                                                                <FaCommentAlt />Comment
-                                                            </div>
-                                                            <div class="column">
-                                                                <FaEllipsisV /> Options
-                                                            </div>
-                                                        </div>
-                                                    </div></button> */}
-
 												<iframe
 													src="https://drive.google.com/file/d/1tvG6-r58dZBLeCzKIHpzypE7o3IbEeEH/preview"
 													allow="autoplay"
@@ -134,58 +112,13 @@ function Post() {
 													height="240"
 												></iframe>
 											</div>
-											{/* <div>
-                                                <button className="coverBtn2">Cover 2
-                                                    <div className="likeComment">
-                                                        <div class="columns">
-                                                            <div class="column">
-
-                                                            </div>
-                                                            <div class="column">
-                                                                <FaRegThumbsUp />Like
-                                                            </div>
-                                                            <div class="column">
-                                                                <FaCommentAlt />Comment
-                                                            </div>
-                                                            <div class="column">
-                                                                <FaEllipsisV />Options
-                                                            </div>
-                                                        </div>
-                                                    </div></button>
-
-
-                                            </div>
-                                            <div>
-                                                <button className="coverBtn3">Cover 3
-                                                    <div className="likeComment">
-                                                        <div class="columns">
-                                                            <div class="column">
-
-                                                            </div>
-                                                            <div class="column">
-                                                                <FaRegThumbsUp />Like
-                                                            </div>
-                                                            <div class="column">
-                                                                <FaCommentAlt />Comment
-                                                            </div>
-                                                            <div class="column">
-                                                                <FaEllipsisV /> Options
-                                                            </div>
-                                                        </div>
-                                                    </div></button>
-                                            </div> */}
-											<div>
-												{/* <div className="next"><FaGreaterThan /></div> */}
-											</div>
 										</div>
 									</div>
 									<div className="descriptionSection is-parent">
 										<article className="tile is-child is-success">
 											<div className="content">
 												<p className="title">Description</p>
-												<p className="subtitle">
-													<pre>{lyrics.Description}</pre>
-												</p>
+												<p className="subtitle">{lyrics.Description} </p>
 											</div>
 										</article>
 										{/* comment section */}
@@ -469,7 +402,7 @@ function Post() {
 						<div className="postedBy">
 							<div className="columns writer">
 								<img src={user} />
-								<div className="columns writerName"> {lyrics.UserId}</div>
+								<div className="columns writerName-feed"> {lyrics.UserId}</div>
 							</div>
 						</div>
 

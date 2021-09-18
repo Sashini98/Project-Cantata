@@ -1,9 +1,14 @@
 .feedbody {
 	/* background-color:#110f1d!important; */
-	background-image: url(../../Assets/Feed/feedBackground3.jfif);
+	background-image: url(../../Assets/Feed/feedBackground6.jpg);
+	/* background-color: white; */
+	background-size: cover;
+	height:min-content;
+	
 }
 
 .feed-area {
 	align-self: center !important;
 	padding-right: 30px !important;
+	height:auto;
 }
