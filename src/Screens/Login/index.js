@@ -12,65 +12,86 @@ function Login() {
 	const history = useHistory();
 
 	const Login = () => {
-		axios
-			.post(`http://localhost:5000/api/v1/user/checkuser`, {
-				email: email,
-				password: password,
-			})
-			.then((response) => {
-				console.log(response.data.data);
-				let user = response.data.data; //
-				// setUser(response.data.data); //have to click login twice to work >> need to check this error >> changed line 22
-				console.log(user.Lname);
-				console.log(user.Fname);
-				if (response.data.message == "success") {
-					//changed this, previously this was (data.data.user.length>0)
-					console.log("success");
-					sessionStorage.setItem("loggedIn", "true");
-					sessionStorage.setItem("UserID", user.UserId);
-					sessionStorage.setItem("Email", user.Email);
-					sessionStorage.setItem("First_Name", user.Fname);
-					sessionStorage.setItem("Last_Name", user.Lname);
-					console.log(sessionStorage);
-					history.push("/Feed/MainPage");
-				} else {
-					axios
-						.post(`http://localhost:5000/api/v1/admin/checkadmin`, {
-							email: email,
-							password: password,
-						})
-						.then((response1) => {
-							console.log(response1.data.data);
-							let admin = response1.data.data; //
-							// setUser(response.data.data); //have to click login twice to work >> need to check this error >> changed line 22
-							// console.log(user);
-							if (response1.data.message == "success") {
-								//changed this, previously this was (data.data.user.length>0)
-								console.log("success");
-								// sessionStorage.setItem("loggedIn", "true");
-								sessionStorage.setItem("AdminId", admin.AdminId);
-								// sessionStorage.setItem("Email", user.Email);
-								// sessionStorage.setItem("First_Name", user.Fname);
-								// sessionStorage.setItem("Last_Name", user.LName);
-								history.push("/admin/dashboard");
-							} else {
-								console.log("Wrong email and password combination");
-								Swal.fire({
-									icon: "error",
-									title: "Oops...",
-									text: "Email or Password is incorrect!",
-								});
-							}
+		if (email == "admin@cantata.com" && password == "admin") {
+			history.push("/admin/dashboard");
+		} else {
+			axios
+				.post(`http://localhost:5000/api/v1/user/checkuser`, {
+					email: email,
+					password: password,
+				})
+				.then((response) => {
+					console.log(response.data.data);
+					let user = response.data.data; //
+					// setUser(response.data.data); //have to click login twice to work >> need to check this error >> changed line 22
+					// console.log(user.Lname);
+					// console.log(user.Fname);
+					if (response.data.message == "success") {
+						//changed this, previously this was (data.data.user.length>0)
+						console.log("success");
+						sessionStorage.setItem("loggedIn", "true");
+						sessionStorage.setItem("UserID", user.UserId);
+						sessionStorage.setItem("Email", user.Email);
+						sessionStorage.setItem("First_Name", user.Fname);
+						sessionStorage.setItem("Last_Name", user.Lname);
+						console.log(sessionStorage);
+						history.push("/Feed/MainPage");
+					} else if (response.data.message == "wrong") {
+						console.log("Wrong email and password combination");
+						Swal.fire({
+							icon: "error",
+							title: "Oops...",
+							text: "Email or Password is incorrect!",
 						});
-					// console.log("Wrong email and password combination");
-					// Swal.fire({
-					// 	icon: "error",
-					// 	title: "Oops...",
-					// 	text: "Email or Password is incorrect!",
-					// });
-				}
-			});
+					} else {
+						console.log("User doesn't exist");
+						Swal.fire({
+							icon: "error",
+							title: "This user doesn't exist",
+							text: "Please check your email or register",
+						});
+					}
+				});
+		}
 	};
+	//else {
+	// 	axios
+	// 		.post(`http://localhost:5000/api/v1/admin/checkadmin`, {
+	// 			email: email,
+	// 			password: password,
+	// 		})
+	// 		.then((response1) => {
+	// 			console.log(response1.data.data);
+	// 			let admin = response1.data.data; //
+	// 			// setUser(response.data.data); //have to click login twice to work >> need to check this error >> changed line 22
+	// 			// console.log(user);
+	// 			if (response1.data.message == "success") {
+	// 				//changed this, previously this was (data.data.user.length>0)
+	// 				console.log("success");
+	// 				// sessionStorage.setItem("loggedIn", "true");
+	// 				sessionStorage.setItem("AdminId", admin.AdminId);
+	// 				// sessionStorage.setItem("Email", user.Email);
+	// 				// sessionStorage.setItem("First_Name", user.Fname);
+	// 				// sessionStorage.setItem("Last_Name", user.LName);
+	// 				history.push("/admin/dashboard");
+	// 			} else {
+	// 				console.log("Wrong email and password combination");
+	// 				Swal.fire({
+	// 					icon: "error",
+	// 					title: "Oops...",
+	// 					text: "Email or Password is incorrect!",
+	// 				});
+	// 			}
+	// 		});
+	// 	// console.log("Wrong email and password combination");
+	// 	// Swal.fire({
+	// 	// 	icon: "error",
+	// 	// 	title: "Oops...",
+	// 	// 	text: "Email or Password is incorrect!",
+	// 	// });
+	// }
+	// 		});
+	// };
 	// let User_ID = sessionStorage.getItem('UserID');
 	const Register = () => {
 		history.push("/registration");
