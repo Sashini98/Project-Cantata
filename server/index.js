@@ -16,11 +16,11 @@ app.use(cors());
 app.use(express.json());
 
 const db = mysql.createConnection({
-	user: "",
-	host: "",
-	password: "",
-	database: "",
-	port: ""
+	user: "admin",
+	host: "mysql-50185-0.cloudclusters.net",
+	password: "Transformers3",
+	database: "Cantata",
+	port: "18589"
 });
 
 app.post('/sign-up', (req, res)=> {

@@ -1,5 +1,5 @@
 import React from "react";
-import user from "../../../../Assets/Admin/user.png";
+import user from "../../../../Assets/Admin/devindi.png";
 
 
 
