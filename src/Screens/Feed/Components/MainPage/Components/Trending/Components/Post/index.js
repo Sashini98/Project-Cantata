@@ -62,7 +62,7 @@ function Post() {
                                                         <div className="columns writerName-popup"> {lyrics.UserId} </div>
                                                     </div>
                                                     <p className="writer">20th July 2021</p>
-                                                    <p className="title ">No scars to your beautiful</p>
+                                                    <p className="title ">{lyrics.Title} </p>
 
                                                     <span className="subtitle halfLyricSection">
                                                         She just wants to be, beautiful
@@ -104,10 +104,10 @@ function Post() {
                                             </div>
                                         </div>
 
-                                        <div className="tile coversthumbnails is-parent thumbnails">
-                                            <div className="previous"><FaLessThan /></div>
-                                            <div>
-                                                <button className="coverBtn1">Cover 1
+                                        <div className="tile is-parent thumbnails-section">
+                                            {/* <div className="previous"><FaLessThan /></div> */}
+                                            <div className="thumbnail">
+                                                {/* <button className="coverBtn1">Cover 1
                                                     <div className="likeComment">
                                                         <div class="columns">
                                                             <div class="column">
@@ -123,12 +123,12 @@ function Post() {
                                                                 <FaEllipsisV /> Options
                                                             </div>
                                                         </div>
-                                                    </div></button>
+                                                    </div></button> */}
 
-
+                                            <iframe src="https://drive.google.com/file/d/1tvG6-r58dZBLeCzKIHpzypE7o3IbEeEH/preview" allow="autoplay"width="320" height="240"></iframe>
 
                                             </div>
-                                            <div>
+                                            {/* <div>
                                                 <button className="coverBtn2">Cover 2
                                                     <div className="likeComment">
                                                         <div class="columns">
@@ -167,9 +167,9 @@ function Post() {
                                                             </div>
                                                         </div>
                                                     </div></button>
-                                            </div>
+                                            </div> */}
                                             <div>
-                                                <div className="next"><FaGreaterThan /></div>
+                                                {/* <div className="next"><FaGreaterThan /></div> */}
                                             </div>
                                         </div>
                                     </div>
@@ -177,10 +177,7 @@ function Post() {
                                         <article className="tile is-child is-success">
                                             <div className="content">
                                                 <p className="title">Description</p>
-                                                <p className="subtitle">Basically,
-                                                    that song is about body image.
-                                                    It's directed at women, but I think men can relate to it as well.
-                                                    It's just a song about these things that certain women go through on a daily basis in order to feel loved or in order to love themselves. I think that's such a thing that goes on in today's world. These weird things are instilled in us. You know? That tell us that we’re not good enough or that there's only one kind of beauty. This song basically is contradicting that idea. It's saying, 'Well, if the world doesn't like how you look then they should change.</p>
+                                                <p className="subtitle">{lyrics.Description} </p>
                                             </div>
                                         </article>
                                         {/* comment section */}

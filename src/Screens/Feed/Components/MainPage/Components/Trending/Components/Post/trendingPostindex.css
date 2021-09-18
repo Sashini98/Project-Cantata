@@ -15,9 +15,9 @@
   color: white;
 }
 
-.coversthumbnails {
+/* .coversthumbnails {
   align-self: center;
-}
+} */
 
 .fullPost {
   padding: 15px 32px;
@@ -56,6 +56,7 @@
   /* padding-left: 130px !important; */
   padding-right: 10px !important;
   padding-top: 20px !important;
+  margin-left: 20px;
   float: left;
 }
 
@@ -97,6 +98,11 @@
   color: white;
 }
 
+.thumbnail{
+  height: 480px !important;
+  width: 640px !important;
+}
+/* width="640" height="480" */
 .coverBtn1 {
   background-image: url(../../../../../../../../../src/Assets/Feed/1.jfif);
   height: 200px !important;
@@ -153,7 +159,7 @@
   padding-top: 20px;
 }
 
-.thumbnails {
+.thumbnails-section {
   /* padding-left: 80px !important; */
 }
 
@@ -174,7 +180,7 @@
 }
 
 .commentsSection {
-  height: 250px;
+  height: auto;
   overflow-y: auto !important;
   width: 500px;
   background-color: rgb(193, 194, 194);
