@@ -23,7 +23,7 @@ function MainPage() {
 		<div className="fullbody">
 			<div className="columns p-2">
 				<div className="column is-12">
-					<h1> Hello {First_Name}! Welcome Back! </h1>
+					{/* <h1> Hello {First_Name}! Welcome Back! </h1> */}
 
 					<div className="columns is-mobile tf-button-section">
 						<div className="column tf-buttons">

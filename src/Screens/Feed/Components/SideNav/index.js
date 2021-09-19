@@ -41,12 +41,12 @@ function SideNav() {
             </div>
 
             <ul className="menu-list side">
-                <li><p className={subpath === "MainPage" ? "is-active" : ""}><Link to="MainPage"><FaHome/>  <span className="side-letters" style={sideNavLetters}>Home</span></Link></p></li>
-                <li><p className={subpath === "RecentlyPlayed" ? "is-active" : ""}><Link to="RecentlyPlayed"><FaPlay/> <span className="side-letters" style={sideNavLetters}>Recently Played</span></Link></p></li>
-                <li><p className={subpath === "PlayLists" ? "is-active" : ""}><Link to="PlayLists"> <FaAlignLeft/> <span className="side-letters" style={sideNavLetters}>Playlists</span></Link></p></li>
-                <li><p className={subpath === "" ? "is-active" : ""}><Link to=""><FaUpload/> <span className="side-letters" style={sideNavLetters}>Post Lyrics</span></Link></p></li>
-                <li><p className={subpath === "UserProfile" ? "is-active" : ""}><Link to="UserProfile"><FaUserAlt/> <span className="side-letters" style={sideNavLetters}>Account</span></Link></p></li>
-                <li><p><Link to="\"><FaSignOutAlt/> <span className="side-letters" style={sideNavLetters}>Logout</span></Link></p></li>
+                <li><p className={subpath === "MainPage" ? "is-active" : ""}><Link to="MainPage"><span className="side-letters" style={sideNavLetters}><FaHome/>   Home</span></Link></p></li>
+                <li><p className={subpath === "RecentlyPlayed" ? "is-active" : ""}><Link to="RecentlyPlayed"><span className="side-letters" style={sideNavLetters}><FaPlay/>   Recently Played</span></Link></p></li>
+                <li><p className={subpath === "PlayLists" ? "is-active" : ""}><Link to="PlayLists"> <span className="side-letters" style={sideNavLetters}><FaAlignLeft/>   Playlists</span></Link></p></li>
+                <li><p className={subpath === "PostLyrics" ? "is-active" : ""}><Link to="PostLyrics"><span className="side-letters" style={sideNavLetters}><FaUpload/>   Post Lyrics</span></Link></p></li>
+                <li><p className={subpath === "UserProfile" ? "is-active" : ""}><Link to="UserProfile"><span className="side-letters" style={sideNavLetters}><FaUserAlt/>   Account</span></Link></p></li>
+                <li><p><Link to="\"><span className="side-letters" style={sideNavLetters}><FaSignOutAlt/>   Logout</span></Link></p></li>
             </ul>
 
         </aside>

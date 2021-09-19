@@ -33,11 +33,11 @@
   font-size: 16px;
   font-family: "Courier New", "Courier New", monospace;
 }
-.writerName{
+.writerName-recent{
   color: rgb(147, 148, 148);
   font-size: 13px;
-  margin-left: -365px;
-  margin-top: -20px;
+  margin-left: -350px;
+  margin-top: 10px;
   font-family: "Courier New", "Courier New", monospace;
 }
 .playBtn{
@@ -84,4 +84,10 @@
 .optionsBtn:hover{
   background-color: rgba(255, 255, 255, 0);
   color: white;
+}
+
+.recentCoverInModal{
+  /* align-content: center; */
+  margin-left: 200px;
+  /* margin-top: 60px; */
 }
