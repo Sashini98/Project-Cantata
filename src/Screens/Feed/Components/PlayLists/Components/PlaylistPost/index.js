@@ -18,92 +18,67 @@ function PlaylistPost() {
             <div className="tile is-parent playlist-box">
 
                 <div>
-                    <button className="playlist-item1">Cover 1
-                        <div className="likeComment">
-                            <div class="columns">
-                                <div class="column">
-
-                                </div>
-                                <div class="column">
-                                    <FaRegThumbsUp /> Likes
-                                </div>
-                                <div class="column">
-                                    <FaCommentAlt />Comment
-                                </div>
-                                <div class="column">
-                                    <FaEllipsisV /> Options
-                                </div>
-                            </div>
-                        </div></button>
-
-                   <div className="cover-name">Thinking Out Loud</div>
-                   <div className="artist-name">Ed Sheeran</div>
-
+                    <div className="thumbnail">
+                        <iframe
+                            src="https://drive.google.com/file/d/1tvG6-r58dZBLeCzKIHpzypE7o3IbEeEH/preview"
+                            allow="autoplay"
+                            width="400"
+                            height="240"
+                        ></iframe>
+                        <div className="singer-name">
+                            <h1>Amaya Kinivita</h1>
+                            <p>26.10.2021</p>
+                        </div>
+                    </div>
                 </div>
+
                 <div>
-                    <button className="playlist-item2">Cover 2
-                        <div className="likeComment">
-                            <div class="columns">
-                                <div class="column">
-
-                                </div>
-                                <div class="column">
-                                    <FaRegThumbsUp />Like
-                                </div>
-                                <div class="column">
-                                    <FaCommentAlt />Comment
-                                </div>
-                                <div class="column">
-                                    <FaEllipsisV />Options
-                                </div>
-                            </div>
-                        </div></button>
-                        <div className="cover-name">We Don't Talk Anymore</div>
-                   <div className="artist-name">Charlie Puth</div>
-
+                    <div className="thumbnail">
+                        <iframe
+                            src="https://drive.google.com/file/d/1tvG6-r58dZBLeCzKIHpzypE7o3IbEeEH/preview"
+                            allow="autoplay"
+                            width="400"
+                            height="240"
+                        ></iframe>
+                        <div className="singer-name">
+                            <h1>Amaya Kinivita</h1>
+                            <p>26.10.2021</p>
+                        </div>
+                    </div>
                 </div>
+
                 <div>
-                    <button className="playlist-item3">Cover 3
-                        <div className="likeComment">
-                            <div class="columns">
-                                <div class="column">
-
-                                </div>
-                                <div class="column">
-                                    <FaRegThumbsUp />Like
-                                </div>
-                                <div class="column">
-                                    <FaCommentAlt />Comment
-                                </div>
-                                <div class="column">
-                                    <FaEllipsisV /> Options
-                                </div>
-                            </div>
-                        </div></button>
-                        <div className="cover-name">Closer</div>
-                   <div className="artist-name">The Chainsmokers</div>
+                    <div className="thumbnail">
+                        <iframe
+                            src="https://drive.google.com/file/d/1tvG6-r58dZBLeCzKIHpzypE7o3IbEeEH/preview"
+                            allow="autoplay"
+                            width="400"
+                            height="240"
+                        ></iframe>
+                        <div className="singer-name">
+                            <h1>Amaya Kinivita</h1>
+                            <p>26.10.2021</p>
+                        </div>
+                    </div>
                 </div>
+
                 <div>
-                    <button className="playlist-item4">Cover 3
-                        <div className="likeComment">
-                            <div class="columns">
-                                <div class="column">
-
-                                </div>
-                                <div class="column">
-                                    <FaRegThumbsUp />Like
-                                </div>
-                                <div class="column">
-                                    <FaCommentAlt />Comment
-                                </div>
-                                <div class="column">
-                                    <FaEllipsisV /> Options
-                                </div>
-                            </div>
-                        </div></button>
-                        <div className="cover-name">We Found Love</div>
-                   <div className="artist-name">Rihanna</div>
+                    <div className="thumbnail">
+                        <iframe
+                            src="https://drive.google.com/file/d/1tvG6-r58dZBLeCzKIHpzypE7o3IbEeEH/preview"
+                            allow="autoplay"
+                            width="400"
+                            height="240"
+                        ></iframe>
+                        <div className="singer-name">
+                            <h1>Amaya Kinivita</h1>
+                            <p>26.10.2021</p>
+                        </div>
+                    </div>
                 </div>
+
+
+
             </div>
         </div>
     )

@@ -1,0 +1,22 @@
+.hero-b-o{
+    height: 7rem;
+}
+.hero-img{
+    height: 3rem;
+}
+.card-img{
+    width: 15rem !important;
+}
+.video-grid{
+    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 250px);
+    grid-auto-rows: auto;
+    grid-gap: 1rem;
+}
+.vid-if{
+    width: 100% !important;
+}
+.like-comment{
+    border: 1px solid lightgrey;
+}

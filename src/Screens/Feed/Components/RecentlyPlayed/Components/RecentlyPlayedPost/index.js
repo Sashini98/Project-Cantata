@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 // import React from "react";
 import user from "../../../../../../Assets/Admin/user.png";
 import './recentlyPlayed.css';
-import { FaEllipsisV, FaPlay,FaPlus } from "react-icons/fa";
+import { FaEllipsisV, FaPlay, FaPlus } from "react-icons/fa";
 import Modal from "react-modal";
 
 //pixel
@@ -15,46 +15,46 @@ const seeBtn = {
 
 function RecentlyPlayedPost() {
     const [modalIsOpen, setIsOpen] = useState(false);
-	const closeModal = () => {
-		setIsOpen(false);
-	};
-	const openModal = () => {
-		setIsOpen(true);
-	};
+    const closeModal = () => {
+        setIsOpen(false);
+    };
+    const openModal = () => {
+        setIsOpen(true);
+    };
 
     return (
 
-        
 
 
-            <div className="recent-box" >
-                <Modal
-				isOpen={modalIsOpen}
-				onRequestClose={closeModal}
-				contentLabel="Example Modal"
-			>
-                <article className="tile is-child is-primary">
-							<button className="closeBtn" onClick={closeModal}>
-								Close
-							</button>
-                        <div className="recentCoverInModal"> 
+
+        <div className="recent-box" >
+            <Modal
+                isOpen={modalIsOpen}
+                onRequestClose={closeModal}
+                contentLabel="Example Modal"
+            >
+                <article>
+                    <button className="closeBtn" onClick={closeModal}>
+                        Close
+                    </button>
+                    <div className="recentCoverInModal">
                         <iframe
-													src="https://drive.google.com/file/d/1tvG6-r58dZBLeCzKIHpzypE7o3IbEeEH/preview"
-													allow="autoplay"
-													width="1000"
-													height="600"
-												></iframe>
-                        </div>
-							
-						</article>
+                            src="https://drive.google.com/file/d/1tvG6-r58dZBLeCzKIHpzypE7o3IbEeEH/preview"
+                            allow="autoplay"
+                            width="1000"
+                            height="600"
+                        ></iframe>
+                    </div>
+
+                </article>
             </Modal>
 
 
-<table>
-					
-						
-					
-				</table>
+            <table>
+
+
+
+            </table>
 
 
 
@@ -62,45 +62,45 @@ function RecentlyPlayedPost() {
 
 
 
-                <div className="tile is-ancestor">
-                    <div className="tile  is-vertical is-8">
-                    
-                        <div className="tile is-parent">
-                        
-                            <div className="columns writer">
+            <div className="tile is-ancestor">
+                <div className="tile  is-vertical is-8">
+
+                    <div className="tile is-parent">
+
+                        <div className="columns writer">
                             <div className="column">
-                            <div className="artist-pp"> </div>
-
-                                </div>
-                                <div className="column">
-                                    <div className="songName"> How would you feel </div>
-
-                                </div>
-                                <div className="column">
-
-                                    <div className="writerName-recent">Ed Sheeran</div>
-                                </div>
-
+                                <div className="artist-pp"> </div>
 
                             </div>
+                            <div className="column">
+                                <div className="songName"> How would you feel </div>
+
+                            </div>
+                            <div className="column">
+
+                                <div className="writerName-recent">Ed Sheeran</div>
+                            </div>
+
 
                         </div>
-                    </div>
-                    <div className="tile is-parent">
-                        <article className="tile is-child is-success">
-                            <div className="content">
-                                <button className="playBtn"  onClick={openModal} > <FaPlay/> Play</button>
-                                <button className="addtoPlaylistBtn" ><FaPlus/> Add to playlist</button>
-                                <button className="optionsBtn" ><FaEllipsisV /></button>
-                            </div>
-                        </article>
+
                     </div>
                 </div>
-
-
-
+                <div className="tile is-parent">
+                    <article className="tile is-child is-success">
+                        <div className="content">
+                            <button className="playBtn" onClick={openModal} > <FaPlay /> Play</button>
+                            <button className="addtoPlaylistBtn" ><FaPlus /> Add to playlist</button>
+                            <button className="optionsBtn" ><FaEllipsisV /></button>
+                        </div>
+                    </article>
+                </div>
             </div>
-        
+
+
+
+        </div>
+
 
 
     )
