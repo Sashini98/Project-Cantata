@@ -10,6 +10,7 @@ function PostLyrics() {
 	const [song_title, setTitle] = useState("");
 	const [song_lyrics, setLyrics] = useState("");
 	const [song_description, setDescription] = useState("");
+	const [preview, setPreview] = useState("");
 	const [postData, setPostData] = useState([]);
 	const history = useHistory();
 
@@ -27,6 +28,7 @@ function PostLyrics() {
 				song_title: song_title,
 				song_lyrics: song_lyrics,
 				song_description: song_description,
+				preview: preview,
 				author: author,
 			})
 			.then(() => {
@@ -92,6 +94,15 @@ function PostLyrics() {
 					placeholder="Description: What is meant by the lyrics?"
 					name="song_description"
 					onChange={(e) => setDescription(e.target.value)}
+				></textarea>
+				<br></br>
+
+				<textarea
+					type="textarea"
+					className="lyrics-textarea"
+					placeholder="Preview Lyrics: Add the best 4 lines of your song here to be previewed"
+					name="preview"
+					onChange={(e) => setPreview(e.target.value)}
 				></textarea>
 				<br></br>
 
