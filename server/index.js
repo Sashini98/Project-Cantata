@@ -1,9 +1,10 @@
 const express = require("express");
 const mysql = require("mysql");
+const multer = require('multer');
 const cors = require("cors");
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
-
+const path = require('path');
 
 
 const app = express();
@@ -15,6 +16,20 @@ app.use(cors());
 
 app.use(express.json());
 
+const storage = multer.diskStorage({
+	destination: (req,file,cb)=>{
+		cb(null,"./")},
+		filename: function(req,file,cb){
+			const ext = file.mimetype.split("/")[1];
+			cb(null, 'Assets/${file.originalname}-${Date.now()}.${ext}');
+		}
+});
+
+const upload = multer({
+	storage:storage
+})
+
+
 const db = mysql.createConnection({
 	user: "",
 	host: "",
@@ -22,6 +37,43 @@ const db = mysql.createConnection({
 	database: "",
 	port: ""
 });
+
+db.connect();
+
+app.use(cors({
+	origin:true,
+	methods: ["Get","POST"],
+	credential:true,
+}));
+
+app.post("/api/image", upload.single('image'),(req,res,err) => {
+	if(!req.file.originalname.match(/\.(jpg|JPG|jpeg|JPEG|png|PNG|gif|GIF)$/)){
+
+		res.send({ msg:'Only image files (jpg, jpeg, png) are allowed!'})
+	} else {
+		const image = req.file.filename;
+		const id = 1;
+
+		const sqlInsert = "UPDATE images SET 'image' = ? WHERE id = ?;"
+
+		RTCPeerConnection.query(sqlInsert,[image,id], (err,result)=>{
+			if(err){
+				console.log(err)
+				res.send({
+					msg:err
+				})
+			}
+
+			if(result){
+				res.send({
+					data:result,
+					msg:'Your image has been updated!'
+				});
+			}
+		})
+	}
+});
+
 
 app.post('/sign-up', (req, res)=> {
 
