@@ -6,7 +6,7 @@ import Modal from "react-modal";
 import { FaRegThumbsUp } from "react-icons/fa";
 import { FaCommentAlt } from "react-icons/fa";
 import { FaEllipsisV } from "react-icons/fa";
-import { FaGreaterThan } from "react-icons/fa";
+import { FaHeart } from "react-icons/fa";
 import { FaLessThan } from "react-icons/fa";
 
 //pixel
@@ -25,6 +25,15 @@ function Post() {
 	const openModal = () => {
 		setIsOpen(true);
 	};
+
+    var likebtnvar = document.getElementById('likebtn');
+    function Toggle(){
+        if(likebtnvar.style.color =="red"){
+            likebtnvar.style.color = "grey"
+        }else{
+            likebtnvar.style.color = "red"
+        }
+    }
 
 	const [record, setRecord] = useState([]);
 	const loadLyrics = async () => {
@@ -430,12 +439,14 @@ function Post() {
 										<button className="seeBtn" onClick={openModal}>
 											See full lyrics
 										</button>
-										<button className="seeBtn">
-											<FaRegThumbsUp /> Like
+										<button className="likebtn" onClick={Toggle}>
+											<FaHeart /> 
 										</button>
-										<button className="seeBtn">
+
+										{/* <button className="seeBtn">
 											<FaCommentAlt /> Comment
-										</button>
+										</button> */}
+
 									</div>
 								</div>
 								<div className="tile descriptionSection is-parent lyricSection ">
