@@ -16,7 +16,7 @@ useEffect(() => {
   loaduserCounts();
   loadcoverCounts();
   loadlyricCounts();
-}, []);
+});
 
   const loaduserCounts = async () => {
     var response = fetch('http://localhost:5000/api/v1/admin/getuserStats')
