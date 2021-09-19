@@ -15,6 +15,20 @@
   color: white;
 }
 
+.likebtn{
+  /* float:left; */
+  background-color: transparent !important;
+  border:transparent;
+  font-size: 30px;
+  outline: transparent;
+  color: grey;
+  margin-left: 500px;
+}
+
+.likebtn:hover{
+  cursor: pointer;
+}
+
 /* .coversthumbnails {
   align-self: center;
 } */
