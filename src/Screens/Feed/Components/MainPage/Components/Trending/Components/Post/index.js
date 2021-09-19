@@ -41,6 +41,8 @@ function Post() {
 		loadLyrics();
 	}, []);
 
+	console.log(record);
+
 	return (
 		<div className="fullPost">
 			<Modal
@@ -71,18 +73,7 @@ function Post() {
 													<p className="title ">{lyrics.Title} </p>
 
 													<span className="subtitle halfLyricSection">
-														She just wants to be, beautiful She goes, unnoticed
-														she knows, no limits She craves, attention she
-														praises, an image She prays to be, sculpted by the
-														sculptor Oh, she don't see, the light that's shining
-														Deeper than the eyes can find it Maybe we have made
-														her blind So she tries to cover up her pain And cut
-														her woes away 'Cause covergirls don't cry After
-														their face is made But there's a hope that's waiting
-														for you in the dark You should know you're beautiful
-														just the way you are And you don't have to change a
-														thing The world could change its heart No scars to
-														your beautiful We're stars and we're beautiful
+														<pre>{lyrics.Preview}</pre>
 													</span>
 												</article>
 											</div>
@@ -111,22 +102,22 @@ function Post() {
 													width="400"
 													height="240"
 												></iframe>
-                                                <div className="singer-name">
-                                                    <h1>Amaya Kinivita</h1>
-                                                    <p>26.10.2021</p>
-                                                </div>
+												<div className="singer-name">
+													<h1>Amaya Kinivita</h1>
+													<p>26.10.2021</p>
+												</div>
 											</div>
-                                            <div className="thumbnail">
+											<div className="thumbnail">
 												<iframe
 													src="https://drive.google.com/file/d/1tvG6-r58dZBLeCzKIHpzypE7o3IbEeEH/preview"
 													allow="autoplay"
 													width="400"
 													height="240"
 												></iframe>
-                                                <div className="singer-name">
-                                                    <h1>Amaya Kinivita</h1>
-                                                    <p>26.10.2021</p>
-                                                </div>
+												<div className="singer-name">
+													<h1>Amaya Kinivita</h1>
+													<p>26.10.2021</p>
+												</div>
 											</div>
 										</div>
 									</div>
@@ -430,15 +421,7 @@ function Post() {
 											<article className="tile is-child is-primary">
 												<p className="title ">{lyrics.Title}</p>
 												<p className="subtitle halfLyricSection">
-													You can be the peanut butter to my jelly You can be
-													the butterflies I feel in my belly You can be the
-													captain And I can be your first mate You can be the
-													chills that I feel on our first date You can be the
-													hero And I can be your sidekick You can be the tear
-													That I cry if we ever split You can be the rain from
-													the cloud when it's stormin' Or u can be the sun when
-													it shines in the mornin' Don't know if I could ever be
-													without you
+													{lyrics.Preview}
 												</p>
 											</article>
 										</div>
