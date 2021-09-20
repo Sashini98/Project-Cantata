@@ -47,7 +47,7 @@ function Post() {
 	}
 
 	const loadLyrics = async () => {
-		//Methana URL eka maru karaganna
+		
 		axios
 			.get("http://localhost:5000/api/v1/content/getlyrics")
 			.then((response) => {
