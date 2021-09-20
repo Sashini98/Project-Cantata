@@ -9,7 +9,7 @@ import EditProfile from "./Components/EditProfile";
 /* import Following from "./Components/Following"; */
 import * as Header from "./Components/Header";
 import Notification from "./Components/Notification";
-import user1 from '../../Assets/Admin/devindi.png';
+import user1 from '../../Assets/Admin/random.jpg';
 import "./index.css";
 import axios from 'axios';
 import AppBar from '@material-ui/core/AppBar';
@@ -98,7 +98,7 @@ function UserProfile() {
             </div>
             <div class="column is-one-third">
               <div class="columns is-gapless is-multiline is-mobile">
-                <div class="column"><b><a class="name">Devindi Wijayasundara</a></b></div>
+                <div class="column"><b><a class="name">Person 1</a></b></div>
               </div>
               <div class="columns is-gapless is-multiline is-mobile" id="content">
                 <div class="column is-one-third">05</div>

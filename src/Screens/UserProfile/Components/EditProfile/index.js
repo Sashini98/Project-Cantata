@@ -19,7 +19,7 @@ import * as Content from "../Content";
 import * as Bio from "../Bio";
 import TopNav from "../TopNav";
 import EditProfile from "../EditProfile";
-import user from '../../../../Assets/Admin/devindi.png';
+import user from '../../../../Assets/Admin/random.jpg';
 import React, { useState } from 'react';
 //import { Modal, Button } from 'antd';
 import Modal from '@material-ui/core/Modal';
@@ -172,7 +172,7 @@ const editprofile = ()=>{
                         variant="outlined"
                         fullWidth
                         id="text"
-                        label="Devindi"
+                        label="Person"
                         onChange={(event)=>(setFname(event.target.value))}
                         autoFocus
                       />
@@ -184,7 +184,7 @@ const editprofile = ()=>{
                         variant="outlined"
                         fullWidth
                         id="text"
-                        label="Wijayasundara"
+                        label="1"
                         onChange={(event)=>(setLname(event.target.value))}
                         autoFocus
                       />
@@ -194,7 +194,7 @@ const editprofile = ()=>{
                         variant="outlined"
                         fullWidth
                         id="text"
-                        label="24 years old"
+                        label="21 years old"
                         onChange={(event)=>(setBio(event.target.value))}
                         name="text"
                       />
@@ -204,7 +204,7 @@ const editprofile = ()=>{
                         variant="outlined"
                         fullWidth
                         id="text"
-                        label="@dev_vindi"
+                        label="@person1"
                         name="text"
                         onChange={(event)=>(setFollowers(event.target.value))}
                         autoComplete="text"
