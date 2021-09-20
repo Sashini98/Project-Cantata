@@ -16,7 +16,6 @@ const seeBtn = {
 //rem
 
 function Post() {
-
 	const [modalIsOpen, setIsOpen] = useState(false);
 	const [record, setRecord] = useState([]);
 	const [selectedRecord, setSelectedRecord] = useState({});
@@ -26,37 +25,38 @@ function Post() {
 	};
 
 	const openModal = (e) => {
-		console.log(e.target.id)
-		record.forEach(rec => {
-			console.log(rec.LyricId + " --" + e.target.id)
+		console.log(e.target.id);
+		record.forEach((rec) => {
+			console.log(rec.LyricId + " --" + e.target.id);
 			if (rec.LyricId.toString() === e.target.id.toString()) {
-				console.log(rec)
-				setSelectedRecord(rec)
+				console.log(rec);
+				setSelectedRecord(rec);
 				setIsOpen(true);
 				return;
 			}
-		})
-
+		});
 	};
 
-	var likebtnvar = document.getElementById('likebtn');
+	var likebtnvar = document.getElementById("likebtn");
 	function Toggle() {
 		if (likebtnvar.style.color == "red") {
-			likebtnvar.style.color = "grey"
+			likebtnvar.style.color = "grey";
 		} else {
-			likebtnvar.style.color = "red"
+			likebtnvar.style.color = "red";
 		}
 	}
 
 	const loadLyrics = async () => {
-
 		//Methana URL eka maru karaganna
-		axios.get("http://localhost:5000/api/v1/content/getlyrics").then(response => {
-			console.log(response)
-			setRecord(response.data);
-		}).catch(err => {
-			console.log(err)
-		})
+		axios
+			.get("http://localhost:5000/api/v1/content/getlyrics")
+			.then((response) => {
+				console.log(response);
+				setRecord(response.data);
+			})
+			.catch((err) => {
+				console.log(err);
+			});
 	};
 
 	useEffect(() => {
@@ -78,7 +78,9 @@ function Post() {
 						<div className="postedBy">
 							<div className="columns writer">
 								<img src={user} />
-								<div className="columns writerName-feed"> {lyrics.UserId}</div>
+								<div className="columns writerName-feed">
+									{lyrics.Fname} {lyrics.Lname}
+								</div>
 							</div>
 						</div>
 
@@ -96,7 +98,11 @@ function Post() {
 										</div>
 									</div>
 									<div className="tile is-parent">
-										<button className="seeBtn" id={lyrics.LyricId} onClick={openModal}>
+										<button
+											className="seeBtn"
+											id={lyrics.LyricId}
+											onClick={openModal}
+										>
 											See full lyrics
 										</button>
 										<button className="likebtn" onClick={Toggle}>
@@ -106,7 +112,6 @@ function Post() {
 										{/* <button className="seeBtn">
 											<FaCommentAlt /> Comment
 										</button> */}
-
 									</div>
 								</div>
 								<div className="tile descriptionSection is-parent lyricSection ">
