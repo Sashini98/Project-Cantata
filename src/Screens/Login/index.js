@@ -12,7 +12,7 @@ function Login() {
 	const history = useHistory();
 
 	const Login = () => {
-		if (email == "admin@cantata.com" && password == "admin") {
+		if (email == "admin@gmail.com" && password == "admin") {
 			history.push("/admin/dashboard");
 		} else {
 			axios

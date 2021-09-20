@@ -23,9 +23,6 @@ const foot = {
 }
 
 function ReportedUsers2() {
-    useEffect(() => {
-        reports();
-    }, []);
 
 
     const location = useLocation()
@@ -36,12 +33,17 @@ function ReportedUsers2() {
     console.log("user id is" + userid)
 
 
-    const reports = () => {
-        axios.get(`http://localhost:5000/api/v1/admin/getrepuser/${userid}`)
+    const getUser = () => {
+        axios.get(`http://localhost:5000/api/v1/user/getbyId/${userid}`)
             .then(response => {
                 setRecord(response.data);
+                console.log(response);
             });
     }
+
+    useEffect(() => {
+        getUser();
+    }, []);
 
     const Ignore = () => {
         axios.get(`http://localhost:5000/api/v1/admin/changestatus/${userid}`)
@@ -62,37 +64,45 @@ function ReportedUsers2() {
         <div>
             <div><Link to="reportedusers1" ><img src={backarrow} /></Link></div>
             <div class="card is-centered mt-6 ml-6">
-                <header class="card-header">
-                    <p class="card-header-title">
-                        <div className="topuser mr-3">
-                            <img src={user} />
-                        </div>  Account Name
-                    </p>
-                    <button class="card-header-icon" aria-label="more options">
-                        <span class="icon">
-                            <i class="fas fa-angle-down" aria-hidden="true"></i>
-                        </span>
-                    </button>
-                </header>
-                <div class="card-content">
-                    <div class="content">
-                        Joined Date :
-                        <br></br><br></br>
-                        First Name :
-                        <br></br><br></br>
-                        Last Name :
-                        <br></br><br></br>
-                        Email :
-                    </div>
 
-                    <ReportDetails />
+                <table>
+                    {record.map((user) =>
+                        <tr>
+                            <header class="card-header">
+                                <p class="card-header-title">
+                                    <div className="topuser mr-3">
+                                        <img src={user} />
+                                    </div>  <tr>{user.Email}</tr>
+                                </p>
+                                <button class="card-header-icon" aria-label="more options">
+                                    <span class="icon">
+                                        <i class="fas fa-angle-down" aria-hidden="true"></i>
+                                    </span>
+                                </button>
+                            </header>
+                            <div class="card-content">
+                                <div class="content">
+                                    
+                                    <td>  Joined Date :</td> <td> {user.CreatedAt}</td>
+                                    <br></br><br></br>
+                                    <td>First Name : </td><td> {user.Fname}</td>
+                                    <br></br><br></br>
+                                    <td>Last Name :</td>  <td> {user.Lname}</td>
+                                    <br></br><br></br>
+                                </div>
 
-                </div>
-                <footer class="card-footer" style={{ marginRight: "25vh" }}>
-                    <div className="refer"><a href="" className="card-footer-item" style={foot} onClick={Ignore} >Ignore</a></div>
-                    <div className="refer"><a href="" className="card-footer-item" style={foot} onClick={DeleteUser}>Delete</a></div>
-                </footer>
+                                <ReportDetails />
+
+                            </div>
+                            <footer class="card-footer" style={{ marginRight: "25vh" }}>
+                                <div className="refer"><a href="" className="card-footer-item" style={foot} onClick={Ignore} >Ignore</a></div>
+                                <div className="refer"><a href="" className="card-footer-item" style={foot} onClick={DeleteUser}>Delete</a></div>
+                            </footer>
+                        </tr>
+                    )}
+                </table>
             </div>
+
         </div>
 
     )

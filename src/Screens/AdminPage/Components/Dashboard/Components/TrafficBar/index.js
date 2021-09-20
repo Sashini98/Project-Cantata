@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 
 
 function TrafficBar() {
-  const AdminId=sessionStorage.getItem("AdminId");
+ 
 
 
   const [recorduser, setRecorduser] = useState([]);

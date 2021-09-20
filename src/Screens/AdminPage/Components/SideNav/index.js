@@ -38,7 +38,7 @@ function SideNav() {
                 <li><a className={subpath === "usermanagement" ? "is-active" : ""}><Link to="usermanagement"><img src={usermgt} style={imgstyle} />User Management</Link></a></li>
                 <li><a className={subpath === "notification" ? "is-active" : ""}><Link to="notification"><img src={notify} style={imgstyle} />Notifications</Link></a></li>
                 <li><a className={subpath === "accountmanagement" ? "is-active" : ""}><Link to="accountmanagement"><img src={edit} style={imgstyle} />Account</Link></a></li>
-                <li><a><Link to="\"><img src={lgout} style={imgstyle} />Logout</Link></a></li>
+                <li><a><Link to="/login"><img src={lgout} style={imgstyle} />Logout</Link></a></li>
             </ul>
 
         </aside>

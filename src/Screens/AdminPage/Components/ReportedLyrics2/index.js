@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useLocation, useParams } from "react-router-dom";
 import ReportDetails from "./Components/ReportDetails";
 import user from "../../../../Assets/Admin/user.png";
@@ -17,6 +17,13 @@ const bx = {
     margin: "auto"
 }
 
+const cx = {
+    backgroundColor: "transparent",
+    height: "20vh",
+    width: "110vh",
+    margin: "auto"
+}
+
 const foot = {
 
     borderStyle: "solid",
@@ -27,11 +34,23 @@ const foot = {
 function ReportedLyrics2(props) {
 
     const location = useLocation()
+    const [record, setRecord] = useState([]);
 
-    const lyricid=location.hasOwnProperty("query")?location.query.ly_id:null
-    
+    const lyricid = location.hasOwnProperty("query") ? location.query.ly_id : null
 
-    const getLyrics=() =>{}
+
+    const getLyrics = () => {
+        axios.get(`http://localhost:5000/api/v1/content/getlyricsbyId/${lyricid}`)
+            .then(response => {
+                setRecord(response.data);
+                console.log(response);
+            });
+    }
+
+    useEffect(() => {
+        getLyrics();
+    }, []);
+
 
     const Ignore = () => {
         axios.get(`http://localhost:5000/api/v1/admin/changelyricstatus/${lyricid}`)
@@ -50,42 +69,52 @@ function ReportedLyrics2(props) {
 
     return (
         <div>
+
             <div><Link to="reportedlyrics1" ><img src={backarrow} /></Link></div>
             <div class="card is-centered mt-6 ml-6">
-                <header class="card-header">
-                    <p class="card-header-title">
-                        <div className="topuser mr-3">
-                            <img src={user} />
-                        </div>  Account Name
-                    </p>
-                    <button class="card-header-icon" aria-label="more options">
-                        <span class="icon">
-                            <i class="fas fa-angle-down" aria-hidden="true"></i>
-                        </span>
-                    </button>
-                </header>
-                <div class="card-content">
-                    <div class="content" style={bx} >
-                        <p class="rep mt-6" style={{ textAlign: "center" }}>
-                            Lyric / Cover
-                        </p>
-                    </div><br></br><br></br>
-                    <div class="content">
-                        Posted Date :{lyricid || "user invaild"}
-                        <br></br><br></br>
-                        Description :
-                        <br></br><br></br>
-                        Tags :
-                    </div>
+                <table>
+                    {record.map((lyric) =>
+                        <tr>
+                            <header class="card-header">
+                                <p class="card-header-title">
+                                    <div className="topuser mr-3">
+                                        <img src={user} />
+                                    </div> <td> {lyric.Email}</td>
+                                </p>
+                                <button class="card-header-icon" aria-label="more options">
+                                    <span class="icon">
+                                        <i class="fas fa-angle-down" aria-hidden="true"></i>
+                                    </span>
+                                </button>
+                            </header>
+                            <div class="card-content">
+                                <div class="content" style={bx} >
+                                    <p class="rep mt-6" style={{ textAlign: "center" }}>
+                                        <td style={cx}> {lyric.Preview}</td>
+                                    </p>
+                                </div><br></br><br></br>
+                                <div class="content">
+                                   <td> Title :</td> <td> {lyric.Title}</td>
+                                    <br></br><br></br>
+                                    <td>Posted Date : </td><td> {lyric.CreatedAt}</td>
+                                    <br></br><br></br>
+                                    <td>Description :</td>  <td> {lyric.Description}</td>
+                                    <br></br><br></br>
+                                    {/* Tags : */}
+                                </div>
 
-                    <ReportDetails />
+                                <ReportDetails />
 
-                </div>
-                <footer class="card-footer" style={{ marginRight: "25vh" }}>
-                <div className="refer"><a href="" className="card-footer-item" style={foot} onClick={Ignore} >Ignore</a></div>
-                    <div className="refer"><a href="" className="card-footer-item" style={foot} onClick={DeletePost}>Delete</a></div>
-             </footer>
+                            </div>
+                            <footer class="card-footer" style={{ marginRight: "25vh" }}>
+                                <div className="refer"><a href="" className="card-footer-item" style={foot} onClick={Ignore} >Ignore</a></div>
+                                <div className="refer"><a href="" className="card-footer-item" style={foot} onClick={DeletePost}>Delete</a></div>
+                            </footer>
+                        </tr>
+                    )}
+                </table>
             </div>
+
         </div>
 
     )
