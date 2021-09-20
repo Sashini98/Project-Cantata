@@ -57,8 +57,7 @@ function ReportedPosts2() {
             });
     }
 
-
-
+    
     return (
         <div>
             <div><Link to="reportedposts1" ><img src={backarrow} /></Link></div>
@@ -78,7 +77,7 @@ function ReportedPosts2() {
                 <div class="card-content">
                     <div class="content" style={bx} >
                         <p class="rep mt-6" style={{ textAlign: "center" }}>
-                            Lyric / Cover
+                        
                         </p>
                     </div><br></br><br></br>
                     <div class="content">
