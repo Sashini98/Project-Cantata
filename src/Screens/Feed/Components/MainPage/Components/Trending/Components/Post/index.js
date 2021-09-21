@@ -3,6 +3,7 @@ import user from "../../../../../../../../Assets/Admin/user.png";
 import close from "../../../../../../../../Assets/Admin/close.png";
 import "./trendingPostindex.css";
 import { FaHeart } from "react-icons/fa";
+import { FaEllipsisV } from "react-icons/fa";
 import { FaLessThan } from "react-icons/fa";
 import axios from "axios";
 import LyricsModal from "../LyricsModal";
@@ -95,7 +96,7 @@ function Post() {
 
 						<div className="box postContent">
 							<div className="tile is-ancestor">
-								<div className="tile  is-vertical is-8">
+								<div className="tile  is-vertical is-6">
 									<div className="tile ">
 										<div className="tile lyricBox is-parent is-vertical">
 											<article className="tile is-child is-primary">
@@ -106,28 +107,37 @@ function Post() {
 											</article>
 										</div>
 									</div>
-									<div className="tile is-parent">
-										<button
-											className="seeBtn"
-											id={lyrics.LyricId}
-											onClick={openModal}
-										>
-											See full lyrics
-										</button>
-										<button
-											className="likebtn"
-											id={lyrics.LyricId}
-											onClick={likeFunction}
-										>
-											x
-										</button>
+									<div className="tile is-parent column ">
+										<div className="columns">
+											<div className="column">
+												<button
+													className="seeBtn"
+													id={lyrics.LyricId}
+													onClick={openModal}
+												>
+													See lyrics
+												</button>
+											</div>
 
-										{/* <button className="seeBtn">
-											<FaCommentAlt /> Comment
-										</button> */}
+											<div className="column">
+												<button
+													className="likebtn column"
+													id={lyrics.LyricId}
+													onClick={likeFunction}
+												>
+													x
+												</button>
+											</div>
+											<div className="column likesCount">100 Likes</div>
+											<div className="column">
+												<button className="column options-Btn">
+													<FaEllipsisV /> Report
+												</button>
+											</div>
+										</div>
 									</div>
 								</div>
-								<div className="tile descriptionSection is-parent lyricSection ">
+								<div className="tile is-parent">
 									<article className="tile is-child is-success">
 										<div className="content">
 											<p className="title">Description</p>

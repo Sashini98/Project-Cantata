@@ -54,3 +54,8 @@
     color: tomato;
     transition-duration: 0.4s;
 }
+
+.report-btn{
+    border:none;
+    margin-left: 160px;
+}
