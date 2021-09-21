@@ -24,6 +24,7 @@ function ReportDetails() {
 
     const coverid = location.hasOwnProperty("query") ? location.query.cover_id : null
     // console.log("user id is" + userid)
+    console.log("cov"+coverid);
 
 
     const reports = () => {
@@ -40,6 +41,7 @@ function ReportDetails() {
         <div>
              <table>
                 {record.map((reports) =>
+                <tr>
             <div class="card is-centered mt-6">
               
                 <div class="card-content" style={bx}>
@@ -51,6 +53,7 @@ function ReportDetails() {
                 </div>
                 
             </div>
+            </tr>
               )}
               </table>
         </div>
