@@ -37,17 +37,26 @@ function Post() {
 		});
 	};
 
-	var likebtnvar = document.getElementById("likebtn");
-	function Toggle() {
-		if (likebtnvar.style.color == "red") {
-			likebtnvar.style.color = "grey";
-		} else {
-			likebtnvar.style.color = "red";
-		}
-	}
+	const likeFunction = (e) => {
+		axios
+			.post(`http://localhost:5000/api/v1/content/like`, {
+				liked_post_id: e.target.id,
+			})
+			.then(() => {
+				console.log(e.target.id);
+			});
+	};
+
+	// var likebtnvar = document.getElementById("likebtn");
+	// function Toggle() {
+	// 	if (likebtnvar.style.color == "red") {
+	// 		likebtnvar.style.color = "grey";
+	// 	} else {
+	// 		likebtnvar.style.color = "red";
+	// 	}
+	// }
 
 	const loadLyrics = async () => {
-		
 		axios
 			.get("http://localhost:5000/api/v1/content/getlyrics")
 			.then((response) => {
@@ -105,8 +114,12 @@ function Post() {
 										>
 											See full lyrics
 										</button>
-										<button className="likebtn" onClick={Toggle}>
-											<FaHeart />
+										<button
+											className="likebtn"
+											id={lyrics.LyricId}
+											onClick={likeFunction}
+										>
+											x
 										</button>
 
 										{/* <button className="seeBtn">
