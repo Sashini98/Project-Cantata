@@ -68,7 +68,7 @@ function UserProfile() {
   let { subpath } = useParams();
 
   useEffect(() => {
-    axios.get("http://localhost:3001/profileview").then((response) => {
+    axios.get("http://localhost:3001/Profile").then((response) => {
       setUser(response.data)
     })
   }, [])
@@ -113,16 +113,20 @@ function UserProfile() {
               <div class="columns is-gapless is-multiline is-mobile">
                 <div class="column">
                   <table class="GeneratedTable">
-                    <tbody>
+                    <thead>
                       <tr>
                         <th>Bio</th>
                         <td></td>
                       </tr>
-                      <tr>
+                      </thead>
+                      <tbody>
+                        {user.map((user)=>{
+                          <tr>
                         <td>Hello</td>
-                        <td></td>
+                        <td>{user.Bio}</td>
                       </tr>
-                    </tbody>
+                        })}
+                       </tbody>
                   </table>
 
                 </div>

@@ -75,6 +75,52 @@ app.post('/login', (req, res) => {
 	);
 });
 
+app.post('/editProfile',(req,res)=>{
+	const userID = req.body.userID;
+	const Email = req.body.Email;
+	const Fname = req.body.Fname;
+	const Lname = req.body.Lname;
+	const Password = req.body.Password;
+	const Bio = req.body.Bio;
+	const Username = req.body.Username;
+
+	db.query("INSERT INTO User (Fname,Lname,Bio,Username) VALUES (?,?,?,?)",[Fname,Lname,Bio,Username],(err,result)=>{
+		if(err){
+			console.log(err);
+		}else{
+			res.send("User Added");
+		}
+	});
+});
+
+app.get('/Profile',(req,res)=>{
+	db.query("SELECT * FROM User ORDER by userID ASC",(err,result)=>{
+		if(err){
+			console.log(err);
+		}else{
+			res.send(result);
+		}
+	});
+});
+
+app.put('/update-user/:id',(req,res)=>{
+	const ActiveStatus = req.body.ActiveStatus;
+	const userID = req.body.userID;
+
+	console.log(userID);
+
+	const sqlUpdate = "UPDATE user SET ActiveStatus='Active' WHERE userID=?;";
+
+	db.query(sqlUpdate,[ActiveStatus,userID],(err,result)=>{
+		if(err){
+			console.log(err);
+		}else{
+			res.send(result);
+		}
+	})
+});
+
+
 app.listen(3001, () => {
 	console.log("running on port 4000");
 });
