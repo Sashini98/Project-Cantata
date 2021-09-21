@@ -130,10 +130,10 @@ export default function UserProfile() {
             </div>
             <div class="column is-one-third">
               <div class="columns is-gapless is-multiline is-mobile">
-                <div class="column"><b><a class="name">Person 1</a></b></div>
+                <div class="column"><b><a class="name">Dwayne Johnson</a></b></div>
               </div>
-              <div class="columns is-gapless is-multiline is-mobile" id="content">
-                <div class="column is-one-third">05</div>
+              <div class="columns is-gapless is-multiline is-mobile" id="content1">
+                <div class="column is-one-third">09</div>
                 <div class="column is-one-third">89</div>
                 <div class="column is-one-third">66</div>
               </div>

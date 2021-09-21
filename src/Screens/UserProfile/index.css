@@ -2,8 +2,16 @@
 	font-size: 50px;
 }
 
+.column {
+	font-size: 25px;
+}
+
+#content1 {
+	margin-top: 50pt;
+}
+
 #content {
-	margin-top: 30pt;
+	margin-top: 0pt;
 }
 
 #usern {
