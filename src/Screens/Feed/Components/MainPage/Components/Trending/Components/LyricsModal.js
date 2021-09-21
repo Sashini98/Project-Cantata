@@ -141,6 +141,7 @@ function LyricsModal(props) {
 								<div className="pl-2 pr-2 pb-2 pt-2">
 									<h1 className="title is-5 mb-0">Amaya Kinivita</h1>
 									<p>26.10.2021</p>
+									<button className="report-btn">Report</button>
 								</div>
 							</div>
 							<div class="card mb-2 card-img">
@@ -154,6 +155,7 @@ function LyricsModal(props) {
 								<div className="pl-2 pr-2 pb-2 pt-2">
 									<h1 className="title is-5 mb-0">Amaya Kinivita</h1>
 									<p>26.10.2021</p>
+									<button className="report-btn">Report</button>
 								</div>
 							</div>
 						</div>
