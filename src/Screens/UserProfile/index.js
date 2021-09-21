@@ -12,6 +12,14 @@ import Notification from "./Components/Notification";
 import user1 from '../../Assets/Admin/random.jpg';
 import "./index.css";
 import axios from 'axios';
+import Box from '@mui/material/Box';
+import SpeedDial from '@mui/material/SpeedDial';
+import SpeedDialIcon from '@mui/material/SpeedDialIcon';
+import SpeedDialAction from '@mui/material/SpeedDialAction';
+import FileCopyIcon from '@mui/icons-material/FileCopyOutlined';
+import SaveIcon from '@mui/icons-material/Save';
+import PrintIcon from '@mui/icons-material/Print';
+import ShareIcon from '@mui/icons-material/Share';
 import AppBar from '@material-ui/core/AppBar';
 import Button from '@material-ui/core/Button';
 import CameraIcon from '@material-ui/icons/PhotoCamera';
@@ -59,11 +67,21 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+const actions = [
+  { icon: <FileCopyIcon />, name: 'Copy' },
+  { icon: <SaveIcon />, name: 'Upload' },
+  { icon: <PrintIcon />, name: 'Print' },
+  //{ icon: <ShareIcon />, name: 'Share' },
+];
+
 const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 
 function UserProfile() {
   const [user, setUser] = useState([])
   const classes = useStyles();
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
 
   let { subpath } = useParams();
 
@@ -118,15 +136,15 @@ function UserProfile() {
                         <th>Bio</th>
                         <td></td>
                       </tr>
-                      </thead>
-                      <tbody>
-                        {user.map((user)=>{
-                          <tr>
-                        <td>Hello</td>
-                        <td>{user.Bio}</td>
-                      </tr>
-                        })}
-                       </tbody>
+                    </thead>
+                    <tbody>
+                      {user.map((user) => {
+                        <tr>
+                          <td>Hello</td>
+                          <td>{user.Bio}</td>
+                        </tr>
+                      })}
+                    </tbody>
                   </table>
 
                 </div>
@@ -136,10 +154,32 @@ function UserProfile() {
             <div class="column is-half"><button>Message</button></div> */}
               </div>
             </div>
-            <div class="column is-one-third"></div>
+            <div class="column is-one-third">
+
+              <Box sx={{ height: 320, transform: 'translateZ(0px)', flexGrow: 1 }}>
+                <SpeedDial
+                  ariaLabel="SpeedDial uncontrolled open example"
+                  sx={{ position: 'absolute', bottom: 16, right: 16 }}
+                  icon={<SpeedDialIcon />}
+                  onClose={handleClose}
+                  onOpen={handleOpen}
+                  open={open}
+                >
+                  {actions.map((action) => (
+                    <SpeedDialAction
+                      key={action.name}
+                      icon={action.icon}
+                      tooltipTitle={action.name}
+                      onClick={handleClose}
+                    />
+                  ))}
+                </SpeedDial>
+              </Box>
+            </div>
 
 
             <Container className={classes.cardGrid} maxWidth="auto">
+              
               {/* End hero unit */}
               <Grid container spacing={4}>
                 {cards.map((card) => (
@@ -167,9 +207,13 @@ function UserProfile() {
                         </Button>
                       </CardActions>
                     </Card>
+                    
                   </Grid>
+                  
                 ))}
+
               </Grid>
+              
             </Container>
           </div>
 
