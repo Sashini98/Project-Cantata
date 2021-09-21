@@ -141,23 +141,24 @@ function Notification() {
                         email: email
 
                     })
-                        .then((data) => {
-                            console.log(data.data.data);
-                            if (data.data.data != null) {
-                                Swal.fire({
-                                    icon: "success",
-                                    title: "Sent",
-                                    text: "Notification Sent Succesfully!",
-                                });
+                        .then(() => {
+                            // console.log(data.data.data);
+                            // if (data.data.message === 'Notification Created Successfully') {
+                            //     Swal.fire({
+                            //         icon: "success",
+                            //         title: "Sent",
+                            //         text: "Notification Sent Succesfully!",
+                            //     });
 
-                            } else {
-                                Swal.fire({
-                                    icon: "error",
-                                    title: "Oops...",
-                                    text: "Notification Sending Failed!",
-                                });
-                            }
+                            // } else {
+                            //     Swal.fire({
+                            //         icon: "error",
+                            //         title: "Oops...",
+                            //         text: "Notification Sending Failed!",
+                            //     });
+                            // }
                         });
+                        window.location.reload()
 
 
 

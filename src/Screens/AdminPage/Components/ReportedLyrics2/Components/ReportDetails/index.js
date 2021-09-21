@@ -36,6 +36,7 @@ function ReportDetails() {
         <div>
              <table>
                 {record.map((reports) =>
+                <tr>
             <div class="card is-centered mt-6">
               
                 <div class="card-content" style={bx}>
@@ -47,6 +48,7 @@ function ReportDetails() {
                 </div>
                 
             </div>
+            </tr>
                )}
                </table>
         </div>
