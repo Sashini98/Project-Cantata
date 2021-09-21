@@ -124,12 +124,13 @@ const editprofile = ()=>{
           <div class="column" align="center">
             <img id="user" src={user} width="400" height="400" style={{ borderRadius: 1000 / 2, marginTop: "10%", borderColor: 'black', borderWidth: 5 }} />
             <div className={classes.root}>
-              <input
+              <input 
                 accept="image/*"
                 className={classes.input}
                 id="upload-proj-picture"
                 multiple
                 type="file"
+                hidden
               />
               <label htmlFor="upload-proj-picture">
                 <Button variant="contained" color="primary" component="span">
