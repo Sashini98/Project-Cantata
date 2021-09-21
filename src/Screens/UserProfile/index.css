@@ -3,15 +3,21 @@
 }
 
 .column {
-	font-size: 25px;
+	
 }
 
 #content1 {
 	margin-top: 50pt;
+	font-size: 45px;
 }
 
 #content {
-	margin-top: 0pt;
+	margin-top: -10pt;
+	font-size: 25px;
+}
+
+#bio {
+	font-size: 20px;
 }
 
 #usern {
