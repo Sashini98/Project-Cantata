@@ -28,16 +28,15 @@
 }
 .songName{
   color: white;
-  margin-left: -120px;
-  margin-top: -20px;
+ 
   font-size: 16px;
   font-family: "Courier New", "Courier New", monospace;
 }
 .writerName-recent{
   color: rgb(147, 148, 148);
   font-size: 13px;
-  margin-left: -350px;
-  margin-top: 10px;
+  margin-top: 30px;
+  margin-left: 50px;
   font-family: "Courier New", "Courier New", monospace;
 }
 .playBtn{

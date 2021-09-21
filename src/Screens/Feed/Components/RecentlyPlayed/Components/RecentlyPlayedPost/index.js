@@ -23,10 +23,6 @@ function RecentlyPlayedPost() {
     };
 
     return (
-
-
-
-
         <div className="recent-box" >
             <Modal
                 isOpen={modalIsOpen}
@@ -49,41 +45,20 @@ function RecentlyPlayedPost() {
                 </article>
             </Modal>
 
-
-            <table>
-
-
-
-            </table>
-
-
-
-
-
-
-
             <div className="tile is-ancestor">
                 <div className="tile  is-vertical is-8">
-
                     <div className="tile is-parent">
-
                         <div className="columns writer">
                             <div className="column">
                                 <div className="artist-pp"> </div>
-
                             </div>
-                            <div className="column">
-                                <div className="songName"> How would you feel </div>
-
+                            <div className="songName">
+                                <p>How would you feel</p>
                             </div>
-                            <div className="column">
-
-                                <div className="writerName-recent">Ed Sheeran</div>
+                            <div className="writerName-recent">
+                                <p>Ed Sheeran</p>
                             </div>
-
-
                         </div>
-
                     </div>
                 </div>
                 <div className="tile is-parent">
@@ -96,13 +71,7 @@ function RecentlyPlayedPost() {
                     </article>
                 </div>
             </div>
-
-
-
         </div>
-
-
-
     )
 
 }

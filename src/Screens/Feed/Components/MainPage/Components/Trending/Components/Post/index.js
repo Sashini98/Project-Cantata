@@ -92,12 +92,15 @@ function Post() {
 											<article className="tile is-child is-primary">
 												<p className="title ">{lyrics.Title}</p>
 												<p className="subtitle halfLyricSection">
+													{/* Preview doesn't work Bhagi */}
 													{lyrics.Preview}
 												</p>
+												
 											</article>
 										</div>
 									</div>
-									<div className="tile is-parent">
+									<div className="tile is-parent column ">
+										<div className="columns">
 										<button
 											className="seeBtn"
 											id={lyrics.LyricId}
@@ -105,9 +108,13 @@ function Post() {
 										>
 											See full lyrics
 										</button>
+										</div>
+										<div>
 										<button className="likebtn" onClick={Toggle}>
 											<FaHeart />
 										</button>
+										</div>
+										
 
 										{/* <button className="seeBtn">
 											<FaCommentAlt /> Comment
