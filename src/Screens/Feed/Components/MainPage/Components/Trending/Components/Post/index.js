@@ -20,7 +20,7 @@ function Post() {
 	const [modalIsOpen, setIsOpen] = useState(false);
 	const [record, setRecord] = useState([]);
 	const [selectedRecord, setSelectedRecord] = useState({});
-
+	const user = sessionStorage.getItem("UserID");
 	const closeModal = () => {
 		setIsOpen(false);
 	};
@@ -42,9 +42,11 @@ function Post() {
 		axios
 			.post(`http://localhost:5000/api/v1/content/like`, {
 				liked_post_id: e.target.id,
+				number_of_likes: record[e.target.id - 1].likes + 1,
+				// user_id: user,
 			})
 			.then(() => {
-				console.log(e.target.id);
+				loadLyrics();
 			});
 	};
 
@@ -128,7 +130,9 @@ function Post() {
 													x
 												</button>
 											</div>
-											<div className="column likesCount">100 Likes</div>
+											<div className="column likesCount">
+												{lyrics.likes} Likes
+											</div>
 											<div className="column">
 												<button className="column options-Btn">
 													<FaEllipsisV /> Report
