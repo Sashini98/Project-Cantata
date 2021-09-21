@@ -3,6 +3,7 @@ import user from "../../../../../../../../Assets/Admin/user.png";
 import close from "../../../../../../../../Assets/Admin/close.png";
 import "./trendingPostindex.css";
 import { FaHeart } from "react-icons/fa";
+import { FaEllipsisV } from "react-icons/fa";
 import { FaLessThan } from "react-icons/fa";
 import axios from "axios";
 import LyricsModal from "../LyricsModal";
@@ -65,6 +66,8 @@ function Post() {
 
 	console.log(record);
 
+
+
 	return (
 		<div className="fullPost">
 			<LyricsModal
@@ -86,13 +89,13 @@ function Post() {
 
 						<div className="box postContent">
 							<div className="tile is-ancestor">
-								<div className="tile  is-vertical is-8">
+								<div className="tile  is-vertical is-6">
 									<div className="tile ">
 										<div className="tile lyricBox is-parent is-vertical">
 											<article className="tile is-child is-primary">
 												<p className="title ">{lyrics.Title}</p>
 												<p className="subtitle halfLyricSection">
-													{/* Preview doesn't work Bhagi */}
+													
 													{lyrics.Preview}
 												</p>
 												
@@ -101,27 +104,36 @@ function Post() {
 									</div>
 									<div className="tile is-parent column ">
 										<div className="columns">
-										<button
-											className="seeBtn"
+											<div className="column"><button className="seeBtn"
 											id={lyrics.LyricId}
 											onClick={openModal}
 										>
-											See full lyrics
-										</button>
-										</div>
-										<div>
-										<button className="likebtn" onClick={Toggle}>
+											See lyrics
+										</button></div>
+										
+										<div className="column">
+										<button className="likebtn column" onClick={Toggle}>
 											<FaHeart />
 										</button>
+										
+										</div>
+										<div className="column likesCount">100 Likes</div>
+										<div className="column">
+										<button className="column options-Btn">
+											<FaEllipsisV/> Report
+										</button>
+
+										
 										</div>
 										
+										</div>
 
-										{/* <button className="seeBtn">
-											<FaCommentAlt /> Comment
-										</button> */}
+										
+
+									
 									</div>
 								</div>
-								<div className="tile descriptionSection is-parent lyricSection ">
+								<div className="tile is-parent">
 									<article className="tile is-child is-success">
 										<div className="content">
 											<p className="title">Description</p>

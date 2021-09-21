@@ -114,8 +114,10 @@ function LyricsModal(props) {
 								</div>
 								<div class="column like-comment ">
 									<div className="pt-1 pb-1 has-text-centered">
-										<FaEllipsisV className="mr-2" />
-										Options
+										
+										<button className="column options-Btn mr-2">
+											<FaEllipsisV/> Report
+										</button>
 									</div>
 								</div>
 							</div>
