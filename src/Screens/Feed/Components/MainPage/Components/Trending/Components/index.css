@@ -1,5 +1,8 @@
 .hero-b-o{
     height: 7rem;
+    background-color: rgb(199, 200, 218) !important;
+    border-radius: 20px;
+    margin-bottom: 20px;
 }
 .hero-img{
     height: 3rem;
@@ -18,5 +21,36 @@
     width: 100% !important;
 }
 .like-comment{
-    border: 1px solid lightgrey;
+    border: 1px solid rgb(255, 255, 255);
+}
+.top-bar{
+    padding-left: 40px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 80px 80px 10px 10px;
+}
+.add-cover{
+    background-color: rgb(226, 226, 226) !important;
+    text-align:center;
+    /* padding-top: 80px !important; */
+}
+.postCoverBtn{
+    border:none;
+    background-color: transparent;
+    width: 15rem;
+    height: 15rem; 
+}
+.likeBtn-inModal{
+    /* height: 2rem;
+    width: 10rem; */
+    border:none !important;
+    border-radius: 40PX;
+    text-align: center;
+    background-color: transparent;
+    font-size: 20px;
+    
+}
+.likeBtn-inModal:hover{
+    background-color: transparent;
+    color: tomato;
+    transition-duration: 0.4s;
 }

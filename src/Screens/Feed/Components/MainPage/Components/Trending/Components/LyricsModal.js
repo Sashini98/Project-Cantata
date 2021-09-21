@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import user from "../../../../../../../Assets/Admin/user.png";
 import Modal from "react-modal";
-import { FaRegThumbsUp } from "react-icons/fa";
+import { FaHeart } from "react-icons/fa";
 import { FaCommentAlt } from "react-icons/fa";
 import { FaEllipsisV } from "react-icons/fa";
+import { FaPlus } from "react-icons/fa";
 import CommentsBlock from "simple-react-comments";
 import axios from "axios";
 
@@ -39,9 +40,9 @@ function LyricsModal(props) {
 			onRequestClose={props.onRequestClose}
 			contentLabel="Full Lyrics"
 		>
-			<section className="hero is-warning mb-3">
-				<div className="hero-body pb-4 pt-4 hero-b-o">
-					<div className="columns">
+			<section >
+				<div className="hero-body pb-4 pt-4 hero-b-o ">
+					<div className="columns top-bar">
 						<div className="column is-8 is-align-self-center has-text-left">
 							<p className="title is-3 mb-0">
 								{props.selectedRecord.Title || "Song Title"}
@@ -57,6 +58,7 @@ function LyricsModal(props) {
 								Author: {props.selectedRecord.Fname + " " || "User"}
 								{props.selectedRecord.Lname || "Not Found"}
 							</p>
+							
 						</div>
 					</div>
 				</div>
@@ -69,53 +71,17 @@ function LyricsModal(props) {
 						<p>
 							<pre>{props.selectedRecord.Lyrics}</pre>
 						</p>
+						
 					</div>
-					<div className="video-grid mt-5">
-						<div class="card mb-2 card-img">
-							<div class="card-image">
-								<iframe
-									className="vid-if"
-									src="https://drive.google.com/file/d/1tvG6-r58dZBLeCzKIHpzypE7o3IbEeEH/preview"
-									allow="autoplay"
-								></iframe>
-							</div>
-							<div className="pl-2 pr-2 pb-2 pt-2">
-								<h1 className="title is-5 mb-0">Amaya Kinivita</h1>
-								<p>26.10.2021</p>
-							</div>
-						</div>
-						<div class="card mb-2 card-img">
-							<div class="card-image">
-								<iframe
-									className="vid-if"
-									src="https://drive.google.com/file/d/1tvG6-r58dZBLeCzKIHpzypE7o3IbEeEH/preview"
-									allow="autoplay"
-								></iframe>
-							</div>
-							<div className="pl-2 pr-2 pb-2 pt-2">
-								<h1 className="title is-5 mb-0">Amaya Kinivita</h1>
-								<p>26.10.2021</p>
-							</div>
-						</div>
-						<div class="card mb-2 card-img">
-							<div class="card-image">
-								<iframe
-									className="vid-if"
-									src="https://drive.google.com/file/d/1tvG6-r58dZBLeCzKIHpzypE7o3IbEeEH/preview"
-									allow="autoplay"
-								></iframe>
-							</div>
-							<div className="pl-2 pr-2 pb-2 pt-2">
-								<h1 className="title is-5 mb-0">Amaya Kinivita</h1>
-								<p>26.10.2021</p>
-							</div>
-						</div>
-					</div>
+
 					<div className="likeComment">
 						<div class="columns">
 							<div class="column like-comment">
 								<div className="pt-1 pb-1 has-text-centered">
-									<FaRegThumbsUp className="mr-2" />
+									
+									<button className="likeBtn-inModal"> 
+									<FaHeart className="mr-2" />
+									</button>
 									100 Likes
 								</div>
 							</div>
@@ -133,6 +99,41 @@ function LyricsModal(props) {
 							</div>
 						</div>
 					</div>
+					
+					<div className="video-grid mt-5">
+						<div class="card mb-2 card-img add-cover">
+							
+							<button className="postCoverBtn"><h1>Post Cover</h1>
+								<FaPlus className="mr-2" /></button>
+						</div>
+						<div class="card mb-2 card-img">
+							<div class="card-image">
+								<iframe
+									className="vid-if"
+									src="https://drive.google.com/file/d/1tvG6-r58dZBLeCzKIHpzypE7o3IbEeEH/preview"
+									allow="autoplay"
+								></iframe>
+							</div>
+							<div className="pl-2 pr-2 pb-2 pt-2">
+								<h1 className="title is-5 mb-0">Amaya Kinivita</h1>
+								<p>26.10.2021</p>
+							</div>
+						</div>
+						<div class="card mb-2 card-img">
+							<div class="card-image">
+								<iframe
+									className="vid-if"
+									src="https://drive.google.com/file/d/1tvG6-r58dZBLeCzKIHpzypE7o3IbEeEH/preview"
+									allow="autoplay"
+								></iframe>
+							</div>
+							<div className="pl-2 pr-2 pb-2 pt-2">
+								<h1 className="title is-5 mb-0">Amaya Kinivita</h1>
+								<p>26.10.2021</p>
+							</div>
+						</div>
+					</div>
+				
 				</div>
 
 				<div className="column is-4">
