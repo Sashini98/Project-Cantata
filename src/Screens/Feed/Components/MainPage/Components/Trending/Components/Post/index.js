@@ -46,7 +46,7 @@ function Post() {
 			.post(`http://localhost:5000/api/v1/content/like`, {
 				liked_post_id: e.target.id,
 				number_of_likes: record[e.target.id - 1].likes + 1,
-				// user_id: user,
+				UserId: user_id,
 			})
 			.then(() => {
 				loadLyrics();
