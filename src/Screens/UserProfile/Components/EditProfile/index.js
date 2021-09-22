@@ -3,7 +3,6 @@ import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
-import React, { useState } from "react";
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 import Link from '@material-ui/core/Link'; import { useDispatch, useSelector } from "react-redux";
@@ -32,6 +31,9 @@ import * as Bio from "../Bio";
 import TopNav from "../TopNav";
 import EditProfile from "../EditProfile";
 import user from '../../../../Assets/Admin/random.jpg';
+
+import React, { useState, useEffect } from 'react';
+
 //import { Modal, Button } from 'antd';
 import Modal from '@material-ui/core/Modal';
 import axios from "axios";
@@ -98,14 +100,18 @@ export default function SignUp() {
   // const [isUpdate, setIsUpdate] = useState(false);
   // const dispatch = useDispatch();
   const classes = useStyles();
-  // const [userID, setID] = useState("");
-  // const [fname,setFname] = useState("");
-  // const [lname,setLname] = useState("");
-  // const [bio,setBio] = useState("");
-  // const [followers,setFollowers] = useState("");
-  // const [following, setFollowing] = useState("");
-  // const [status, setStatus] = useState("");
-  // const history = useHistory();
+
+  const [userID, setID] = useState("");
+  const [fname,setFname] = useState("");
+  const [lname,setLname] = useState("");
+  const [bio,setBio] = useState("");
+  const [followers,setFollowers] = useState("");
+  const [following, setFollowing] = useState("");
+  const [status, setStatus] = useState("");
+  const [image,setImage] = useState("");
+  const [showImage, setShowImage] = useState("");
+  const history = useHistory();
+
 
   const initialUserState = {
     userId: user.userID,
@@ -120,6 +126,23 @@ export default function SignUp() {
   const handleSetProfileImage = (image) => {
     setProfileImage(image);
   }
+
+
+  console.log(userID);
+  let formData = new FormData();
+  formData.append('Fname',fname);
+  formData.append('Lname',lname);
+  formData.append('Bio',bio);
+  formData.append('Username',followers);
+  formData.append('following', following);
+  formData.append('profilePic', image);
+  formData.append('userId',sessionStorage.getItem("UserID"))
+    axios.post('http://localhost:3001/editprofile',formData).then(()=>{
+           console.log("success");
+           alert("Profile changed successfully ");
+          history.push("/UserProfile");
+         });
+
 
   const handleCloseDialog = () => {
     setIsDialogOpen(false);
@@ -140,6 +163,7 @@ export default function SignUp() {
       [event.target.name]: event.target.value
     })
   }
+
 
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
@@ -181,7 +205,57 @@ export default function SignUp() {
   }
   let { subpath } = useParams();
 
+  const imageChange = (event) => {
+    let reader = new FileReader();
+    reader.onload = e => {
+      setImage(event.target.files[0]);
+      setShowImage(e.target.result);
+    };
+    reader.readAsDataURL(event.target.files[0]);
+  }
+
+  useEffect(() => {
+    const id = sessionStorage.getItem("UserID") ? sessionStorage.getItem("UserID") : 1;
+    axios.get(`http://localhost:3001/getProfile?id=${id}`).then((result) => {
+      if(result.data.length) {
+        const bufferImage = result.data[0].Image.data;
+        const b64 = new Buffer.from(bufferImage).toString('base64');
+        console.log(`data:image/png;base64,${b64}`);
+        setFname(result.data[0].Fname);
+        setLname(result.data[0].Lname);
+        setBio(result.data[0].Bio);
+        setFollowers(result.data[0].Username);
+        // setShowImage(b64);
+      }
+    })
+  },[])
+
   return (
+
+    <div>
+      <div class="columns">
+        <div class="column is-2">
+          <SideNav />
+        </div>
+        <div class={"column is-4"}>
+          <div class="column" align="center">
+            <img id="user" src={showImage ? showImage : user} width="400" height="400" style={{ borderRadius: 1000 / 2, marginTop: "10%", borderColor: 'black', borderWidth: 5 }} />
+            <div className={classes.root}>
+              <input 
+                accept="image/*"
+                className={classes.input}
+                id="upload-proj-picture"
+                multiple
+                type="file"
+                hidden
+                onChange={e => imageChange(e)}
+              />
+              <label htmlFor="upload-proj-picture">
+                <Button variant="contained" color="primary" component="span">
+                  Upload Profile Image
+                </Button>
+              </label>
+
     <>
       <UpdateProfileImageDialog
         isDialogOpen={isDialogOpen}
@@ -222,6 +296,7 @@ export default function SignUp() {
                   </div>
                 </div>
               </div>
+
             </div>
           </div>
           <div class="column is-6">
@@ -240,6 +315,67 @@ export default function SignUp() {
                 <CssBaseline />
 
 
+
+
+              <div className={classes.paper}>
+                <Avatar className={classes.avatar}>
+                  <LockOutlinedIcon />
+                </Avatar>
+                <Typography component="h1" variant="h5">
+                  Profile
+                </Typography>
+                <form className={classes.form} noValidate>
+                  <Grid container spacing={2}>
+                    <Grid item xs={12} sm={6}> First Name :
+                      <TextField
+                        autoComplete="fname"
+                        name="text"
+                        variant="outlined"
+                        fullWidth
+                        id="text"
+                        label={fname ? "" :"Person"}
+                        onChange={(event)=>(setFname(event.target.value))}
+                        autoFocus
+                        value={fname}
+                      />
+                    </Grid>
+                    <Grid item xs={12} sm={6}> Last Name :
+                      <TextField
+                        autoComplete="lname"
+                        name="text"
+                        variant="outlined"
+                        fullWidth
+                        id="text"
+                        label={lname ? "" : "1"}
+                        onChange={(event)=>(setLname(event.target.value))}
+                        autoFocus
+                        value={lname}
+                      />
+                    </Grid>
+                    <Grid item xs={12}> Bio :
+                      <TextField
+                        variant="outlined"
+                        fullWidth
+                        id="text"
+                        label={bio ? "" :"21 years old"}
+                        onChange={(event)=>(setBio(event.target.value))}
+                        name="text"
+                        value={bio}
+                      />
+                    </Grid>
+                    <Grid item xs={12}> User Name :
+                      <TextField
+                        variant="outlined"
+                        fullWidth
+                        id="text"
+                        label={followers ? "" : "@person1"}
+                        name="text"
+                        onChange={(event)=>(setFollowers(event.target.value))}
+                        autoComplete="text"
+                        value={followers}
+                      />
+                    </Grid>
+                    {/* <Grid item xs={12} sm={6}> Following :
 
                 <div className={classes.paper}>
                   <Avatar className={classes.avatar}>
@@ -298,6 +434,7 @@ export default function SignUp() {
                         </TextField>
                       </Grid>
                       {/* <Grid item xs={12} sm={6}> Following :
+
                       <TextField
                         variant="outlined"
                         fullWidth
