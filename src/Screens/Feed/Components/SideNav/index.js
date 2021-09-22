@@ -14,6 +14,7 @@ import { FaSignOutAlt } from "react-icons/fa";
 import { FaHeart } from "react-icons/fa";
 import "./index.css";
 import MainPage from "../MainPage";
+import { useHistory } from "react-router-dom";
 
 const imgstyle = {
 	paddingRight: "3vh",
@@ -27,6 +28,11 @@ const sideNavLetters = {
 
 function SideNav() {
 	let { subpath } = useParams();
+	const history = useHistory();
+
+	const logout = () => {
+		history.push("/login");
+	};
 
 	return (
 		<aside className="menu drawer-menu">
@@ -83,11 +89,13 @@ function SideNav() {
 				</li>
 				<li>
 					<p>
-						<Link to="Logout">
-							<span className="side-letters" style={sideNavLetters}>
-								<FaSignOutAlt /> Logout
-							</span>
-						</Link>
+						<span
+							className="side-letters logout"
+							style={sideNavLetters}
+							onClick={logout}
+						>
+							<FaSignOutAlt /> Logout
+						</span>
 					</p>
 				</li>
 			</ul>

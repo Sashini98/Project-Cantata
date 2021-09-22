@@ -226,7 +226,7 @@ function LyricsModal(props) {
 								<button
 									className="postCoverBtn"
 									id={props.selectedRecord.LyricId}
-									onClick={() => openModal}
+									onClick={openModal}
 								>
 									<h1>Post Cover</h1>
 									<FaPlus className="mr-2" />
