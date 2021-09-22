@@ -11,6 +11,7 @@ import { FaAlignLeft } from "react-icons/fa";
 import { FaUpload } from "react-icons/fa";
 import { FaUserAlt } from "react-icons/fa";
 import { FaSignOutAlt } from "react-icons/fa";
+import { FaHeart } from "react-icons/fa";
 import "./index.css";
 import MainPage from "../MainPage";
 
@@ -57,7 +58,7 @@ function SideNav() {
 						<Link to="PlayLists">
 							{" "}
 							<span className="side-letters" style={sideNavLetters}>
-								<FaAlignLeft /> Playlists
+								<FaHeart /> Favourites
 							</span>
 						</Link>
 					</p>

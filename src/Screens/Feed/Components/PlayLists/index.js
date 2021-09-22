@@ -22,17 +22,7 @@ function PlayLists() {
                             <PlaylistPost />
                         </div>
                     </tr>
-                    <tr>
-                        <div>
-                            <PlaylistPost />
-                        </div>
-                    </tr>
-                    <tr>
-                        <div>
-                            <PlaylistPost />
-                        </div>
-                    </tr>
-
+                   
                 </table>
             </div>
             

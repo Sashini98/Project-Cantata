@@ -15,16 +15,7 @@ function Following() {
                         <Post />
                     </div>
                 </tr>
-                <tr>
-                    <div>
-                        <Post />
-                    </div>
-                </tr>
-                <tr>
-                    <div>
-                        <Post />
-                    </div>
-                </tr>
+           
 
             </table>
         </div>

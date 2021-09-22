@@ -2,9 +2,12 @@ import React, { useState, useEffect } from "react";
 import user from "../../../../../../../../Assets/Admin/user.png";
 import close from "../../../../../../../../Assets/Admin/close.png";
 import "./trendingPostindex.css";
-import { FaHeart } from "react-icons/fa";
+import { FaThumbsUp } from "react-icons/fa";
 import { FaEllipsisV } from "react-icons/fa";
+import { FaQuoteLeft } from "react-icons/fa";
+import { FaQuoteRight } from "react-icons/fa";
 import { FaLessThan } from "react-icons/fa";
+import { MdReport } from "react-icons/md";
 import axios from "axios";
 import LyricsModal from "../LyricsModal";
 
@@ -20,17 +23,18 @@ function Post() {
 	const [modalIsOpen, setIsOpen] = useState(false);
 	const [record, setRecord] = useState([]);
 	const [selectedRecord, setSelectedRecord] = useState({});
-	const user = sessionStorage.getItem("UserID");
+	const [likedLyric, setLikedLyric] = useState({});
+	const user_id = sessionStorage.getItem("UserID");
 	const closeModal = () => {
 		setIsOpen(false);
 	};
 
 	const openModal = (e) => {
-		console.log(e.target.id);
+		// console.log(e.target.id);
 		record.forEach((rec) => {
-			console.log(rec.LyricId + " --" + e.target.id);
+			// console.log(rec.LyricId + " --" + e.target.id);
 			if (rec.LyricId.toString() === e.target.id.toString()) {
-				console.log(rec);
+				// console.log(rec);
 				setSelectedRecord(rec);
 				setIsOpen(true);
 				return;
@@ -39,25 +43,25 @@ function Post() {
 	};
 
 	const likeFunction = (e) => {
+		record.forEach((rec) => {
+			console.log(rec.LyricId + " --" + e.target.id);
+			if (rec.LyricId.toString() === e.target.id.toString()) {
+				console.log(rec);
+				setLikedLyric(rec);
+				return;
+			}
+		});
+		console.log(likedLyric);
 		axios
 			.post(`http://localhost:5000/api/v1/content/like`, {
-				liked_post_id: e.target.id,
-				number_of_likes: record[e.target.id - 1].likes + 1,
-				// user_id: user,
+				liked_post_id: likedLyric.LyricId,
+				number_of_likes: likedLyric.likes + 1,
+				UserId: user_id,
 			})
 			.then(() => {
 				loadLyrics();
 			});
 	};
-
-	// var likebtnvar = document.getElementById("likebtn");
-	// function Toggle() {
-	// 	if (likebtnvar.style.color == "red") {
-	// 		likebtnvar.style.color = "grey";
-	// 	} else {
-	// 		likebtnvar.style.color = "red";
-	// 	}
-	// }
 
 	const loadLyrics = async () => {
 		axios
@@ -75,7 +79,7 @@ function Post() {
 		loadLyrics();
 	}, []);
 
-	console.log(record);
+	// console.log(record);
 
 	return (
 		<div className="fullPost">
@@ -98,13 +102,17 @@ function Post() {
 
 						<div className="box postContent">
 							<div className="tile is-ancestor">
-								<div className="tile  is-vertical is-6">
+								<div className="tile  is-vertical is-5">
 									<div className="tile ">
 										<div className="tile lyricBox is-parent is-vertical">
 											<article className="tile is-child is-primary">
 												<p className="title ">{lyrics.Title}</p>
-												<p className="subtitle halfLyricSection">
+												<p className="halfLyricSection">
+													<FaQuoteLeft />
+													{"  "}
 													{lyrics.Preview}
+													{"  "}
+													<FaQuoteRight />
 												</p>
 											</article>
 										</div>
@@ -123,19 +131,20 @@ function Post() {
 
 											<div className="column">
 												<button
-													className="likebtn column"
+													className="column likeBtn"
 													id={lyrics.LyricId}
 													onClick={likeFunction}
 												>
-													x
+													{lyrics.likes} Likes {"  "}
+													<FaThumbsUp />
 												</button>
 											</div>
-											<div className="column likesCount">
+											{/* <div className="column likesCount">
 												{lyrics.likes} Likes
-											</div>
+											</div> */}
 											<div className="column">
 												<button className="column options-Btn">
-													<FaEllipsisV /> Report
+													{/* <MdReport /> */}
 												</button>
 											</div>
 										</div>
