@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, useParams } from "react-router-dom";
 import icon from "../../../../Assets/Admin/Icon.png";
-import user from "../../../../Assets/Admin/user.png";
+import user from "../../../../Assets/Admin/repuser.png";
 import usermgt from "../../../../Assets/Admin/usermgt.png";
 import notify from "../../../../Assets/Admin/notify.png";
 import lgout from "../../../../Assets/Admin/logout.png";
@@ -47,5 +47,4 @@ function SideNav() {
 }
 
 export default SideNav;
-
 

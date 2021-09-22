@@ -8,26 +8,99 @@ import { FaPlus } from "react-icons/fa";
 import CommentsBlock from "simple-react-comments";
 import axios from "axios";
 import CoverPost from "../../CoverPost/index";
+import Reports from "../../Reports/index";
 
 import "./index.css";
 
 function LyricsModal(props) {
-	const [comments, setComments] = useState([]);
+	let [comments, setComments] = useState([]);
 	const [modalIsOpen, setIsOpen] = useState(false);
+	const [modal1IsOpen, setIsOpen1] = useState(false);
 	const [selectedLyric, setSelectedLyric] = useState({});
+	const [selectedReport, setSelectedReport] = useState({});
+	const [reportType, setReportType] = useState({});
+
+    const authorname = sessionStorage.getItem("First_Name") + " " +sessionStorage.getItem("Last_Name") ;
+    const author = sessionStorage.getItem("UserID");
+
+
+
+
+	const AddComment = (text) => {
+		console.log(text);
+		setComments([
+				...comments,
+				{
+					authorUrl: "#",
+					avatarUrl:
+						"https://sunrift.com/wp-content/uploads/2014/12/Blake-profile-photo-square.jpg",
+					createdAt: new Date(),
+					fullName: authorname,
+					text,
+				},
+			]);
+       
+            axios.post(`http://localhost:5000/api/v1/content/comment`, {
+                lyric_id: props.selectedRecord.LyricId,
+                comment: text,
+                user: author
+				
+            })
+                .then((data) => {
+                    // alert(data.data.message);
+                    // console.log(data.data.message);
+                    // if (data.data.message === "Report added successfully") {
+                    //     Swal.fire({
+                    //         icon: "success",
+                    //         title: "Sent",
+                    //         text: "Reported Succesfully!",
+                    //     });
+
+                    // } else {
+                    //     Swal.fire({
+                    //         icon: "error",
+                    //         title: "Oops...",
+                    //         text: "Reporting Failed!",
+                    //     });
+                    // }
+                });
+                
+                
+
+    };
+
 
 
 	const getComments = () => {
 		axios
-			.get(
-				"https://gist.githubusercontent.com/AmayaKinivita/adb4786ed6aa2f21974a8be80406430a/raw/e35937df7a3c0cc602f967a480a9fac026fc1aab/comments.json"
-			)
+		.get(`http://localhost:5000/api/v1/content/getcomments/${props.selectedRecord.LyricId}`)
 			.then((response) => {
-				console.log(response.data);
-				response.data.map((resp) => {
-					resp.createdAt = new Date();
-				});
-				setComments(response.data);
+				// console.log(response.data);
+				let i;
+				for(i=0;i<response.data.length;i++){
+					comments[i]={
+						authorUrl:"1",
+						avatarUrl:"2",
+						createdAt:new Date(),
+						fullName:response.data[i].Email,
+					text:response.data[i].Comment
+					}
+					// comments[i].authorUrl : "1",
+					// comments[i].avatarUrl="1";
+					// comments[i].createdAt=new Date();
+					// comments[i].fullName="12";
+					// comments[i].text=response.data[i].text;
+
+				}
+
+				// console.log("lenghddt"+response.data.length);
+				// // console.log(response.data);
+				// response.data.map((resp) => {
+				// 	resp.createdAt = new Date();
+				// 	console.log(response.data);
+				// });
+				// setComments();
+				console.log(comments);
 			})
 			.catch((err) => {
 				console.log(err);
@@ -36,16 +109,28 @@ function LyricsModal(props) {
 
 	useEffect(() => {
 		getComments();
-	}, []);
+	});
 
 	const closeModal = () => {
 		setIsOpen(false);
 	};
 
+	const closeModal1 = () => {
+		setIsOpen1(false);
+	};
 	const openModal = (e) => {
 		// console.log(e.target.id);
 		setSelectedLyric(e.target.id);
 		setIsOpen(true);
+		// console.log("sel" + selectedLyric);
+		
+	};
+
+	const openModal1 = (e) => {
+		// console.log(e.target.id);
+		setSelectedReport(e.target.id);
+		setReportType("lyric");
+		setIsOpen1(true);
 		// console.log("sel" + selectedLyric);
 		
 	};
@@ -58,8 +143,7 @@ function LyricsModal(props) {
 				isOpen={props.isOpen}
 				onRequestClose={props.onRequestClose}
 				contentLabel="Full Lyrics"
-			>
-					
+			>		
 
 				<section >
 					<div className="hero-body pb-4 pt-4 hero-b-o ">
@@ -115,7 +199,7 @@ function LyricsModal(props) {
 								<div class="column like-comment ">
 									<div className="pt-1 pb-1 has-text-centered">
 										
-										<button className="column options-Btn mr-2">
+										<button className="column options-Btn mr-2" id={props.selectedRecord.LyricId} onClick={openModal1}>
 											<FaEllipsisV/> Report
 										</button>
 									</div>
@@ -141,7 +225,7 @@ function LyricsModal(props) {
 								<div className="pl-2 pr-2 pb-2 pt-2">
 									<h1 className="title is-5 mb-0">Amaya Kinivita</h1>
 									<p>26.10.2021</p>
-									<button className="report-btn">Report</button>
+									<button className="report-btn" id={props.selectedRecord.LyricId} onClick={openModal1}>Report</button>
 								</div>
 							</div>
 							<div class="card mb-2 card-img">
@@ -172,19 +256,21 @@ function LyricsModal(props) {
 							isLoggedIn
 							onSubmit={(text) => {
 								if (text.length > 0) {
-									setComments([
-										...comments,
-										{
-											authorUrl: "#",
-											avatarUrl:
-												"https://sunrift.com/wp-content/uploads/2014/12/Blake-profile-photo-square.jpg",
-											createdAt: new Date(),
-											fullName: "Bhagya Goonathilaka",
-											text,
-										},
-									]);
+									// setComments([
+									// 	...comments,
+									// 	{
+									// 		authorUrl: "#",
+									// 		avatarUrl:
+									// 			"https://sunrift.com/wp-content/uploads/2014/12/Blake-profile-photo-square.jpg",
+									// 		createdAt: new Date(),
+									// 		fullName: "Bhagya Goonathilaka",
+									// 		text,
+									// 	},
+									// ]);
+									AddComment(text);
 								}
 							}}
+							// onSubmit={AddComment(text)}
 						/>
 					</div>
 				</div>
@@ -194,6 +280,14 @@ function LyricsModal(props) {
 				selectedLyric={selectedLyric}
 			>
 				</CoverPost>
+
+				<Reports
+				isOpen={modal1IsOpen}
+				onRequestClose={closeModal1}
+				selectedReport={selectedReport}
+				reportType={reportType}
+			>
+				</Reports>
 			</Modal>
 			
 		</div>
