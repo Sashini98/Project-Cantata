@@ -3,11 +3,10 @@
   /* padding: 15px 32px; */
   padding-top: 20px;
   padding-bottom: 20px;
-  height: "57vh" !important;
   width: "330vh";
   border-radius: 20px;
-  padding-left: 30px;
-  background-color:#110f1da1 !important; 
+  
+  background-color:#110f1d86 !important; 
   margin-bottom: 10px;
   
   
@@ -21,7 +20,14 @@
 
 .playlist-box{
   width: 1150px;
-  overflow-x: scroll;
+  
+}
+
+.RemoveButton{
+  border:none;
+  margin-left: 190px;
+  color: grey;
+  
 }
 
 
