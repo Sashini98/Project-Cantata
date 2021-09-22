@@ -13,6 +13,7 @@ import Reports from "../../Reports/index";
 import "./index.css";
 
 function LyricsModal(props) {
+	// var myLyricId = props.selectedRecord.LyricId;
 	let [comments, setComments] = useState([]);
 	const [modalIsOpen, setIsOpen] = useState(false);
 	const [modal1IsOpen, setIsOpen1] = useState(false);
@@ -20,7 +21,6 @@ function LyricsModal(props) {
 	const [selectedReport, setSelectedReport] = useState({});
 	const [reportType, setReportType] = useState({});
 	const [covers, setCovers] = useState([]);
-
 	const authorname =
 		sessionStorage.getItem("First_Name") +
 		" " +
@@ -107,6 +107,10 @@ function LyricsModal(props) {
 		getComments();
 	}, []);
 
+	// useEffect(() => {
+	// 	getComments();
+	// }, []);
+
 	const closeModal = () => {
 		setIsOpen(false);
 	};
@@ -130,8 +134,10 @@ function LyricsModal(props) {
 	};
 
 	const loadCovers = async () => {
+		// console.log(myLyricId);
+		// setSelectedLyric();
 		axios
-			.get("http://localhost:5000/api/v1/content/getcovers")
+			.post("http://localhost:5000/api/v1/content/getcovers")
 			.then((response) => {
 				console.log(response);
 				setCovers(response.data);
@@ -220,7 +226,7 @@ function LyricsModal(props) {
 								<button
 									className="postCoverBtn"
 									id={props.selectedRecord.LyricId}
-									onClick={openModal}
+									onClick={() => openModal}
 								>
 									<h1>Post Cover</h1>
 									<FaPlus className="mr-2" />
