@@ -40,6 +40,10 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Link from '@material-ui/core/Link';
+import { useSnackbar } from "notistack";
+import { useDispatch, useSelector } from "react-redux";
+import { axiosInstance, BACKEND_API } from "../../axios/AxiosInstance";
+import { updateUser } from "../../store/action/authAction";
 
 const useStyles = makeStyles((theme) => ({
   icon: {
@@ -91,7 +95,39 @@ function srcset(image: string, width: number, height: number, rows = 1, cols = 1
 }
 
 export default function UserProfile() {
-  const [user, setUser] = useState([])
+  const { enqueueSnackbar } = useSnackbar();
+  const user = useSelector((state) => state.authReducer);
+  const [isUpdate, setIsUpdate] = useState(false);
+  const dispatch = useDispatch();
+
+  const initialUserState = {
+    userId: user.userID,
+    firstName: user.fname,
+    lastName: user.lname,
+    userImage: user.userImage,
+    userName: user.userName,
+    bio: user.bio,
+  }
+  const [userDetails, setUserDetails] = useState(initialUserState);
+
+
+  const handleEnableUpdate = () => {
+    setIsUpdate(true);
+  }
+
+  const handleDisableUpdate = () => {
+    setUserDetails(initialUserState)
+    setIsUpdate(false);
+  }
+
+  const handleChange = (event) => {
+    setUserDetails({
+      ...userDetails,
+      [event.target.name]: event.target.value
+    })
+  }
+
+
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
@@ -99,11 +135,38 @@ export default function UserProfile() {
 
   let { subpath } = useParams();
 
-  useEffect(() => {
-    axios.get("http://localhost:3001/Profile").then((response) => {
-      setUser(response.data)
-    })
-  }, [])
+  const handleUpdate = async () => {
+    await axiosInstance({
+      method: 'POST',
+      url: BACKEND_API.UPDATE_USER,
+      data: userDetails
+    }).then(res => {
+      if (res.status === 200) {
+        enqueueSnackbar("Updated User Details", {
+          variant: 'success'
+        });
+
+        dispatch(updateUser({
+          userID: userDetails.userId,
+          fname: userDetails.firstName,
+          lname: userDetails.lastName,
+          userImage: userDetails.userImage,
+          bio: userDetails.bio,
+        }))
+        setIsUpdate(false);
+      }
+    }).catch((error) => {
+      if (error.response) {
+        enqueueSnackbar(error.response.data.message, {
+          variant: 'error'
+        });
+      } else {
+        enqueueSnackbar("Something went wrong", {
+          variant: 'error'
+        });
+      }
+    });
+  }
 
   return (
     <div>
@@ -130,7 +193,13 @@ export default function UserProfile() {
             </div>
             <div class="column is-one-third">
               <div class="columns is-gapless is-multiline is-mobile">
-                <div class="column"><b><a class="name">Dwayne Johnson</a></b></div>
+                <div class="column"><b><a class="name">
+                  <input
+                    value={userDetails.firstName + " " + userDetails.lastName}
+                    disabled={!isUpdate}
+                    type="text" name={"name"}
+                  />
+                </a></b></div>
               </div>
               <div class="columns is-gapless is-multiline is-mobile" id="content1">
                 <div class="column is-one-third">89</div>
@@ -145,17 +214,22 @@ export default function UserProfile() {
                   <table class="GeneratedTable">
                     <thead>
                       <tr>
-                        <th class="bio">Bio</th>
+                        <th class="bio">
+                          Bio
+                        </th>
                         <td></td>
                       </tr>
                     </thead>
                     <tbody>
-                      {user.map((user) => {
                         <tr>
-                          <td>Hello</td>
-                          <td>{user.Bio}</td>
+                          <td>
+                            <input
+                            value={userDetails.bio}
+                            disabled={!isUpdate}
+                            type="text" name={"bio"}
+                          />
+                          </td>
                         </tr>
-                      })}
                     </tbody>
                   </table>
 
@@ -174,72 +248,6 @@ export default function UserProfile() {
                 </Button>
               </Stack>
             </div>
-
-            {/* <div class="column is-one-third">
-              <ImageList
-                sx={{
-                  width: 500,
-                  height: 450,
-                  // Promote the list into its own layer in Chrome. This costs memory, but helps keeping high FPS.
-                  transform: 'translateZ(0)',
-                }}
-                rowHeight={200}
-                gap={1}
-              >
-                {itemData.map((item) => {
-                  const cols = item.featured ? 2 : 1;
-                  const rows = item.featured ? 2 : 1;
-
-                  return (
-                    <ImageListItem key={item.img} cols={cols} rows={rows}>
-                      <img
-                        {...srcset(item.img, 250, 200, rows, cols)}
-                        alt={item.title}
-                        loading="lazy"
-                      />
-                      <ImageListItemBar
-                        sx={{
-                          background:
-                            'linear-gradient(to bottom, rgba(0,0,0,0.7) 0%, ' +
-                            'rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 100%)',
-                        }}
-                        title={item.title}
-                        position="top"
-                        actionIcon={
-                          <IconButton
-                            sx={{ color: 'white' }}
-                            aria-label={`star ${item.title}`}
-                          >
-                            <StarBorderIcon />
-                          </IconButton>
-                        }
-                        actionPosition="left"
-                      />
-                    </ImageListItem>
-                  );
-                })}
-              </ImageList>
-              <Box hidden sx={{ height: 320, transform: 'translateZ(0px)', flexGrow: 1 }}>
-                <SpeedDial
-                  ariaLabel="SpeedDial uncontrolled open example"
-                  sx={{ position: 'absolute', bottom: 16, right: 16 }}
-                  icon={<SpeedDialIcon />}
-                  onClose={handleClose}
-                  onOpen={handleOpen}
-                  open={open}
-                >
-                  {actions.map((action) => (
-                    <SpeedDialAction
-                      key={action.name}
-                      icon={action.icon}
-                      tooltipTitle={action.name}
-                      onClick={handleClose}
-                    />
-                  ))}
-                </SpeedDial>
-              </Box>
-            </div> */}
-
 
             <Container className={classes.cardGrid} maxWidth="auto">
 
