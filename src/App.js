@@ -9,6 +9,8 @@ import "./App.css";
 import Registration from "./Screens/Registration/index";
 import Profile from "./Screens/UserProfile/index";
 import ContentPost from "./Screens/ContentPost";
+import EditProfile from "./Screens/UserProfile/Components/EditProfile";
+import Notification from "./Screens/UserProfile/Components/Notification"
 import ReportedLyrics2 from "./Screens/AdminPage/Components/ReportedLyrics2";
 import PostLyrics from "./Screens/Feed/Components/PostLyrics";
 
