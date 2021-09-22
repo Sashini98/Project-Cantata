@@ -15,8 +15,62 @@ import "./index.css";
 function LyricsModal(props) {
 	const [comments, setComments] = useState([]);
 	const [modalIsOpen, setIsOpen] = useState(false);
+	const [modal1IsOpen, setIsOpen1] = useState(false);
 	const [selectedLyric, setSelectedLyric] = useState({});
 	const [selectedReport, setSelectedReport] = useState({});
+	const [reportType, setReportType] = useState({});
+
+    const authorname = sessionStorage.getItem("First_Name") + " " +sessionStorage.getItem("Last_Name") ;
+    const author = sessionStorage.getItem("UserID");
+
+
+
+
+	const AddComment = (text) => {
+		console.log(text);
+		setComments([
+				...comments,
+				{
+					authorUrl: "#",
+					avatarUrl:
+						"https://sunrift.com/wp-content/uploads/2014/12/Blake-profile-photo-square.jpg",
+					createdAt: new Date(),
+					fullName: authorname,
+					text,
+				},
+			]);
+       
+            axios.post(`http://localhost:5000/api/v1/content/comment`, {
+                lyric_id: props.selectedRecord.LyricId,
+                comment: text,
+                user: author
+				
+            })
+                .then((data) => {
+                    // alert(data.data.message);
+                    // console.log(data.data.message);
+                    // if (data.data.message === "Report added successfully") {
+                    //     Swal.fire({
+                    //         icon: "success",
+                    //         title: "Sent",
+                    //         text: "Reported Succesfully!",
+                    //     });
+
+                    // } else {
+                    //     Swal.fire({
+                    //         icon: "error",
+                    //         title: "Oops...",
+                    //         text: "Reporting Failed!",
+                    //     });
+                    // }
+                });
+                
+                
+
+    };
+
+
+
 
 
 	const getComments = () => {
@@ -44,6 +98,9 @@ function LyricsModal(props) {
 		setIsOpen(false);
 	};
 
+	const closeModal1 = () => {
+		setIsOpen1(false);
+	};
 	const openModal = (e) => {
 		// console.log(e.target.id);
 		setSelectedLyric(e.target.id);
@@ -55,7 +112,8 @@ function LyricsModal(props) {
 	const openModal1 = (e) => {
 		// console.log(e.target.id);
 		setSelectedReport(e.target.id);
-		setIsOpen(true);
+		setReportType("lyric");
+		setIsOpen1(true);
 		// console.log("sel" + selectedLyric);
 		
 	};
@@ -124,7 +182,7 @@ function LyricsModal(props) {
 								<div class="column like-comment ">
 									<div className="pt-1 pb-1 has-text-centered">
 										
-										<button className="column options-Btn mr-2">
+										<button className="column options-Btn mr-2" id={props.selectedRecord.LyricId} onClick={openModal1}>
 											<FaEllipsisV/> Report
 										</button>
 									</div>
@@ -181,19 +239,21 @@ function LyricsModal(props) {
 							isLoggedIn
 							onSubmit={(text) => {
 								if (text.length > 0) {
-									setComments([
-										...comments,
-										{
-											authorUrl: "#",
-											avatarUrl:
-												"https://sunrift.com/wp-content/uploads/2014/12/Blake-profile-photo-square.jpg",
-											createdAt: new Date(),
-											fullName: "Bhagya Goonathilaka",
-											text,
-										},
-									]);
+									// setComments([
+									// 	...comments,
+									// 	{
+									// 		authorUrl: "#",
+									// 		avatarUrl:
+									// 			"https://sunrift.com/wp-content/uploads/2014/12/Blake-profile-photo-square.jpg",
+									// 		createdAt: new Date(),
+									// 		fullName: "Bhagya Goonathilaka",
+									// 		text,
+									// 	},
+									// ]);
+									AddComment(text);
 								}
 							}}
+							// onSubmit={AddComment(text)}
 						/>
 					</div>
 				</div>
@@ -204,12 +264,13 @@ function LyricsModal(props) {
 			>
 				</CoverPost>
 
-				{/* <Reports
-				isOpen={modalIsOpen}
-				onRequestClose={closeModal}
+				<Reports
+				isOpen={modal1IsOpen}
+				onRequestClose={closeModal1}
 				selectedReport={selectedReport}
+				reportType={reportType}
 			>
-				</Reports> */}
+				</Reports>
 			</Modal>
 			
 		</div>

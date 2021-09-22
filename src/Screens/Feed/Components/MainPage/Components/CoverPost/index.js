@@ -24,7 +24,7 @@ function CoverPost(props) {
     const [song_url, setUrl] = useState("");
     const [cover_description, setDescription] = useState("");
     const [keyword, setKeyword] = useState("");
-    console.log(lyric);
+    console.log("lyric valus"+lyric);
 
 
 

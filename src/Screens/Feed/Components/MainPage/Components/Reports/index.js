@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 // import user from "../../../../../../../Assets/Admin/user.png";
-import Modal from "react-modal";
+import Modal1 from "react-modal";
 import { FaHeart } from "react-icons/fa";
 import { FaCommentAlt } from "react-icons/fa";
 import { FaEllipsisV } from "react-icons/fa";
@@ -18,39 +18,44 @@ import "./index.css";
 function Reports(props) {
     const [modalIsOpen, setIsOpen] = useState(false);
 
+    const type = props.reportType;
     const author = sessionStorage.getItem("UserID");
-    const lyric = props.selectedLyric;
+    const lyric = props.selectedReport;
     const [reason, setReason] = useState("");
 
 
     const PostReport = () => {
-        // axios.post(`http://localhost:5000/api/v1/content/inputcover`, {
-        //     cover_title: cover_title,
-        //     cover_description: cover_description,
-        //     song_url: url,
-        //     author: author,
-        //     lyric: lyric
-        // })
-        //     .then((data) => {
-        //         if (data.data.data != null) {
-        //             Swal.fire({
-        //                 icon: "success",
-        //                 title: "Sent",
-        //                 text: "Reported Succesfully!",
-        //             });
+        if (type === "lyric") {
+            axios.post(`http://localhost:5000/api/v1/admin/inputreplyric`, {
+                lyric_id: lyric,
+                reason: reason,
+                user: author
+            })
+                .then((data) => {
+                    alert(data.data.message);
+                    console.log(data.data.message);
+                    if (data.data.message === "Report added successfully") {
+                        Swal.fire({
+                            icon: "success",
+                            title: "Sent",
+                            text: "Reported Succesfully!",
+                        });
 
-        //         } else {
-        //             Swal.fire({
-        //                 icon: "error",
-        //                 title: "Oops...",
-        //                 text: "Reporting Failed!",
-        //             });
-        //         }
-        //     });
+                    } else {
+                        Swal.fire({
+                            icon: "error",
+                            title: "Oops...",
+                            text: "Reporting Failed!",
+                        });
+                    }
+                });
+                
+                }
+
     };
 
     return (
-        <Modal
+        <Modal1
             isOpen={props.isOpen}
             onRequestClose={props.onRequestClose}
 
@@ -74,21 +79,21 @@ function Reports(props) {
                     //  onSubmit={(e) => e.preventDefault()}
                     >
                         <br></br>
-                      
+
                         <textarea
                             type="textarea"
                             className="lyrics-textarea"
                             placeholder="Description about your cover"
                             name="cover_description"
-                            // onChange={(e) => setDescription(e.target.value)}
+                            onChange={(e) => setReason(e.target.value)}
                         ></textarea>
                         <br></br>
 
-                      <button
+                        <button
                             type="submit"
                             name="submitLyrics"
                             className="lyrics-form-button"
-                            // onClick={PostCover}
+                            onClick={PostReport}
                         >
                             Report
                         </button>
@@ -101,7 +106,7 @@ function Reports(props) {
 
 
             </div>
-        </Modal>
+        </Modal1>
     );
 }
 
