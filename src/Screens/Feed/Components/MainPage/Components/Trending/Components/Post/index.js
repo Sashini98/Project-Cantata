@@ -20,7 +20,7 @@ function Post() {
 	const [modalIsOpen, setIsOpen] = useState(false);
 	const [record, setRecord] = useState([]);
 	const [selectedRecord, setSelectedRecord] = useState({});
-
+	const user = sessionStorage.getItem("UserID");
 	const closeModal = () => {
 		setIsOpen(false);
 	};
@@ -38,17 +38,28 @@ function Post() {
 		});
 	};
 
-	var likebtnvar = document.getElementById("likebtn");
-	function Toggle() {
-		if (likebtnvar.style.color == "red") {
-			likebtnvar.style.color = "grey";
-		} else {
-			likebtnvar.style.color = "red";
-		}
-	}
+	const likeFunction = (e) => {
+		axios
+			.post(`http://localhost:5000/api/v1/content/like`, {
+				liked_post_id: e.target.id,
+				number_of_likes: record[e.target.id - 1].likes + 1,
+				// user_id: user,
+			})
+			.then(() => {
+				loadLyrics();
+			});
+	};
+
+	// var likebtnvar = document.getElementById("likebtn");
+	// function Toggle() {
+	// 	if (likebtnvar.style.color == "red") {
+	// 		likebtnvar.style.color = "grey";
+	// 	} else {
+	// 		likebtnvar.style.color = "red";
+	// 	}
+	// }
 
 	const loadLyrics = async () => {
-		
 		axios
 			.get("http://localhost:5000/api/v1/content/getlyrics")
 			.then((response) => {
@@ -65,8 +76,6 @@ function Post() {
 	}, []);
 
 	console.log(record);
-
-
 
 	return (
 		<div className="fullPost">
@@ -95,42 +104,41 @@ function Post() {
 											<article className="tile is-child is-primary">
 												<p className="title ">{lyrics.Title}</p>
 												<p className="subtitle halfLyricSection">
-													
 													{lyrics.Preview}
 												</p>
-												
 											</article>
 										</div>
 									</div>
 									<div className="tile is-parent column ">
 										<div className="columns">
-											<div className="column"><button className="seeBtn"
-											id={lyrics.LyricId}
-											onClick={openModal}
-										>
-											See lyrics
-										</button></div>
-										
-										<div className="column">
-										<button className="likebtn column" onClick={Toggle}>
-											<FaHeart />
-										</button>
-										
-										</div>
-										<div className="column likesCount">100 Likes</div>
-										<div className="column">
-										<button className="column options-Btn">
-											<FaEllipsisV/> Report
-										</button>
+											<div className="column">
+												<button
+													className="seeBtn"
+													id={lyrics.LyricId}
+													onClick={openModal}
+												>
+													See lyrics
+												</button>
+											</div>
 
-										
+											<div className="column">
+												<button
+													className="likebtn column"
+													id={lyrics.LyricId}
+													onClick={likeFunction}
+												>
+													x
+												</button>
+											</div>
+											<div className="column likesCount">
+												{lyrics.likes} Likes
+											</div>
+											<div className="column">
+												<button className="column options-Btn">
+													<FaEllipsisV /> Report
+												</button>
+											</div>
 										</div>
-										
-										</div>
-
-										
-
-									
 									</div>
 								</div>
 								<div className="tile is-parent">
