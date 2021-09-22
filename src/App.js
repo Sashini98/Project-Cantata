@@ -39,7 +39,7 @@ function App() {
 						<PostLyrics />
 					</Route>
 
-					<Route path="/Feed/:subpath" exact>
+					<Route path="/" exact>
 						<Feed />
 					</Route>
 
@@ -51,7 +51,7 @@ function App() {
 						<EditProfile />
 					</Route>
 
-					<Route path="/" exact>
+					<Route path="/UserProfile" exact>
 						<Profile />
 					</Route>
 
