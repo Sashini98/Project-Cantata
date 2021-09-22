@@ -27,7 +27,7 @@ import * as Bio from "../Bio";
 import TopNav from "../TopNav";
 import EditProfile from "../EditProfile";
 import user from '../../../../Assets/Admin/random.jpg';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 //import { Modal, Button } from 'antd';
 import Modal from '@material-ui/core/Modal';
 import axios from "axios";
@@ -83,6 +83,8 @@ export default function SignUp() {
   const [followers,setFollowers] = useState("");
   const [following, setFollowing] = useState("");
   const [status, setStatus] = useState("");
+  const [image,setImage] = useState("");
+  const [showImage, setShowImage] = useState("");
   const history = useHistory();
 
 const [open, setOpen] = React.useState(false);
@@ -92,20 +94,20 @@ const [open, setOpen] = React.useState(false);
 const editprofile = ()=>{
 
   console.log(userID);
-    axios.post('http://localhost:3001/editprofile',{
-        fname:fname,
-        lname:lname,
-        bio:bio,
-        followers: followers,
-        following:following,
-
-        }).then(()=>{
+  let formData = new FormData();
+  formData.append('Fname',fname);
+  formData.append('Lname',lname);
+  formData.append('Bio',bio);
+  formData.append('Username',followers);
+  formData.append('following', following);
+  formData.append('profilePic', image);
+  formData.append('userId',sessionStorage.getItem("UserID"))
+    axios.post('http://localhost:3001/editprofile',formData).then(()=>{
            console.log("success");
-
+           alert("Profile changed successfully ");
+          history.push("/UserProfile");
          });
 
-         alert("Profile changed successfully ");
-        history.push("/UserProfile");
 
 }
 
@@ -132,6 +134,31 @@ const editprofile = ()=>{
   // );
   let { subpath } = useParams();
 
+  const imageChange = (event) => {
+    let reader = new FileReader();
+    reader.onload = e => {
+      setImage(event.target.files[0]);
+      setShowImage(e.target.result);
+    };
+    reader.readAsDataURL(event.target.files[0]);
+  }
+
+  useEffect(() => {
+    const id = sessionStorage.getItem("UserID") ? sessionStorage.getItem("UserID") : 1;
+    axios.get(`http://localhost:3001/getProfile?id=${id}`).then((result) => {
+      if(result.data.length) {
+        const bufferImage = result.data[0].Image.data;
+        const b64 = new Buffer.from(bufferImage).toString('base64');
+        console.log(`data:image/png;base64,${b64}`);
+        setFname(result.data[0].Fname);
+        setLname(result.data[0].Lname);
+        setBio(result.data[0].Bio);
+        setFollowers(result.data[0].Username);
+        // setShowImage(b64);
+      }
+    })
+  },[])
+
   return (
     <div>
       <div class="columns">
@@ -140,7 +167,7 @@ const editprofile = ()=>{
         </div>
         <div class={"column is-4"}>
           <div class="column" align="center">
-            <img id="user" src={user} width="400" height="400" style={{ borderRadius: 1000 / 2, marginTop: "10%", borderColor: 'black', borderWidth: 5 }} />
+            <img id="user" src={showImage ? showImage : user} width="400" height="400" style={{ borderRadius: 1000 / 2, marginTop: "10%", borderColor: 'black', borderWidth: 5 }} />
             <div className={classes.root}>
               <input 
                 accept="image/*"
@@ -149,6 +176,7 @@ const editprofile = ()=>{
                 multiple
                 type="file"
                 hidden
+                onChange={e => imageChange(e)}
               />
               <label htmlFor="upload-proj-picture">
                 <Button variant="contained" color="primary" component="span">
@@ -191,9 +219,10 @@ const editprofile = ()=>{
                         variant="outlined"
                         fullWidth
                         id="text"
-                        label="Person"
+                        label={fname ? "" :"Person"}
                         onChange={(event)=>(setFname(event.target.value))}
                         autoFocus
+                        value={fname}
                       />
                     </Grid>
                     <Grid item xs={12} sm={6}> Last Name :
@@ -203,9 +232,10 @@ const editprofile = ()=>{
                         variant="outlined"
                         fullWidth
                         id="text"
-                        label="1"
+                        label={lname ? "" : "1"}
                         onChange={(event)=>(setLname(event.target.value))}
                         autoFocus
+                        value={lname}
                       />
                     </Grid>
                     <Grid item xs={12}> Bio :
@@ -213,9 +243,10 @@ const editprofile = ()=>{
                         variant="outlined"
                         fullWidth
                         id="text"
-                        label="21 years old"
+                        label={bio ? "" :"21 years old"}
                         onChange={(event)=>(setBio(event.target.value))}
                         name="text"
+                        value={bio}
                       />
                     </Grid>
                     <Grid item xs={12}> User Name :
@@ -223,10 +254,11 @@ const editprofile = ()=>{
                         variant="outlined"
                         fullWidth
                         id="text"
-                        label="@person1"
+                        label={followers ? "" : "@person1"}
                         name="text"
                         onChange={(event)=>(setFollowers(event.target.value))}
                         autoComplete="text"
+                        value={followers}
                       />
                     </Grid>
                     {/* <Grid item xs={12} sm={6}> Following :
