@@ -13,7 +13,7 @@ import Reports from "../../Reports/index";
 import "./index.css";
 
 function LyricsModal(props) {
-	const [comments, setComments] = useState([]);
+	let [comments, setComments] = useState([]);
 	const [modalIsOpen, setIsOpen] = useState(false);
 	const [modal1IsOpen, setIsOpen1] = useState(false);
 	const [selectedLyric, setSelectedLyric] = useState({});
@@ -71,19 +71,36 @@ function LyricsModal(props) {
 
 
 
-
-
 	const getComments = () => {
 		axios
-			.get(
-				"https://gist.githubusercontent.com/AmayaKinivita/adb4786ed6aa2f21974a8be80406430a/raw/e35937df7a3c0cc602f967a480a9fac026fc1aab/comments.json"
-			)
+		.get(`http://localhost:5000/api/v1/content/getcomments/${props.selectedRecord.LyricId}`)
 			.then((response) => {
-				console.log(response.data);
-				response.data.map((resp) => {
-					resp.createdAt = new Date();
-				});
-				setComments(response.data);
+				// console.log(response.data);
+				let i;
+				for(i=0;i<response.data.length;i++){
+					comments[i]={
+						authorUrl:"1",
+						avatarUrl:"2",
+						createdAt:new Date(),
+						fullName:response.data[i].Email,
+					text:response.data[i].Comment
+					}
+					// comments[i].authorUrl : "1",
+					// comments[i].avatarUrl="1";
+					// comments[i].createdAt=new Date();
+					// comments[i].fullName="12";
+					// comments[i].text=response.data[i].text;
+
+				}
+
+				// console.log("lenghddt"+response.data.length);
+				// // console.log(response.data);
+				// response.data.map((resp) => {
+				// 	resp.createdAt = new Date();
+				// 	console.log(response.data);
+				// });
+				// setComments();
+				console.log(comments);
 			})
 			.catch((err) => {
 				console.log(err);
@@ -92,7 +109,7 @@ function LyricsModal(props) {
 
 	useEffect(() => {
 		getComments();
-	}, []);
+	});
 
 	const closeModal = () => {
 		setIsOpen(false);
