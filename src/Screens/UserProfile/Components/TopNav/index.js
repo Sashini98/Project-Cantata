@@ -1,5 +1,5 @@
 import React from "react";
-import user from "../../../../Assets/Admin/user.png";
+import user from "../../../../Assets/Admin/random.jpg";
 
 
 
@@ -19,7 +19,7 @@ function TopNav() {
                 <div class="navbar-item">
                     
                         <p class="btn mr-3">
-                            <strong>Devindi Wijayasundara
+                            <strong>Person 1
                             </strong>
                         </p>
                                            
