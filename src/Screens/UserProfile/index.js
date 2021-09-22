@@ -8,6 +8,11 @@ import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
 import EditProfile from "./Components/EditProfile";
 import Stack from '@mui/material/Stack';
+import Box from '@mui/material/Box';
+import Tab from '@material-ui/core/Tab';
+import TabContext from '@material-ui/lab/TabContext';
+import TabList from '@material-ui/lab/TabList';
+import TabPanel from '@material-ui/lab/TabPanel';
 /* import Followers from "./Components/Followers"; */
 /* import Following from "./Components/Following"; */
 import * as Header from "./Components/Header";
@@ -15,7 +20,6 @@ import Notification from "./Components/Notification";
 import user1 from '../../Assets/Admin/random.jpg';
 import "./index.css";
 import axios from 'axios';
-import Box from '@mui/material/Box';
 import SpeedDial from '@mui/material/SpeedDial';
 import SpeedDialIcon from '@mui/material/SpeedDialIcon';
 import SpeedDialAction from '@mui/material/SpeedDialAction';
@@ -40,6 +44,10 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Link from '@material-ui/core/Link';
+import { useSnackbar } from "notistack";
+import { useDispatch, useSelector } from "react-redux";
+import { axiosInstance, BACKEND_API } from "../../axios/AxiosInstance";
+import { updateUser } from "../../store/action/authAction";
 
 const useStyles = makeStyles((theme) => ({
   icon: {
@@ -91,19 +99,79 @@ function srcset(image: string, width: number, height: number, rows = 1, cols = 1
 }
 
 export default function UserProfile() {
-  const [user, setUser] = useState([])
+  const { enqueueSnackbar } = useSnackbar();
+  const user = useSelector((state) => state.authReducer);
+  const [isUpdate, setIsUpdate] = useState(false);
+  const dispatch = useDispatch();
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
+  const [value, setValue] = React.useState('1');
+
+
+  const initialUserState = {
+    userId: user.userID,
+    firstName: user.fname,
+    lastName: user.lname,
+    userImage: user.userImage,
+    userName: user.userName,
+    bio: user.bio,
+  }
+  const [userDetails, setUserDetails] = useState(initialUserState);
+
+
+  const handleEnableUpdate = () => {
+    setIsUpdate(true);
+  }
+
+  const handleDisableUpdate = () => {
+    setUserDetails(initialUserState)
+    setIsUpdate(false);
+  }
+
+  const handleChange = (event) => {
+    setUserDetails({
+      ...userDetails,
+      [event.target.name]: event.target.value
+    })
+  }
+
   let { subpath } = useParams();
 
-  useEffect(() => {
-    axios.get("http://localhost:3001/Profile").then((response) => {
-      setUser(response.data)
-    })
-  }, [])
+  const handleUpdate = async () => {
+    await axiosInstance({
+      method: 'POST',
+      url: BACKEND_API.UPDATE_USER,
+      data: userDetails
+    }).then(res => {
+      if (res.status === 200) {
+        enqueueSnackbar("Updated User Details", {
+          variant: 'success'
+        });
+
+        dispatch(updateUser({
+          userID: userDetails.userId,
+          fname: userDetails.firstName,
+          lname: userDetails.lastName,
+          userImage: userDetails.userImage,
+          bio: userDetails.bio,
+        }))
+        setIsUpdate(false);
+      }
+    }).catch((error) => {
+      if (error.response) {
+        enqueueSnackbar(error.response.data.message, {
+          variant: 'error'
+        });
+      } else {
+        enqueueSnackbar("Something went wrong", {
+          variant: 'error'
+        });
+      }
+    });
+  }
 
   return (
     <div>
@@ -130,7 +198,17 @@ export default function UserProfile() {
             </div>
             <div class="column is-one-third">
               <div class="columns is-gapless is-multiline is-mobile">
-                <div class="column"><b><a class="name">Dwayne Johnson</a></b></div>
+                <div class="column">
+                  <b><h1>
+                    <a class="name"> Bhagya Gunathilaka
+                      {/* <input
+                        value={"Bhagya" + " " + "Gunathilaka"}
+                        disabled={!isUpdate}
+                        type="text" name={"name"}
+                      /> */}
+                    </a></h1>
+                  </b>
+                </div>
               </div>
               <div class="columns is-gapless is-multiline is-mobile" id="content1">
                 <div class="column is-one-third">89</div>
@@ -150,12 +228,15 @@ export default function UserProfile() {
                       </tr>
                     </thead>
                     <tbody>
-                      {user.map((user) => {
-                        <tr>
-                          <td>Hello</td>
-                          <td>{user.Bio}</td>
-                        </tr>
-                      })}
+                      <tr>
+                        <td>
+                          <input
+                            value={userDetails.bio}
+                            disabled={!isUpdate}
+                            type="text" name={"bio"}
+                          />
+                        </td>
+                      </tr>
                     </tbody>
                   </table>
 
@@ -239,45 +320,149 @@ export default function UserProfile() {
                 </SpeedDial>
               </Box>
             </div> */}
+            <Box sx={{ width: '100%', typography: 'body1' }}>
+              <TabContext value={value}>
+                <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+                  <TabList onChange={handleChange} aria-label="lab API tabs example">
+                    <Tab label="Cover" value="1" />
+                    <Tab label="Lyrics" value="2" />
+                  </TabList>
+                </Box>
+                <TabPanel value="1">
+                  <Container className={classes.cardGrid} maxWidth="auto">
+
+                    <Grid container spacing={4}>
+
+                      <Grid item xs={12} sm={6} md={4}>
+                        <Card className={classes.card}>
+                          <CardMedia
+                            className={classes.cardMedia}
+                            image="https://images.unsplash.com/photo-1543486958-d783bfbf7f8e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1470&q=80"
+                            title="Image title"
+                          />
+
+                          <CardContent className={classes.cardContent}>
+                            <Typography gutterBottom variant="h5" component="h2">
+                              Post
+                            </Typography>
+                            <Typography>
+                              Click here to check your likes and comments
+                            </Typography>
+                          </CardContent>
+                          <CardActions>
+                            <Button size="small" color="primary">
+                              Like
+                            </Button>
+                            <Button size="small" color="primary">
+                              Comment
+                            </Button>
+                          </CardActions>
+                        </Card>
+                      </Grid>
+
+                      <Grid item xs={12} sm={6} md={4}>
+                        <Card className={classes.card}>
+                          <CardMedia
+                            className={classes.cardMedia}
+                            image="https://images.unsplash.com/photo-1593642532842-98d0fd5ebc1a?ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=869&q=80"
+                            title="Image title"
+                          />
+
+                          <CardContent className={classes.cardContent}>
+                            <Typography gutterBottom variant="h5" component="h2">
+                              Post
+                            </Typography>
+                            <Typography>
+                              Click here to check your likes and comments
+                            </Typography>
+                          </CardContent>
+                          <CardActions>
+                            <Button size="small" color="primary">
+                              Like
+                            </Button>
+                            <Button size="small" color="primary">
+                              Comment
+                            </Button>
+                          </CardActions>
+                        </Card>
+                      </Grid>
+
+                      <Grid item xs={12} sm={6} md={4}>
+                        <Card className={classes.card}>
+                          <CardMedia
+                            className={classes.cardMedia}
+                            image="https://images.unsplash.com/photo-1497215728101-856f4ea42174?ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=870&q=80"
+                            title="Image title"
+                          />
+
+                          <CardContent className={classes.cardContent}>
+                            <Typography gutterBottom variant="h5" component="h2">
+                              Post
+                            </Typography>
+                            <Typography>
+                              Click here to check your likes and comments
+                            </Typography>
+                          </CardContent>
+                          <CardActions>
+                            <Button size="small" color="primary">
+                              Like
+                            </Button>
+                            <Button size="small" color="primary">
+                              Comment
+                            </Button>
+                          </CardActions>
+                        </Card>
+                      </Grid>
 
 
-            <Container className={classes.cardGrid} maxWidth="auto">
+                    </Grid>
 
-              <Grid container spacing={4}>
-                {cards.map((card) => (
-                  <Grid item key={card} xs={12} sm={6} md={4}>
-                    <Card className={classes.card}>
-                      <CardMedia
-                        className={classes.cardMedia}
-                        image="https://source.unsplash.com/random"
-                        title="Image title"
-                      />
-                      <CardContent className={classes.cardContent}>
-                        <Typography gutterBottom variant="h5" component="h2">
-                          Post
-                        </Typography>
-                        <Typography>
-                          Click here to check your likes and comments
-                        </Typography>
-                      </CardContent>
-                      <CardActions>
-                        <Button size="small" color="primary">
-                          Like
-                        </Button>
-                        <Button size="small" color="primary">
-                          Comment
-                        </Button>
-                      </CardActions>
-                    </Card>
+                  </Container>
+                </TabPanel>
+                
+                <TabPanel value="2">
+                  <Container className={classes.cardGrid} maxWidth="auto">
 
-                  </Grid>
+                    <Grid container spacing={4}>
+                      {cards.map((card) => (
+                        <Grid item key={card} xs={12} sm={6} md={4}>
+                          <Card className={classes.card}>
+                            <CardMedia
+                              className={classes.cardMedia}
+                              image="https://images.unsplash.com/photo-1514582086679-4024becf927e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+                              title="Image title"
+                            />
 
-                ))}
+                            <CardContent className={classes.cardContent}>
+                              <Typography gutterBottom variant="h5" component="h2">
+                                Post
+                              </Typography>
+                              <Typography>
+                                Click here to check your likes and comments
+                              </Typography>
+                            </CardContent>
+                            <CardActions>
+                              <Button size="small" color="primary">
+                                Like
+                              </Button>
+                              <Button size="small" color="primary">
+                                Comment
+                              </Button>
+                            </CardActions>
+                          </Card>
 
-              </Grid>
 
-            </Container>
 
+                        </Grid>
+
+                      ))}
+
+                    </Grid>
+
+                  </Container>
+                </TabPanel>
+              </TabContext>
+            </Box>
 
 
           </div>

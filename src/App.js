@@ -9,6 +9,10 @@ import "./App.css";
 import Registration from "./Screens/Registration/index";
 import Profile from "./Screens/UserProfile/index";
 import ContentPost from "./Screens/ContentPost";
+import { SnackbarProvider } from "notistack";
+import { Provider } from "react-redux";
+import { PersistGate } from "redux-persist/integration/react";
+import {persistedStore, reduxPersistStore} from "./store/persistStore";
 import EditProfile from "./Screens/UserProfile/Components/EditProfile";
 import Notification from "./Screens/UserProfile/Components/Notification"
 import ReportedLyrics2 from "./Screens/AdminPage/Components/ReportedLyrics2";
@@ -17,58 +21,65 @@ import PostLyrics from "./Screens/Feed/Components/PostLyrics";
 function App() {
 	return (
 		<div>
-			<Router>
-				<Switch>
-					<Route path="/admin/:subpath" exact>
-						<AdminPage />
-					</Route>
+			<Provider store={reduxPersistStore}>
+				<PersistGate
+					persistor={persistedStore}>
+					<SnackbarProvider>
+					<Router>
+						<Switch>
+							<Route path="/admin/:subpath" exact>
+								<AdminPage />
+							</Route>
 
-					{/* <Route path="/admin/reportedlyrics2/:lyricid" exact >
+							{/* <Route path="/admin/reportedlyrics2/:lyricid" exact >
             <ReportedLyrics2 />
           </Route> */}
 
-					<Route path="/login" exact>
-						<LoginPage />
-					</Route>
+							<Route path="/login" exact>
+								<LoginPage />
+							</Route>
 
-					<Route path="/registration" exact>
-						<Registration />
-					</Route>
+							<Route path="/registration" exact>
+								<Registration />
+							</Route>
 
-					<Route path="/postlyrics" exact>
-						<PostLyrics />
-					</Route>
-					
-					<Route path="/Feed/:subpath" exact>
-						<Feed />
-					</Route>
+							<Route path="/postlyrics" exact>
+								<PostLyrics />
+							</Route>
 
-					<Route path="/UserProfile" exact>
-						<Profile />
-					</Route>
+							<Route path="/" exact>
+								<Feed />
+							</Route>
 
-					<Route path="/editprofile" exact>
-						<EditProfile />
-					</Route>
+							<Route path="/UserProfile" exact>
+								<Profile />
+							</Route>
 
-					<Route path="/UserProfile" exact>
-						<Profile />
-					</Route>
+							<Route path="/editprofile" exact>
+								<EditProfile />
+							</Route>
 
-					<Route path="/ContentPost" exact>
-						<ContentPost />
-					</Route>
+							<Route path="/UserProfile" exact>
+								<Profile />
+							</Route>
 
-					<Route path="/notification">
-						<Notification />
-					</Route>
+							<Route path="/ContentPost" exact>
+								<ContentPost />
+							</Route>
 
-					{/* <Route path="/ContentPost" exact >
+							<Route path="/notification">
+								<Notification />
+							</Route>
+
+							{/* <Route path="/ContentPost" exact >
             <ContentPost/>
           </Route> */}
-				</Switch>
-			</Router>
-		</div>
+						</Switch>
+					</Router>
+				</SnackbarProvider>
+			</PersistGate>
+		</Provider>
+		</div >
 	);
 }
 

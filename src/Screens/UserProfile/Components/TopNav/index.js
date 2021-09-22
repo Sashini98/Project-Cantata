@@ -19,12 +19,12 @@ function TopNav() {
                 <div class="navbar-item">
                     
                         <p class="btn mr-3">
-                            <strong>Person 1
+                            <strong>Cantata
                             </strong>
                         </p>
                                            
                     <div className="topuser">
-                        <img src={user} />
+                        {/* <img src={user} /> */}
                     </div>
                 </div>
             </div>

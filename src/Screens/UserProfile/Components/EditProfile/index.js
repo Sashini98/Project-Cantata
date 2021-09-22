@@ -6,6 +6,11 @@ import TextField from '@material-ui/core/TextField';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 import Link from '@material-ui/core/Link';
+import { useDispatch, useSelector } from "react-redux";
+import { UpdateProfileImageDialog } from "../../../../views/admin/UpdateProfileImageDialog.jsx";
+import { axiosInstance, BACKEND_API } from "../../../../axios/AxiosInstance";
+import { updateUser } from "../../../../store/action/authAction";
+import { useSnackbar } from "notistack";
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
 import SpeedDial from '@mui/material/SpeedDial';
@@ -26,8 +31,8 @@ import * as Content from "../Content";
 import * as Bio from "../Bio";
 import TopNav from "../TopNav";
 import EditProfile from "../EditProfile";
-import user from '../../../../Assets/Admin/random.jpg';
-import React, { useState } from 'react';
+import user1 from '../../../../Assets/Admin/random.jpg';
+import React, { useState, useEffect } from 'react';
 //import { Modal, Button } from 'antd';
 import Modal from '@material-ui/core/Modal';
 import axios from "axios";
@@ -75,161 +80,249 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function SignUp() {
+  const { enqueueSnackbar } = useSnackbar();
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const [profileImage, setProfileImage] = useState("");
+  const user = useSelector((state) => state.authReducer);
+  const [isUpdate, setIsUpdate] = useState(false);
+  const dispatch = useDispatch();
+
   const classes = useStyles();
+
   const [userID, setID] = useState("");
-  const [fname,setFname] = useState("");
-  const [lname,setLname] = useState("");
-  const [bio,setBio] = useState("");
-  const [followers,setFollowers] = useState("");
+  const [fname, setFname] = useState("");
+  const [lname, setLname] = useState("");
+  const [bio, setBio] = useState("");
+  const [followers, setFollowers] = useState("");
   const [following, setFollowing] = useState("");
   const [status, setStatus] = useState("");
+  const [image, setImage] = useState("");
+  const [showImage, setShowImage] = useState("");
   const history = useHistory();
 
-const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-const editprofile = ()=>{
+  const initialUserState = {
+    userId: user.userID,
+    firstName: user.fname,
+    lastName: user.lname,
+    userImage: user.userImage,
+    userName: user.userName,
+    bio: user.bio,
+  }
+
+  const [userDetails, setUserDetails] = useState(initialUserState);
+
+  const handleSetProfileImage = (image) => {
+    setProfileImage(image);
+  }
 
   console.log(userID);
-    axios.post('http://localhost:3001/editprofile',{
-        fname:fname,
-        lname:lname,
-        bio:bio,
-        followers: followers,
-        following:following,
+  let formData = new FormData();
+  formData.append('Fname', fname);
+  formData.append('Lname', lname);
+  formData.append('Bio', bio);
+  formData.append('Username', followers);
+  formData.append('following', following);
+  formData.append('Image', image);
+  formData.append('userId', sessionStorage.getItem("UserID"))
+  axios.post('http://localhost:3001/editprofile', formData).then(() => {
+    console.log("success");
+    alert("Profile changed successfully ");
+    history.push("/UserProfile");
+  });
 
-        }).then(()=>{
-           console.log("success");
+  const handleCloseDialog = () => {
+    setIsDialogOpen(false);
+  }
 
-         });
+  const handleEnableUpdate = () => {
+    setIsUpdate(true);
+  }
 
-         alert("Profile changed successfully ");
-        history.push("/UserProfile");
+  const handleDisableUpdate = () => {
+    setUserDetails(initialUserState)
+    setIsUpdate(false);
+  }
 
-}
+  const handleUpdate = async () => {
 
-  // getModalStyle is not a pure function, we roll the style only on the first render
-  // const [modalStyle] = React.useState(getModalStyle);
-  // const [open, setOpen] = React.useState(false);
+    let bodyFormData = new FormData();
+    bodyFormData.append("image", Image);
 
-  // const handleOpen = () => {
-  //   setOpen(true);
-  // };
+    await axiosInstance({
+      method: "POST",
+      url: `${BACKEND_API.UPLOAD_IMAGE}/${user.userID}`,
+      data: bodyFormData
+    }).then(res => {
+      if (res.status === 200) {
+        enqueueSnackbar("Updated User Details", {
+          variant: 'success'
+        });
 
-  // const handleClose = () => {
-  //   setOpen(false);
-  // };
+        dispatch(updateUser({
+          ...user,
+          userImage: res.data
+        }))
+      }
+    })
+  }
 
-  // const body = (
-  //   <div style={modalStyle} className={classes.paper}>
-  //     <h2 id="simple-modal-title">Text in a modal</h2>
-  //     <p id="simple-modal-description">
-  //       Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-  //     </p>
-  //     <SignUp />
-  //   </div>
-  // );
   let { subpath } = useParams();
 
+  const imageChange = (event) => {
+    let reader = new FileReader();
+    reader.onload = e => {
+      setImage(event.target.files[0]);
+      setShowImage(e.target.result);
+    };
+    reader.readAsDataURL(event.target.files[0]);
+  }
+
+  useEffect(() => {
+    const id = sessionStorage.getItem("UserID") ? sessionStorage.getItem("UserID") : 1;
+    axios.get(`http://localhost:3001/getProfile?id=${id}`).then((result) => {
+      if (result.data.length) {
+        const bufferImage = result.data[0].Image.data;
+        const b64 = new Buffer.from(bufferImage).toString('base64');
+        console.log(`data:image/png;base64,${b64}`);
+        setFname(result.data[0].Fname);
+        setLname(result.data[0].Lname);
+        setBio(result.data[0].Bio);
+        setFollowers(result.data[0].Username);
+        setImage(result.data[0].Image);
+        // setShowImage(b64);
+      }
+    })
+  }, [])
+
   return (
-    <div>
-      <div class="columns">
-        <div class="column is-2">
-          <SideNav />
-        </div>
-        <div class={"column is-4"}>
-          <div class="column" align="center">
-            <img id="user" src={user} width="400" height="400" style={{ borderRadius: 1000 / 2, marginTop: "10%", borderColor: 'black', borderWidth: 5 }} />
-            <div className={classes.root}>
-              <input 
-                accept="image/*"
-                className={classes.input}
-                id="upload-proj-picture"
-                multiple
-                type="file"
-                hidden
-              />
-              <label htmlFor="upload-proj-picture">
-                <Button variant="contained" color="primary" component="span">
-                  Upload Profile Image
-                </Button>
-              </label>
+    <>
+      <UpdateProfileImageDialog
+        isDialogOpen={isDialogOpen}
+        handleCloseDialog={handleCloseDialog}
+        handleSetProfileImage={handleSetProfileImage}
+        handleUpdate={handleUpdate}
+      />
+      <div>
+        <div class="columns">
+          <div class="column is-2">
+            <SideNav />
+          </div>
+
+          <div class={"column is-4"}>
+            <div className="flex flex-wrap justify-center">
+              <img id="user" src={user1} width="400" height="400" style={{ borderRadius: 1000 / 2, marginTop: "10%", borderColor: 'black', borderWidth: 5 }} />
+              <div className="w-full px-4 flex justify-center">
+                <div className="relative">
+                  <img
+                  hidden
+                    alt="..."
+                    src={`data:image/jpeg;base64,${user.userImage}`}
+                    className="shadow-xl rounded-full align-middle border-none absolute -m-16 -ml-20 lg:-ml-16 max-w-120-px"
+                    onChange={(event) => (setImage(event.target.value))}
+                  />
+                </div>
+              </div>
+              <div className="w-full px-4 text-center mt-20">
+                <div className="flex justify-center py-4 lg:pt-4 pt-8">
+                  <div className="mr-4 p-3 text-center">
+                  </div>
+                  <div className="mr-4 p-3 text-center">
+                    <button
+                      className="bg-emerald-400 text-white active:bg-emerald-400 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
+                      type="button"
+                      onClick={() => setIsDialogOpen(true)}
+                    >
+                      Upload Profile Image
+                    </button>
+                  </div>
+                  <div className="lg:mr-4 p-3 text-center">
+                  </div>
+                </div>
+              </div>
+
             </div>
           </div>
-        </div>
-        <div class="column is-6">
-          <TopNav />
-          {subpath === "content" && <Content />}
-          {subpath === "bio" && <Bio />}
-          {subpath === "EditProfile" && <EditProfile />}
-          {/* {subpath === "followers" && <Followers />} */}
-          {/*  {subpath === "following" && <Following />} */}
-          {subpath === "header" && <Header />}
-          {subpath === "Notification" && <Notification />}
 
-          <div class="columns is-gapless is-multiline is-mobile">
+          <div class="column is-6">
+            <TopNav />
+            {subpath === "content" && <Content />}
+            {subpath === "bio" && <Bio />}
+            {subpath === "EditProfile" && <EditProfile />}
+            {/* {subpath === "followers" && <Followers />} */}
+            {/*  {subpath === "following" && <Following />} */}
+            {subpath === "header" && <Header />}
+            {subpath === "Notification" && <Notification />}
 
-            <Container component="main" maxWidth="1920px">
-              <CssBaseline />
+            <div class="columns is-gapless is-multiline is-mobile">
+
+              <Container component="main" maxWidth="1920px">
+                <CssBaseline />
 
 
 
-              <div className={classes.paper}>
-                <Avatar className={classes.avatar}>
-                  <LockOutlinedIcon />
-                </Avatar>
-                <Typography component="h1" variant="h5">
-                  Profile
-                </Typography>
-                <form className={classes.form} noValidate>
-                  <Grid container spacing={2}>
-                    <Grid item xs={12} sm={6}> First Name :
-                      <TextField
-                        autoComplete="fname"
-                        name="text"
-                        variant="outlined"
-                        fullWidth
-                        id="text"
-                        label="Person"
-                        onChange={(event)=>(setFname(event.target.value))}
-                        autoFocus
-                      />
-                    </Grid>
-                    <Grid item xs={12} sm={6}> Last Name :
-                      <TextField
-                        autoComplete="lname"
-                        name="text"
-                        variant="outlined"
-                        fullWidth
-                        id="text"
-                        label="1"
-                        onChange={(event)=>(setLname(event.target.value))}
-                        autoFocus
-                      />
-                    </Grid>
-                    <Grid item xs={12}> Bio :
-                      <TextField
-                        variant="outlined"
-                        fullWidth
-                        id="text"
-                        label="21 years old"
-                        onChange={(event)=>(setBio(event.target.value))}
-                        name="text"
-                      />
-                    </Grid>
-                    <Grid item xs={12}> User Name :
-                      <TextField
-                        variant="outlined"
-                        fullWidth
-                        id="text"
-                        label="@person1"
-                        name="text"
-                        onChange={(event)=>(setFollowers(event.target.value))}
-                        autoComplete="text"
-                      />
-                    </Grid>
-                    {/* <Grid item xs={12} sm={6}> Following :
+                <div className={classes.paper}>
+                  <Avatar className={classes.avatar}>
+                    <LockOutlinedIcon />
+                  </Avatar>
+                  <Typography component="h1" variant="h5">
+                    Profile
+                  </Typography>
+                  <form className={classes.form} noValidate>
+                    <Grid container spacing={2}>
+                      <Grid item xs={12} sm={6}> First Name :
+                        <TextField
+                          autoComplete="fname"
+                          name="text"
+                          variant="outlined"
+                          fullWidth
+                          id="text"
+                          label={fname ? "" : "Person"}
+                          onChange={(event) => (setFname(event.target.value))}
+                          autoFocus
+                          value={fname}
+                        />
+                      </Grid>
+                      <Grid item xs={12} sm={6}> Last Name :
+                        <TextField
+                          autoComplete="lname"
+                          name="text"
+                          variant="outlined"
+                          fullWidth
+                          id="text"
+                          label={lname ? "" : "1"}
+                          onChange={(event) => (setLname(event.target.value))}
+                          autoFocus
+                          value={lname}
+                        />
+                      </Grid>
+                      <Grid item xs={12}> Bio :
+                        <TextField
+                          variant="outlined"
+                          fullWidth
+                          id="text"
+                          label={bio ? "" : "21 years old"}
+                          onChange={(event) => (setBio(event.target.value))}
+                          name="text"
+                          value={bio}
+                        />
+                      </Grid>
+                      <Grid item xs={12}> User Name :
+                        <TextField
+                          variant="outlined"
+                          fullWidth
+                          id="text"
+                          label={followers ? "" : "@person1"}
+                          name="text"
+                          onChange={(event) => (setFollowers(event.target.value))}
+                          autoComplete="text"
+                          value={followers}
+                        />
+                      </Grid>
+                      {/* <Grid item xs={12} sm={6}> Following :
                       <TextField
                         variant="outlined"
                         fullWidth
@@ -241,14 +334,14 @@ const editprofile = ()=>{
                         autoComplete="current-password"
                       />
                     </Grid> */}
-                    <Grid item xs={12}>
-                      {/* <FormControlLabel
+                      <Grid item xs={12}>
+                        {/* <FormControlLabel
                 control={<Checkbox value="allowExtraEmails" color="primary" />}
                 //label="I want to receive inspiration, marketing promotions and updates via email."
               /> */}
+                      </Grid>
                     </Grid>
-                  </Grid>
-                  {/* <Button
+                    {/* <Button
             type="submit"
             variant="contained"
             color="primary"
@@ -267,7 +360,7 @@ const editprofile = ()=>{
             Save
           </Button> */}
 
-                  <Grid container spacing={2} justifyContent="center">
+                    {/* <Grid container spacing={2} justifyContent="center">
                     <Grid item>
                       <Button
                         type="submit"
@@ -289,25 +382,55 @@ const editprofile = ()=>{
                         Cancel
                       </Button>
                     </Grid>
-                  </Grid>
+                  </Grid> */}
+
+                    <div className="text-center flex justify-between">
+
+                      {isUpdate ? (
+                        <div>
+                          <button
+                            className="bg-emerald-400  text-white active:bg-emerald-400 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
+                            type="button"
+                            onClick={handleUpdate}
+                          >
+                            Update
+                          </button>
+                          <button
+                            className="bg-red-500  text-white active:bg-red-500 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
+                            type="button"
+                            onClick={handleDisableUpdate}
+                          >
+                            Cancel
+                          </button>
+                        </div>
+                      ) : (
+                        <button
+                          className="bg-emerald-400 text-white active:bg-emerald-400 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
+                          type="button"
+                          onClick={handleEnableUpdate}
+                        >
+                          Update Details
+                        </button>
+                      )}
+                    </div>
 
 
 
-                  <Grid container justifyContent="flex-end">
-                    <Grid item>
-                      {/* <Link href="../../index.js" variant="body2">
+                    <Grid container justifyContent="flex-end">
+                      <Grid item>
+                        {/* <Link href="../../index.js" variant="body2">
                         Go Back
                       </Link> */}
+                      </Grid>
                     </Grid>
-                  </Grid>
-                </form>
-              </div>
-            </Container>
+                  </form>
+                </div>
+              </Container>
+            </div>
           </div>
+
         </div>
-
       </div>
-    </div>
-
+    </>
   );
 }

@@ -22,3 +22,7 @@
 .side-letters:hover {
 	color: black !important;
 }
+
+.logout:hover {
+	cursor: pointer !important;
+}
