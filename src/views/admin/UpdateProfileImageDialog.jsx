@@ -81,8 +81,8 @@ export const UpdateProfileImageDialog = (props) => {
             open={isDialogOpen}
             fullWidth={true}
             maxWidth={'sm'}>
-            <DialogTitle id="attendance" onClose={handleCloseDialog} style={{backgroundColor: "rgba(28, 97, 100, 450)", color: "white", fontWeight: "bold"}}>
-                Update People
+            <DialogTitle id="attendance" onClose={handleCloseDialog} style={{backgroundColor: "purple", color: "white", fontWeight: "bold"}}>
+                Update User
             </DialogTitle>
             <DialogContent dividers>
                 <section className="container">
@@ -101,7 +101,7 @@ export const UpdateProfileImageDialog = (props) => {
             </DialogContent>
             <DialogActions>
                 <Button
-                    style={{backgroundColor: "rgba(28, 97, 100, 450)", color: "white", fontWeight: "bold"}}
+                    style={{backgroundColor: "purple", color: "white", fontWeight: "bold"}}
                     onClick={handleUpdate}
                     // disabled={updateIsLoading}
                     // startIcon={updateIsLoading ? <CircularProgress size={17.5} /> : null}
