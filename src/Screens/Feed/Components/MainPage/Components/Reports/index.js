@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 // import user from "../../../../../../../Assets/Admin/user.png";
 import Modal1 from "react-modal";
-import { FaHeart } from "react-icons/fa";
+import { FaExclamation } from "react-icons/fa";
 import { FaCommentAlt } from "react-icons/fa";
 import { FaEllipsisV } from "react-icons/fa";
 import { FaPlus } from "react-icons/fa";
@@ -55,17 +55,17 @@ function Reports(props) {
     };
 
     return (
-        <Modal1
+        <Modal1 
             isOpen={props.isOpen}
             onRequestClose={props.onRequestClose}
 
         >
             <section>
-                <div className="hero-body pb-4 pt-4 hero-b-o ">
-                    <div className="columns top-bar">
+                <div className="hero-body pb-4 pt-4 report-top-area">
+                    <div className="columns top-bar-reports">
                         <div className="column is-8 is-align-self-center has-text-left">
-                            <p className="title is-3 mb-0">
-                                Report         </p>
+                            <p className="title is-3 mb-0 report-title">
+                                <FaExclamation/> Report Content        </p>
 
                         </div>
 
@@ -75,15 +75,15 @@ function Reports(props) {
 
             <div className="columns">
                 <div className="column is-12">
-                    <form className="post-lyrics-form"
+                    <form className="report-form"
                     //  onSubmit={(e) => e.preventDefault()}
                     >
                         <br></br>
 
                         <textarea
                             type="textarea"
-                            className="lyrics-textarea"
-                            placeholder="Description about your cover"
+                            className="report-textarea"
+                            placeholder="Reason for the report"
                             name="cover_description"
                             onChange={(e) => setReason(e.target.value)}
                         ></textarea>

@@ -57,5 +57,24 @@
 
 .report-btn{
     border:none;
-    margin-left: 160px;
+    margin-left: -30px !important;
+    height: fit-content;
+}
+
+.report-btn:hover{
+    background-color: transparent !important;
+}
+
+.AddFav-btn{
+    background-color: none;
+    border: none;
+    height: fit-content;
+}
+
+.AddFav-btn:hover{
+    background-color: transparent !important;
+}
+
+.cover-foot{
+    margin-top: 40px ;
 }
