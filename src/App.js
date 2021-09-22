@@ -59,6 +59,10 @@ function App() {
 						<ContentPost />
 					</Route>
 
+					<Route path="/notification">
+						<Notification />
+					</Route>
+
 					{/* <Route path="/ContentPost" exact >
             <ContentPost/>
           </Route> */}
