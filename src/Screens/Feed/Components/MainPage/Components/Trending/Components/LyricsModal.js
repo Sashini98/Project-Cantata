@@ -8,6 +8,7 @@ import { FaPlus } from "react-icons/fa";
 import CommentsBlock from "simple-react-comments";
 import axios from "axios";
 import CoverPost from "../../CoverPost/index";
+import Reports from "../../Reports/index";
 
 import "./index.css";
 
@@ -15,6 +16,7 @@ function LyricsModal(props) {
 	const [comments, setComments] = useState([]);
 	const [modalIsOpen, setIsOpen] = useState(false);
 	const [selectedLyric, setSelectedLyric] = useState({});
+	const [selectedReport, setSelectedReport] = useState({});
 
 
 	const getComments = () => {
@@ -50,6 +52,14 @@ function LyricsModal(props) {
 		
 	};
 
+	const openModal1 = (e) => {
+		// console.log(e.target.id);
+		setSelectedReport(e.target.id);
+		setIsOpen(true);
+		// console.log("sel" + selectedLyric);
+		
+	};
+
 
 	return (
 		<div>
@@ -58,8 +68,7 @@ function LyricsModal(props) {
 				isOpen={props.isOpen}
 				onRequestClose={props.onRequestClose}
 				contentLabel="Full Lyrics"
-			>
-					
+			>		
 
 				<section >
 					<div className="hero-body pb-4 pt-4 hero-b-o ">
@@ -141,7 +150,7 @@ function LyricsModal(props) {
 								<div className="pl-2 pr-2 pb-2 pt-2">
 									<h1 className="title is-5 mb-0">Amaya Kinivita</h1>
 									<p>26.10.2021</p>
-									<button className="report-btn">Report</button>
+									<button className="report-btn" id={props.selectedRecord.LyricId} onClick={openModal1}>Report</button>
 								</div>
 							</div>
 							<div class="card mb-2 card-img">
@@ -194,6 +203,13 @@ function LyricsModal(props) {
 				selectedLyric={selectedLyric}
 			>
 				</CoverPost>
+
+				{/* <Reports
+				isOpen={modalIsOpen}
+				onRequestClose={closeModal}
+				selectedReport={selectedReport}
+			>
+				</Reports> */}
 			</Modal>
 			
 		</div>
