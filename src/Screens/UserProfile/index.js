@@ -12,10 +12,14 @@ import Stack from '@mui/material/Stack';
 /* import Following from "./Components/Following"; */
 import * as Header from "./Components/Header";
 import Notification from "./Components/Notification";
+import Box from '@mui/material/Box';
+import Tab from '@mui/material/Tab';
+import TabContext from '@mui/lab/TabContext';
+import TabList from '@mui/lab/TabList';
+import TabPanel from '@mui/lab/TabPanel';
 import user1 from '../../Assets/Admin/random.jpg';
 import "./index.css";
 import axios from 'axios';
-import Box from '@mui/material/Box';
 import SpeedDial from '@mui/material/SpeedDial';
 import SpeedDialIcon from '@mui/material/SpeedDialIcon';
 import SpeedDialAction from '@mui/material/SpeedDialAction';
@@ -249,42 +253,98 @@ export default function UserProfile() {
               </Stack>
             </div>
 
-            <Container className={classes.cardGrid} maxWidth="auto">
+            <Box sx={{ width: '100%', typography: 'body1' }}>
+              <TabContext value={value}>
+                <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+                  <TabList onChange={handleChange} aria-label="lab API tabs example">
+                    <Tab label="Feed" value="1" />
+                    <Tab label="Cover" value="2" />
+                  </TabList>
+                </Box>
+                <TabPanel value="1">
+                  <Container className={classes.cardGrid} maxWidth="auto">
 
-              <Grid container spacing={4}>
-                {cards.map((card) => (
-                  <Grid item key={card} xs={12} sm={6} md={4}>
-                    <Card className={classes.card}>
-                      <CardMedia
-                        className={classes.cardMedia}
-                        image="https://source.unsplash.com/random"
-                        title="Image title"
-                      />
-                      <CardContent className={classes.cardContent}>
-                        <Typography gutterBottom variant="h5" component="h2">
-                          Post
-                        </Typography>
-                        <Typography>
-                          Click here to check your likes and comments
-                        </Typography>
-                      </CardContent>
-                      <CardActions>
-                        <Button size="small" color="primary">
-                          Like
-                        </Button>
-                        <Button size="small" color="primary">
-                          Comment
-                        </Button>
-                      </CardActions>
-                    </Card>
+                    <Grid container spacing={4}>
+                      {cards.map((card) => (
+                        <Grid item key={card} xs={12} sm={6} md={4}>
+                          <Card className={classes.card}>
+                            <CardMedia
+                              className={classes.cardMedia}
+                              image="https://images.unsplash.com/photo-1543486958-d783bfbf7f8e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1470&q=80"
+                              title="Image title"
+                            />
 
-                  </Grid>
+                            <CardContent className={classes.cardContent}>
+                              <Typography gutterBottom variant="h5" component="h2">
+                                Post
+                              </Typography>
+                              <Typography>
+                                Click here to check your likes and comments
+                              </Typography>
+                            </CardContent>
+                            <CardActions>
+                              <Button size="small" color="primary">
+                                Like
+                              </Button>
+                              <Button size="small" color="primary">
+                                Comment
+                              </Button>
+                            </CardActions>
+                          </Card>
 
-                ))}
 
-              </Grid>
 
-            </Container>
+                        </Grid>
+
+                      ))}
+
+                    </Grid>
+
+                  </Container>
+                </TabPanel>
+                <TabPanel value="2">
+                  <Container className={classes.cardGrid} maxWidth="auto">
+
+                    <Grid container spacing={4}>
+                      {cards.map((card) => (
+                        <Grid item key={card} xs={12} sm={6} md={4}>
+                          <Card className={classes.card}>
+                            <CardMedia
+                              className={classes.cardMedia}
+                              image="https://images.unsplash.com/photo-1514582086679-4024becf927e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+                              title="Image title"
+                            />
+
+                            <CardContent className={classes.cardContent}>
+                              <Typography gutterBottom variant="h5" component="h2">
+                                Post
+                              </Typography>
+                              <Typography>
+                                Click here to check your likes and comments
+                              </Typography>
+                            </CardContent>
+                            <CardActions>
+                              <Button size="small" color="primary">
+                                Like
+                              </Button>
+                              <Button size="small" color="primary">
+                                Comment
+                              </Button>
+                            </CardActions>
+                          </Card>
+
+
+
+                        </Grid>
+
+                      ))}
+
+                    </Grid>
+
+                  </Container>
+                </TabPanel>
+              </TabContext>
+            </Box>
 
 
 
