@@ -1,28 +1,16 @@
-.drawer-menu {
-    background-color: #ffffff !important;
+.drawer-menu{
+    background-color: #f7f6f6 !important;
     height: 90vh;
-    
-  }
-  .message-body {
+}
+.message-body{
     background-color: #fff !important;
-  }
-  
-  
-  .nav-top {
-    background-color: #1b1730 !important;
-    /* height: 5rem;
-    width: 100%; */
-    color: #1b1730 !important;
-  }
-  
-  .side {
-    background-color: #1b1730 !important;
-    height: 100% !important;
-    padding-left: 20px;
-  }
-  
-  .side-letters:hover{
-      color: black !important;
-  
-  }
-  
+}
+
+
+.navtop{
+    background-image: url(../../../../Assets/Admin/sidenav.png);
+    height: 20%;
+    width: 100%;
+    margin-bottom: 10pt;
+    
+}
