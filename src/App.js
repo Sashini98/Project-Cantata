@@ -41,6 +41,14 @@ function App() {
 						<Feed />
 					</Route>
 
+					<Route path="/UserProfile" exact>
+						<Profile />
+					</Route>
+
+					<Route path="/editprofile" exact>
+						<EditProfile />
+					</Route>
+
 					<Route path="/" exact>
 						<Profile />
 					</Route>
