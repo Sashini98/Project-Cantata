@@ -23,17 +23,18 @@ function Post() {
 	const [modalIsOpen, setIsOpen] = useState(false);
 	const [record, setRecord] = useState([]);
 	const [selectedRecord, setSelectedRecord] = useState({});
+	const [likedLyric, setLikedLyric] = useState({});
 	const user_id = sessionStorage.getItem("UserID");
 	const closeModal = () => {
 		setIsOpen(false);
 	};
 
 	const openModal = (e) => {
-		console.log(e.target.id);
+		// console.log(e.target.id);
 		record.forEach((rec) => {
-			console.log(rec.LyricId + " --" + e.target.id);
+			// console.log(rec.LyricId + " --" + e.target.id);
 			if (rec.LyricId.toString() === e.target.id.toString()) {
-				console.log(rec);
+				// console.log(rec);
 				setSelectedRecord(rec);
 				setIsOpen(true);
 				return;
@@ -42,25 +43,25 @@ function Post() {
 	};
 
 	const likeFunction = (e) => {
+		record.forEach((rec) => {
+			console.log(rec.LyricId + " --" + e.target.id);
+			if (rec.LyricId.toString() === e.target.id.toString()) {
+				console.log(rec);
+				setLikedLyric(rec);
+				return;
+			}
+		});
+		console.log(likedLyric);
 		axios
 			.post(`http://localhost:5000/api/v1/content/like`, {
-				liked_post_id: e.target.id,
-				number_of_likes: record[e.target.id - 1].likes + 1,
+				liked_post_id: likedLyric.LyricId,
+				number_of_likes: likedLyric.likes + 1,
 				UserId: user_id,
 			})
 			.then(() => {
 				loadLyrics();
 			});
 	};
-
-	// var likebtnvar = document.getElementById("likebtn");
-	// function Toggle() {
-	// 	if (likebtnvar.style.color == "red") {
-	// 		likebtnvar.style.color = "grey";
-	// 	} else {
-	// 		likebtnvar.style.color = "red";
-	// 	}
-	// }
 
 	const loadLyrics = async () => {
 		axios
@@ -78,7 +79,7 @@ function Post() {
 		loadLyrics();
 	}, []);
 
-	console.log(record);
+	// console.log(record);
 
 	return (
 		<div className="fullPost">
@@ -134,7 +135,8 @@ function Post() {
 													id={lyrics.LyricId}
 													onClick={likeFunction}
 												>
-													{lyrics.likes} Likes <FaThumbsUp />
+													{lyrics.likes} Likes {"  "}
+													<FaThumbsUp />
 												</button>
 											</div>
 											{/* <div className="column likesCount">
