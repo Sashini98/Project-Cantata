@@ -240,8 +240,13 @@ function LyricsModal(props) {
 										<p>
 											{cover.Fname} {cover.Lname}
 										</p>
+									</div>
+									<div className="columns cover-foot">
+										<button className="AddFav-btn column">
+											<FaHeart />
+										</button>
 										<button
-											className="report-btn"
+											className="report-btn column"
 											id={props.selectedRecord.LyricId}
 											onClick={openModal1}
 										>
@@ -250,6 +255,7 @@ function LyricsModal(props) {
 									</div>
 								</div>
 							))}
+
 							{/* <div class="card mb-2 card-img">
 								<div class="card-image">
 									<iframe
