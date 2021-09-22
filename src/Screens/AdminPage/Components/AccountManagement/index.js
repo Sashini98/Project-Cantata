@@ -84,12 +84,13 @@ function AccountManagement() {
 
 
     const [password, setPassword] = useState({
+        emai:"admin@gmail.com",
         oldpass: "",
         newpass: "",
         conf: ""
     });
 
-    const { oldpass, newpass, conf } = password;
+    const { emai,oldpass, newpass, conf } = password;
     const onPasswordChange = e => {
         setPassword({ ...password, [e.target.name]: e.target.value });
 
