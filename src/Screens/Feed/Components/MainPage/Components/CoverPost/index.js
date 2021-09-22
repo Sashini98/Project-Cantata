@@ -21,7 +21,7 @@ function CoverPost(props) {
 	const [song_url, setUrl] = useState("");
 	const [cover_description, setDescription] = useState("");
 	const [keyword, setKeyword] = useState("");
-	// console.log("lyric values" + lyric);
+	console.log("lyric values" + lyric);
 
 	function getVideoId(song_url) {
 		const regExp =
