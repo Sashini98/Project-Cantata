@@ -38,8 +38,8 @@ function App() {
 					<Route path="/postlyrics" exact>
 						<PostLyrics />
 					</Route>
-
-					<Route path="/" exact>
+					
+					<Route path="/Feed/:subpath" exact>
 						<Feed />
 					</Route>
 

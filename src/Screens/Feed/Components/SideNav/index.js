@@ -73,7 +73,7 @@ function SideNav() {
 				</li>
 				<li>
 					<p className={subpath === "UserProfile" ? "is-active" : ""}>
-						<Link to="UserProfile">
+						<Link to="../UserProfile">
 							<span className="side-letters" style={sideNavLetters}>
 								<FaUserAlt /> Account
 							</span>
