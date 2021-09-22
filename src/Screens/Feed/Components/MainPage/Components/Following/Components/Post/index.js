@@ -1,86 +1,168 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import user from "../../../../../../../../Assets/Admin/user.png";
-import './followingPostindex.css';
-import { FaRegThumbsUp } from "react-icons/fa";
-import { FaCommentAlt } from "react-icons/fa";
-import { FaUserFriends } from "react-icons/fa";
-
-
+import close from "../../../../../../../../Assets/Admin/close.png";
+import "./followingPostindex.css";
+import { FaThumbsUp } from "react-icons/fa";
+import { FaEllipsisV } from "react-icons/fa";
+import { FaQuoteLeft } from "react-icons/fa";
+import { FaQuoteRight } from "react-icons/fa";
+import { FaLessThan } from "react-icons/fa";
+import { MdReport } from "react-icons/md";
+import axios from "axios";
+import LyricsModal from "../LyricsModal";
 
 //pixel
 
 const seeBtn = {
-    width: "20vh",
-    height: "5vh"
-}
-//rem 
+	width: "20vh",
+	height: "5vh",
+};
+//rem
 
 function Post() {
+	const [modalIsOpen, setIsOpen] = useState(false);
+	const [record, setRecord] = useState([]);
+	const [selectedRecord, setSelectedRecord] = useState({});
+	const user_id = sessionStorage.getItem("UserID");
+	const closeModal = () => {
+		setIsOpen(false);
+	};
 
+	const openModal = (e) => {
+		console.log(e.target.id);
+		record.forEach((rec) => {
+			console.log(rec.LyricId + " --" + e.target.id);
+			if (rec.LyricId.toString() === e.target.id.toString()) {
+				console.log(rec);
+				setSelectedRecord(rec);
+				setIsOpen(true);
+				return;
+			}
+		});
+	};
 
-    return (
+	const likeFunction = (e) => {
+		axios
+			.post(`http://localhost:5000/api/v1/content/like`, {
+				liked_post_id: e.target.id,
+				number_of_likes: record[e.target.id - 1].likes + 1,
+				UserId: user_id,
+			})
+			.then(() => {
+				loadLyrics();
+			});
+	};
 
-        <div className="fullPost">
-            <div className="postedBy">
+	// var likebtnvar = document.getElementById("likebtn");
+	// function Toggle() {
+	// 	if (likebtnvar.style.color == "red") {
+	// 		likebtnvar.style.color = "grey";
+	// 	} else {
+	// 		likebtnvar.style.color = "red";
+	// 	}
+	// }
 
+	const loadLyrics = async () => {
+		axios
+			.get("http://localhost:5000/api/v1/content/getlyrics")
+			.then((response) => {
+				console.log(response);
+				setRecord(response.data);
+			})
+			.catch((err) => {
+				console.log(err);
+			});
+	};
 
-                <div className="columns writer"><img src={user} />
-                    <div className="columns writerName"> ___Shashini_Shihara___</div>
-                </div>
+	useEffect(() => {
+		loadLyrics();
+	}, []);
 
-            </div>
+	console.log(record);
 
-            <div className="box postContent" >
+	return (
+		<div className="fullPost">
+			<LyricsModal
+				isOpen={modalIsOpen}
+				onRequestClose={closeModal}
+				selectedRecord={selectedRecord}
+			/>
+			<table>
+				{record.map((lyrics) => (
+					<div>
+						<div className="postedBy">
+							<div className="columns writer">
+								<img src={user} />
+								<div className="columns writerName-feed">
+									{lyrics.Fname} {lyrics.Lname}
+								</div>
+							</div>
+						</div>
 
-                <div className="tile is-ancestor">
-                    <div className="tile  is-vertical is-8">
-                        <div className="tile ">
-                            <div className="tile lyricBox is-parent is-vertical">
-                                <article className="tile is-child is-primary">
-                                    <p className="title ">Lyric Title</p>
-                                    <p className="subtitle halfLyricSection">Half of the lyrics displayed here
-                                        You can be the peanut butter to my jelly
-                                        You can be the butterflies I feel in my belly
-                                        You can be the captain
-                                        And I can be your first mate
-                                        You can be the chills that I feel on our first date
-                                        You can be the hero
-                                        And I can be your sidekick
-                                        You can be the tear That I cry if we ever split
-                                        You can be the rain from the cloud when it's stormin'
-                                        Or u can be the sun when it shines in the mornin'
-                                        Don't know if I could ever be without you
-                                    </p>
-                                </article>
+						<div className="box postContent">
+							<div className="tile is-ancestor">
+								<div className="tile  is-vertical is-5">
+									<div className="tile ">
+										<div className="tile lyricBox is-parent is-vertical">
+											<article className="tile is-child is-primary">
+												<p className="title ">{lyrics.Title}</p>
+												<p className="halfLyricSection">
+													<FaQuoteLeft />
+													{"  "}
+													{lyrics.Preview}
+													{"  "}
+													<FaQuoteRight />
+												</p>
+											</article>
+										</div>
+									</div>
+									<div className="tile is-parent column ">
+										<div className="columns">
+											<div className="column">
+												<button
+													className="seeBtn"
+													id={lyrics.LyricId}
+													onClick={openModal}
+												>
+													See lyrics
+												</button>
+											</div>
 
-                            </div>
-
-                        </div>
-                        <div className="tile is-parent">
-                        <button className="seeBtn" >See full lyrics</button>
-                        <button className="seeBtn" ><FaRegThumbsUp/>   Like</button>
-                            <button className="seeBtn" ><FaCommentAlt/>   Comment</button>
-
-                        </div>
-                    </div>
-                    <div className="tile descriptionSection is-parent lyricSection ">
-                        <article className="tile is-child is-success">
-                            <div className="content">
-                                <p className="title">Description</p>
-                                <p className="subtitle">Description of lyrics</p>
-                            </div>
-                        </article>
-                    </div>
-                </div>
-
-
-
-            </div>
-        </div>
-
-
-    )
-
+											<div className="column">
+												<button
+													className="column likeBtn"
+													id={lyrics.LyricId}
+													onClick={likeFunction}
+												>
+													{lyrics.likes} Likes <FaThumbsUp />
+												</button>
+											</div>
+											{/* <div className="column likesCount">
+												{lyrics.likes} Likes
+											</div> */}
+											<div className="column">
+												<button className="column options-Btn">
+													{/* <MdReport /> */}
+												</button>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div className="tile is-parent">
+									<article className="tile is-child is-success">
+										<div className="content">
+											<p className="title">Description</p>
+											<p className="subtitle">{lyrics.Description}</p>
+										</div>
+									</article>
+								</div>
+							</div>
+						</div>
+					</div>
+				))}
+			</table>
+		</div>
+	);
 }
 
 export default Post;
