@@ -163,11 +163,11 @@ export default function SignUp() {
         });
 
         dispatch(updateUser({
-          userID: userDetails.userId,
-          fname: userDetails.firstName,
-          lname: userDetails.lastName,
-          userImage: userDetails.userImage,
-          bio: userDetails.bio,
+          userID: user.userId,
+          fname: user.firstName,
+          lname: user.lastName,
+          userImage: user.userImage,
+          bio: user.bio,
         }))
         setIsUpdate(false);
       }
