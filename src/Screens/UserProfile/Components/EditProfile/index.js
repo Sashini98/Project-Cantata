@@ -31,7 +31,7 @@ import * as Content from "../Content";
 import * as Bio from "../Bio";
 import TopNav from "../TopNav";
 import EditProfile from "../EditProfile";
-import user1 from '../../../../Assets/Admin/random.jpg';
+import user1 from '../../../../Assets/Admin/user.png';
 import React, { useState, useEffect } from 'react';
 //import { Modal, Button } from 'antd';
 import Modal from '@material-ui/core/Modal';
@@ -163,9 +163,13 @@ export default function SignUp() {
         });
 
         dispatch(updateUser({
-          ...user,
-          userImage: res.data
+          userID: userDetails.userId,
+          fname: userDetails.firstName,
+          lname: userDetails.lastName,
+          userImage: userDetails.userImage,
+          bio: userDetails.bio,
         }))
+        setIsUpdate(false);
       }
     })
   }
@@ -198,6 +202,36 @@ export default function SignUp() {
     })
   }, [])
 
+  const [record, setRecord] = useState([]);
+  const [modal1IsOpen, setIsOpen1] = useState(false);
+  const [selectedReport, setSelectedReport] = useState({});
+  const [reportType, setReportType] = useState({})
+
+  const getUser = () => {
+    axios.get(`http://localhost:5000/api/v1/user/getbyId/1`)
+      .then(response => {
+        setRecord(response.data);
+        console.log(response);
+      });
+  }
+
+  useEffect(() => {
+    getUser();
+  }, []);
+
+  const openModal1 = (e) => {
+    // console.log(e.target.id);
+    setSelectedReport(e.target.id);
+    setReportType(e.target.name);
+    setIsOpen1(true);
+    // console.log("sel" + selectedLyric);
+  };
+
+
+  const closeModal1 = () => {
+    setIsOpen1(false);
+  };
+
   return (
     <>
       <UpdateProfileImageDialog
@@ -218,9 +252,9 @@ export default function SignUp() {
               <div className="w-full px-4 flex justify-center">
                 <div className="relative">
                   <img
-                  hidden
+                    hidden
                     alt="..."
-                    src={`data:image/jpeg;base64,${user.userImage}`}
+                    src={`data:image/jpeg;base64,${user.Image}`}
                     className="shadow-xl rounded-full align-middle border-none absolute -m-16 -ml-20 lg:-ml-16 max-w-120-px"
                     onChange={(event) => (setImage(event.target.value))}
                   />
@@ -233,7 +267,7 @@ export default function SignUp() {
                   <div className="mr-4 p-3 text-center">
                     <button
                       className="bg-emerald-400 text-white active:bg-emerald-400 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
-                      type="button" 
+                      type="button"
                       onClick={() => setIsDialogOpen(true)}
                     >
                       Upload Profile Image
@@ -280,10 +314,10 @@ export default function SignUp() {
                           variant="outlined"
                           fullWidth
                           id="text"
-                          label={fname ? "" : "First Name"}
+                          label={user.fname ? "" : "First Name"}
                           onChange={(event) => (setFname(event.target.value))}
                           autoFocus
-                          value={fname}
+                          value={user.fname}
                         />
                       </Grid>
                       <Grid item xs={12} sm={6}> Last Name :
@@ -293,10 +327,10 @@ export default function SignUp() {
                           variant="outlined"
                           fullWidth
                           id="text"
-                          label={lname ? "" : "Last Name"}
+                          label={user.lname ? "" : "Last Name"}
                           onChange={(event) => (setLname(event.target.value))}
                           autoFocus
-                          value={lname}
+                          value={user.lname}
                         />
                       </Grid>
                       <Grid item xs={12}> Bio :
@@ -304,10 +338,10 @@ export default function SignUp() {
                           variant="outlined"
                           fullWidth
                           id="text"
-                          label={bio ? "" : "Description"}
+                          label={user.bio ? "" : "Description"}
                           onChange={(event) => (setBio(event.target.value))}
                           name="text"
-                          value={bio}
+                          value={user.bio}
                         />
                       </Grid>
                       <Grid item xs={12}> User Name :
@@ -315,11 +349,11 @@ export default function SignUp() {
                           variant="outlined"
                           fullWidth
                           id="text"
-                          label={followers ? "" : "@UserName"}
+                          label={user.followers ? "" : "@UserName"}
                           name="text"
                           onChange={(event) => (setFollowers(event.target.value))}
                           autoComplete="text"
-                          value={followers}
+                          value={user.followers}
                         />
                       </Grid>
                       {/* <Grid item xs={12} sm={6}> Following :
