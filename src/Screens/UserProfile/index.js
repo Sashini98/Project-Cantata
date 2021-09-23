@@ -48,6 +48,8 @@ import { useSnackbar } from "notistack";
 import { useDispatch, useSelector } from "react-redux";
 import { axiosInstance, BACKEND_API } from "../../axios/AxiosInstance";
 import { updateUser } from "../../store/action/authAction";
+import Reports from "../Feed/Components/MainPage/Components/Reports/index";
+
 
 const useStyles = makeStyles((theme) => ({
   icon: {
@@ -173,8 +175,43 @@ export default function UserProfile() {
     });
   }
 
+  const [record, setRecord] = useState([]);
+	const [modal1IsOpen, setIsOpen1] = useState(false);
+	const [selectedReport, setSelectedReport] = useState({});
+	const [reportType, setReportType] = useState({});
+
+
+
+  const getUser = () => {
+    axios.get(`http://localhost:5000/api/v1/user/getbyId/1`)
+        .then(response => {
+            setRecord(response.data);
+            console.log(response);
+        });
+}
+
+useEffect(() => {
+  getUser();
+}, []);
+
+const openModal1 = (e) => {
+  // console.log(e.target.id);
+  setSelectedReport(e.target.id);
+  setReportType(e.target.name);
+  setIsOpen1(true);
+  // console.log("sel" + selectedLyric);
+};
+
+
+const closeModal1 = () => {
+  setIsOpen1(false);
+};
+
   return (
     <div>
+        <table>
+                    {record.map((user) =>
+                        <tr>
       <div class="columns">
         <div class="column is-2">
           <SideNav />
@@ -200,7 +237,7 @@ export default function UserProfile() {
               <div class="columns is-gapless is-multiline is-mobile">
                 <div class="column">
                   <b><h1>
-                    <a class="name"> Bhagya Gunathilaka
+                    <a class="name"> {user.Fname}  {user.Lname}
                       {/* <input
                         value={"Bhagya" + " " + "Gunathilaka"}
                         disabled={!isUpdate}
@@ -210,31 +247,36 @@ export default function UserProfile() {
                   </b>
                 </div>
               </div>
-              <div class="columns is-gapless is-multiline is-mobile" id="content1">
+              {/* <div class="columns is-gapless is-multiline is-mobile" id="content1">
                 <div class="column is-one-third">89</div>
                 <div class="column is-one-third">66</div>
               </div>
               <div class="columns is-gapless is-multiline is-mobile" id="content">
                 <div class="column is-one-third">#Followers</div>
                 <div class="column is-one-third">#Following</div>
-              </div>
+              </div> */}
               <div class="columns is-gapless is-multiline is-mobile">
                 <div class="column">
                   <table class="GeneratedTable">
                     <thead>
                       <tr>
-                        <th class="bio">Bio</th>
-                        <td></td>
+                        <th class="bio">Joined At : </th>
+                        <td>    {user.CreatedAt} </td>
+                       
+                      </tr>
+                      <tr>
+                      <th class="bio">Email : </th>
+                        <td> {user.Email} </td>
                       </tr>
                     </thead>
                     <tbody>
                       <tr>
                         <td>
-                          <input
+                          {/* <input
                             value={userDetails.bio}
                             disabled={!isUpdate}
                             type="text" name={"bio"}
-                          />
+                          /> */}
                         </td>
                       </tr>
                     </tbody>
@@ -250,11 +292,20 @@ export default function UserProfile() {
 
             <div class="column is-one-third">
               <Stack direction="row" spacing={2}>
-                <Button variant="contained" color="error" className="bg-red">
+                <Button variant="contained" color="error" className="bg-red" id={user.UserId} name="user" onClick={openModal1}>
                   Report
                 </Button>
               </Stack>
             </div>
+
+
+            
+				<Reports
+					isOpen={modal1IsOpen}
+					onRequestClose={closeModal1}
+					selectedReport={selectedReport}
+					reportType={reportType}
+				></Reports>
 
             <Box sx={{ width: '100%', typography: 'body1' }}>
               <TabContext value={value}>
@@ -409,7 +460,9 @@ export default function UserProfile() {
       </div>
 
 
-
+      </tr>
+                    )}
+                </table>
 
 
     </div>

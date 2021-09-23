@@ -32,7 +32,7 @@ function CountBox() {
                 {record.map((counts) =>
                     <nav class="level mt-6">
                         <div className="level-item has-text-centered" >
-                            <div>
+                            {/* <div>
                                 <div className="box mx-6" style={bx}>
                                     <div class="content">
                                         <p>
@@ -41,7 +41,7 @@ function CountBox() {
                                         </p>
                                     </div>
                                 </div>
-                            </div>
+                            </div> */}
                         </div>
                         <div class="level-item has-text-centered">
                             <div>

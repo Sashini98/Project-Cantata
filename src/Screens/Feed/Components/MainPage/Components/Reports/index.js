@@ -52,6 +52,60 @@ function Reports(props) {
                 
                 }
 
+                if (type === "cover") {
+                    axios.post(`http://localhost:5000/api/v1/admin/inputrepcover`, {
+                        cover_id: lyric,
+                        reason: reason,
+                        user: author
+                    })
+                        .then((data) => {
+                            alert(data.data.message);
+                            console.log(data.data.message);
+                            if (data.data.message === "Report added successfully") {
+                                Swal.fire({
+                                    icon: "success",
+                                    title: "Sent",
+                                    text: "Reported Succesfully!",
+                                });
+        
+                            } else {
+                                Swal.fire({
+                                    icon: "error",
+                                    title: "Oops...",
+                                    text: "Reporting Failed!",
+                                });
+                            }
+                        });
+                        
+                        }
+
+                        if (type === "user") {
+                            axios.post(`http://localhost:5000/api/v1/admin/inputrepuser`, {
+                                user_id: lyric,
+                                reason: reason,
+                                user: author
+                            })
+                                .then((data) => {
+                                    alert(data.data.message);
+                                    console.log(data.data.message);
+                                    if (data.data.message === "Report added successfully") {
+                                        Swal.fire({
+                                            icon: "success",
+                                            title: "Sent",
+                                            text: "Reported Succesfully!",
+                                        });
+                
+                                    } else {
+                                        Swal.fire({
+                                            icon: "error",
+                                            title: "Oops...",
+                                            text: "Reporting Failed!",
+                                        });
+                                    }
+                                });
+                                
+                                }
+
     };
 
     return (
