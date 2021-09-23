@@ -9,6 +9,8 @@ import CommentsBlock from "simple-react-comments";
 import axios from "axios";
 import CoverPost from "../../CoverPost/index";
 import Reports from "../../Reports/index";
+import Swal from "sweetalert2";
+
 
 import "./index.css";
 
@@ -21,6 +23,9 @@ function LyricsModal(props) {
 	const [selectedReport, setSelectedReport] = useState({});
 	const [reportType, setReportType] = useState({});
 	const [covers, setCovers] = useState([]);
+	const [fav, setFav] = useState([]);
+
+
 	const authorname =
 		sessionStorage.getItem("First_Name") +
 		" " +
@@ -63,6 +68,30 @@ function LyricsModal(props) {
 				//         text: "Reporting Failed!",
 				//     });
 				// }
+			});
+	};
+
+	const addFav = (e) => {
+		axios
+			.post(`http://localhost:5000/api/v1/content/addfav`, {
+				coverid: e.target.id,
+				user: author,
+			})
+			.then((data) => {
+				// alert(data.data.message);			
+				if (data.data.message === "Added to favourites") {
+				    Swal.fire({
+				        icon: "success",
+				        title: "Sent",
+				        text: "Added to favouries!",
+				    });
+				} else {
+				    Swal.fire({
+				        icon: "error",
+				        title: "Oops...",
+				        text: "Failed! Plaese try again.",
+				    });
+				}
 			});
 	};
 
@@ -128,7 +157,7 @@ function LyricsModal(props) {
 	const openModal1 = (e) => {
 		// console.log(e.target.id);
 		setSelectedReport(e.target.id);
-		setReportType("lyric");
+		setReportType(e.target.name);
 		setIsOpen1(true);
 		// console.log("sel" + selectedLyric);
 	};
@@ -212,6 +241,7 @@ function LyricsModal(props) {
 										<button
 											className="column options-Btn mr-2"
 											id={props.selectedRecord.LyricId}
+											name="lyric"
 											onClick={openModal1}
 										>
 											<FaEllipsisV /> Report
@@ -248,12 +278,13 @@ function LyricsModal(props) {
 										</p>
 									</div>
 									<div className="columns cover-foot">
-										<button className="AddFav-btn column">
+										<button className="AddFav-btn column" id={cover.CoverId} onClick={addFav}>
 											<FaHeart />
 										</button>
 										<button
 											className="report-btn column"
 											id={props.selectedRecord.LyricId}
+											name="cover"
 											onClick={openModal1}
 										>
 											Report

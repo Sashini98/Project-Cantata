@@ -47,9 +47,10 @@ function App() {
 								<PostLyrics />
 							</Route>
 
-							<Route path="/" exact>
-								<Feed />
-							</Route>
+							
+					<Route path="/Feed/:subpath" exact>
+						<Feed />
+					</Route>
 
 							<Route path="/UserProfile" exact>
 								<Profile />
