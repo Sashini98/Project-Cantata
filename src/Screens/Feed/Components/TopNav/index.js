@@ -21,9 +21,8 @@ function TopNav() {
         axios.get(`http://localhost:5000/api/v1/user/searchUser/${search}`)
             .then(response => {
                 setRecord(response.data);
-				console.log(response.data);
-				// <Link to={{ pathname: "../", query: { user_id: 1} }}  className="card-footer-item mb-3">View</Link>
-				window.open(`/UserProfile/${1}`); 
+				console.log(response.data[0].UserId);
+				window.open(`/UserProfile/${response.data[0].UserId}`); 
             });
     }
 	return (
@@ -49,7 +48,7 @@ function TopNav() {
 								<FaSearch />
 							</button>
 							
-            // )}
+            {/* // )} */}
         
 						</div>
 					</div>

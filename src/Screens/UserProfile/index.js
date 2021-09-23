@@ -174,6 +174,8 @@ export default function UserProfile() {
       }
     });
   }
+  let { userid } = useParams();
+  console.log(userid);
 
   const [record, setRecord] = useState([]);
 	const [modal1IsOpen, setIsOpen1] = useState(false);
@@ -183,7 +185,7 @@ export default function UserProfile() {
 
 
   const getUser = () => {
-    axios.get(`http://localhost:5000/api/v1/user/getbyId/1`)
+    axios.get(`http://localhost:5000/api/v1/user/getbyId/${userid}`)
         .then(response => {
             setRecord(response.data);
             console.log(response);
