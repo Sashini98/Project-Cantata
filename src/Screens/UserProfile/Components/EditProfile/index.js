@@ -201,6 +201,8 @@ export default function SignUp() {
       }
     })
   }, [])
+  let { userid } = useParams();
+  console.log(userid);
 
   const [record, setRecord] = useState([]);
   const [modal1IsOpen, setIsOpen1] = useState(false);
@@ -208,7 +210,7 @@ export default function SignUp() {
   const [reportType, setReportType] = useState({})
 
   const getUser = () => {
-    axios.get(`http://localhost:5000/api/v1/user/getbyId/1`)
+    axios.get(`http://localhost:5000/api/v1/user/getbyId/${userid}`)
       .then(response => {
         setRecord(response.data);
         console.log(response);
@@ -318,6 +320,7 @@ export default function SignUp() {
                           onChange={(event) => (setFname(event.target.value))}
                           autoFocus
                           value={user.fname}
+                          disabled={!isUpdate}
                         />
                       </Grid>
                       <Grid item xs={12} sm={6}> Last Name :
@@ -331,6 +334,7 @@ export default function SignUp() {
                           onChange={(event) => (setLname(event.target.value))}
                           autoFocus
                           value={user.lname}
+                          disabled={!isUpdate}
                         />
                       </Grid>
                       <Grid item xs={12}> Bio :
@@ -342,6 +346,7 @@ export default function SignUp() {
                           onChange={(event) => (setBio(event.target.value))}
                           name="text"
                           value={user.bio}
+                          disabled={!isUpdate}
                         />
                       </Grid>
                       <Grid item xs={12}> User Name :
@@ -354,6 +359,7 @@ export default function SignUp() {
                           onChange={(event) => (setFollowers(event.target.value))}
                           autoComplete="text"
                           value={user.followers}
+                          disabled={!isUpdate}
                         />
                       </Grid>
                       {/* <Grid item xs={12} sm={6}> Following :
