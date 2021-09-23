@@ -233,7 +233,7 @@ export default function SignUp() {
                   <div className="mr-4 p-3 text-center">
                     <button
                       className="bg-emerald-400 text-white active:bg-emerald-400 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
-                      type="button"
+                      type="button" 
                       onClick={() => setIsDialogOpen(true)}
                     >
                       Upload Profile Image
@@ -280,7 +280,7 @@ export default function SignUp() {
                           variant="outlined"
                           fullWidth
                           id="text"
-                          label={fname ? "" : "Person"}
+                          label={fname ? "" : "First Name"}
                           onChange={(event) => (setFname(event.target.value))}
                           autoFocus
                           value={fname}
@@ -293,7 +293,7 @@ export default function SignUp() {
                           variant="outlined"
                           fullWidth
                           id="text"
-                          label={lname ? "" : "1"}
+                          label={lname ? "" : "Last Name"}
                           onChange={(event) => (setLname(event.target.value))}
                           autoFocus
                           value={lname}
@@ -304,7 +304,7 @@ export default function SignUp() {
                           variant="outlined"
                           fullWidth
                           id="text"
-                          label={bio ? "" : "21 years old"}
+                          label={bio ? "" : "Description"}
                           onChange={(event) => (setBio(event.target.value))}
                           name="text"
                           value={bio}
@@ -315,7 +315,7 @@ export default function SignUp() {
                           variant="outlined"
                           fullWidth
                           id="text"
-                          label={followers ? "" : "@person1"}
+                          label={followers ? "" : "@UserName"}
                           name="text"
                           onChange={(event) => (setFollowers(event.target.value))}
                           autoComplete="text"

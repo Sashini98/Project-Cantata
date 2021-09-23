@@ -298,6 +298,7 @@ const closeModal1 = () => {
               </Stack>
             </div>
 
+
             
 				<Reports
 					isOpen={modal1IsOpen}
@@ -306,70 +307,6 @@ const closeModal1 = () => {
 					reportType={reportType}
 				></Reports>
 
-            {/* <div class="column is-one-third">
-              <ImageList
-                sx={{
-                  width: 500,
-                  height: 450,
-                  // Promote the list into its own layer in Chrome. This costs memory, but helps keeping high FPS.
-                  transform: 'translateZ(0)',
-                }}
-                rowHeight={200}
-                gap={1}
-              >
-                {itemData.map((item) => {
-                  const cols = item.featured ? 2 : 1;
-                  const rows = item.featured ? 2 : 1;
-
-                  return (
-                    <ImageListItem key={item.img} cols={cols} rows={rows}>
-                      <img
-                        {...srcset(item.img, 250, 200, rows, cols)}
-                        alt={item.title}
-                        loading="lazy"
-                      />
-                      <ImageListItemBar
-                        sx={{
-                          background:
-                            'linear-gradient(to bottom, rgba(0,0,0,0.7) 0%, ' +
-                            'rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 100%)',
-                        }}
-                        title={item.title}
-                        position="top"
-                        actionIcon={
-                          <IconButton
-                            sx={{ color: 'white' }}
-                            aria-label={`star ${item.title}`}
-                          >
-                            <StarBorderIcon />
-                          </IconButton>
-                        }
-                        actionPosition="left"
-                      />
-                    </ImageListItem>
-                  );
-                })}
-              </ImageList>
-              <Box hidden sx={{ height: 320, transform: 'translateZ(0px)', flexGrow: 1 }}>
-                <SpeedDial
-                  ariaLabel="SpeedDial uncontrolled open example"
-                  sx={{ position: 'absolute', bottom: 16, right: 16 }}
-                  icon={<SpeedDialIcon />}
-                  onClose={handleClose}
-                  onOpen={handleOpen}
-                  open={open}
-                >
-                  {actions.map((action) => (
-                    <SpeedDialAction
-                      key={action.name}
-                      icon={action.icon}
-                      tooltipTitle={action.name}
-                      onClick={handleClose}
-                    />
-                  ))}
-                </SpeedDial>
-              </Box>
-            </div> */}
             <Box sx={{ width: '100%', typography: 'body1' }}>
               <TabContext value={value}>
                 <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
