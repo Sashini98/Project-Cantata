@@ -39,7 +39,7 @@ function SideNav() {
                 <li><a className={subpath === "../EditProfile/index.js" ? "is-active" : ""}><Link to="editprofile"><img src={usermgt} style={imgstyle} /><span className="side-letters" style={sideNavLetters}>Edit Profile</span></Link></a></li>
                 <li><a className={subpath === "../Notification/index.js" ? "is-active" : ""}><Link to="notification"><img src={notify} style={imgstyle} /><span className="side-letters" style={sideNavLetters}>Notification</span></Link></a></li>
                 <li><a><Link to="/"><img src={lgout} style={imgstyle} /><span className="side-letters" style={sideNavLetters}>Home</span></Link></a></li>
-                <li><a><Link to="/"><img src={lgout} style={imgstyle} /><span className="side-letters" style={sideNavLetters}>Logout</span></Link></a></li>
+                <li><a><Link to="/login"><img src={lgout} style={imgstyle} /><span className="side-letters" style={sideNavLetters}>Logout</span></Link></a></li>
 
             </ul>
 

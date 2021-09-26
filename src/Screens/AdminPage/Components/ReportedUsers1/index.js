@@ -16,12 +16,12 @@ function ReportedUsers1(){
 
             <div class="dropdown is-right is-hoverable mt-6">
                 <div class="dropdown-trigger">
-                    <button class="button" aria-haspopup="true" aria-controls="dropdown-menu4">
+                    {/* <button class="button" aria-haspopup="true" aria-controls="dropdown-menu4">
                         <span>Sort By</span>
                         <span class="icon is-small">
                             <i class="fas fa-angle-down" aria-hidden="true"></i>
                         </span>
-                    </button>
+                    </button> */}
                 </div>
                 <div class="dropdown-menu" id="dropdown-menu4" role="menu">
                     <div class="dropdown-content">

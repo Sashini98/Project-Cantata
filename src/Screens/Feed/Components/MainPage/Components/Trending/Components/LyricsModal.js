@@ -148,7 +148,7 @@ function LyricsModal(props) {
 		setIsOpen1(false);
 	};
 	const openModal = (e) => {
-		// console.log(e.target.id);
+		console.log(e.target.id);
 		setSelectedLyric(e.target.id);
 		setIsOpen(true);
 		// console.log("sel" + selectedLyric);

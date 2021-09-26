@@ -49,6 +49,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { axiosInstance, BACKEND_API } from "../../axios/AxiosInstance";
 import { updateUser } from "../../store/action/authAction";
 import Reports from "../Feed/Components/MainPage/Components/Reports/index";
+import userimg from "../../Assets/Admin/user.png";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -233,7 +234,7 @@ const closeModal1 = () => {
 
           <div class="columns is-gapless is-multiline is-mobile">
             <div class="column is-one-third" align="center">
-              <img id="user" src={user1} width="300" height="300" style={{ borderRadius: 1000 / 2, marginTop: "10%", borderColor: 'black', borderWidth: 5 }} />
+              <img id="user" src={userimg} width="300" height="300" style={{ borderRadius: 1000 / 2, marginTop: "10%", borderColor: 'black', borderWidth: 5 }} />
             </div>
             <div class="column is-one-third">
               <div class="columns is-gapless is-multiline is-mobile">
